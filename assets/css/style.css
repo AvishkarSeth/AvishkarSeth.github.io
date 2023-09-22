@@ -1,0 +1,16 @@
+/* Style for Home Section */
+#home {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Style for About Section */
+  #about {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  /* ...and so on for other sections */
+  
