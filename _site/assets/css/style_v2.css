@@ -1,0 +1,105 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Make a background color for the document */
+  body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    background: #f5f5f5;
+  }
+  
+  /* Style the header */
+  #header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  .header-scrolled {
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+  }
+  
+  /* Style the navigation menu */
+  .nav-menu ul {
+    list-style: none;
+    overflow: hidden;
+  }
+  
+  .nav-menu ul li {
+    float: left;
+    display: inline;
+    padding: 0 20px;
+  }
+  
+  .nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Active state for the navigation */
+  .nav-menu ul li.active a {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+  }
+
+  /* CounterUp style */
+  [data-toggle="counter-up"] {
+    font-size: 2em;
+    color: #333;
+  }
+  
+  /* Owl Carousel for Testimonials */
+  .testimonials-carousel {
+    margin-top: 30px;
+  }
+  
+  /* Isotope for Portfolio */
+  .portfolio-container {
+    margin-top: 30px;
+  }
+  
+  /* Venobox */
+  .venobox {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  /* Footer */
+  .credits {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+  }
+  
+  /* Hover state for social links */
+  .footer {
+    background-color: #333 !important;
+    color: white !important;
+    padding: 20px !important;
+    text-align: center !important;
+  }
+  .social-links a {
+    margin: 0 15px !important;
+    color: white !important;
+    font-size: 24px !important;
+  }
+  
+  .social-sidebar {
+    position: fixed;
+    top: 75%;
+    left: 20%;
+    z-index: 1000;
+    background-color: #333;
+    padding: 36px;
+  }
+  
