@@ -161,7 +161,7 @@ XYZ 2
 
 
 <hr>            
-<h4> Step 1: Creating the Dataset</h4>
+<h4> Step 2: Creating the Dataset</h4>
 <hr>
 
 
@@ -189,47 +189,6 @@ XYZ 2
 </ol>
 </div></div></div></div>
 
-
-<div class="whole-wrap">
-  <div class="container">
-    <div class="section-top-border">
-      <!-- <div class="research-item pb-0"> -->
-        <div class="row">
-          <b><h5>Method 2<br>XYZ</h5></b> 
-          <ol>
-            <li>
-              We will training YOLOv8n (nano model, 3.2M params) for this.
-            </li>
-            <li>
-              Download the training, validation and testing dataset from Roboflow.
-            </li>
-            <li>
-              Install <code>ultralytics: </code><h5><code>pip install ultralytics</code></h5>. This will install install the dependencies, including torchvision and pytorch.
-            </li>
-            <li>Install <code>clearml: </code> <h5><code>pip install clearml</code></h5></li> For this, you would need to setup the API key. Please follow the <code>clearml</code> instructions from <a href="https://learnopencv.com/train-yolov8-on-custom-dataset/">here</a>.
-
-
-            <li>
-              <div class="research-item pb-0">
-              <h5><code>from ultralytics import YOLO<br><hr>
- 
-                # Load the model.<br>
-                model = YOLO('yolov8n.pt')<br>
-                <hr>
-                # Training.<br>
-                results = model.train(<br>
-                   data='pothole_v8.yaml',<br>
-                   imgsz=1280,<br>
-                   epochs=50,<br>
-                   batch=8,<br>
-                   name='yolov8n_v8_50e')<br>
-              </code></h5></div>
-            </li>
-          
-
-    <li>Run the inference on a video or modify it for images/real-time feed:<div class="research-item pb-0">
-<h5><code>yolo task=detect mode=predict model=runs/detect/yolov8n_v8_50e/weights/best.pt source=inference_data/video_1.mp4 show=True imgsz=1280 name=yolov8n_v8_50e_infer1280 hide_labels=True</code></h5></div>
-    </li>
  
     </section><!-- End Services Section -->
 
