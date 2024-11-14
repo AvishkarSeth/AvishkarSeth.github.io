@@ -1,15 +1,5 @@
 # AvishkarSeth.github.io
 
-Avishkar Seth's Research & Projects
+I'm Avishkar Seth, a final-year Ph.D. Candidate and Robotics Research Engineer at Macquarie University. My expertise spans robotics, machine learning, and sensor technology, with a keen eye for real-world applications. I've been fortunate to contribute to diverse projects, from smart cities to autonomous drones. Currently mentored by Prof. Subhas Mukhopadhyay, Prof. Richard Han, and Dr. Endrowednes Kuantama, my research aims to develop swarm aerial robots in diverse environments. I believe in helping humanity by advancing science and engineering and making genuine efforts towards that goal.
 
-As an engineer born in Mumbai, I've always been passionate about technology. At the [MQ Drone Lab](https://www.mqdronelab.com/)
-in Sydney, I'm living my dream of putting autonomy into drones and robots. When not tinkering with sensors and code, 
-I'm strumming my guitar, traveling to new places, and seeking unique experiences. Sharing my love for tech 
-and teaching Mechatronics and IoT to students fuels my soul. Sci-fi movies may be fantasy, but with each new 
-drone or robot I create, I'm bringing more of that future into reality.
-
-## Watch the Video
-
-Click on the image below to watch the background video:
-
-[![Background Video](assets/img/videos/thumbnail.png)](assets/img/videos/bck_vid_sep_24.mp4)
+My work lies at the intersection of robotics, computer vision, and multi-robot communication and networking. Besides doing research, I truly enjoy teaching! In my spare time, I love playing music, watching movies and spending time with my family.
