@@ -13,16 +13,17 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Avishkar Seth | ADSRC</title>
+  <title>Avishkar Seth | Research Engineer</title>
   
   <link href="assets/img/favicon_io/favicon-16x16.png" rel="icon">
   <link href="assets/img/favicon_io/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:300,400,500,600,700|Poppins:300,400,500,600,700" rel="stylesheet">
 
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
@@ -30,17 +31,19 @@
   <link href="assets/css/lighttheme.css" rel="stylesheet">
 
   <style>
-    /* Fixed Video Background Logic */
-    #hero {
+    /* 1. Video Background Container */
+    #hero-video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100vh;
-      position: relative;
+      z-index: -1; /* Sits behind everything */
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background-color: #000; /* Fallback if video fails */
     }
 
+    /* 2. Fix the Zoom/Ratio Issue */
     #bgvid {
       position: absolute;
       top: 50%;
@@ -49,28 +52,39 @@
       min-height: 100%;
       width: auto;
       height: auto;
-      z-index: -1;
       transform: translate(-50%, -50%);
-      object-fit: cover; /* Prevents stretching, maintains aspect ratio */
+      object-fit: cover; 
     }
 
+    /* 3. Dark Overlay to ensure text visibility */
     .hero-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.3); /* Subtle dark layer for text readability */
+      background: rgba(0, 0, 0, 0.35); 
       z-index: 0;
     }
 
-    .hero-content {
+    /* 4. Center the text content */
+    #home {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent !important;
+    }
+
+    .about-me {
       position: relative;
-      z-index: 1;
+      z-index: 10;
       text-align: center;
-      color: #fff;
     }
   </style>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 
 <body>
@@ -92,70 +106,70 @@
     </div>
   </header>
 
-  <section id="hero">
+  <div id="hero-video-container">
     <video playsinline autoplay muted loop id="bgvid">
-      <source src="assets/img/videos/bck_vid_sep_24.mp4" type="video/mp4"> 
+      <source src="assets/img/videos/bck_vid_sep_24.mp4" type="video/mp4">
     </video>
-    
     <div class="hero-overlay"></div>
+  </div>
 
-    <div class="hero-content container">
-      <div class="logo-box">
-        <img src="assets/img/logo/macquarielogo.png" class="img-fluid" alt="MQ Logo" 
-             style="width: 120px; background: rgba(255,255,255,0.7); border-radius: 50%; padding: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+  <section id="home">
+    <div class="about-me container">
+      <div class="logo-wrapper">
+        <img src="assets/img/logo/macquarielogo.png"
+             class="img-fluid"
+             alt="Macquarie University Logo"
+             style="width: 120px; background-color: rgba(255,255,255,0.6); box-shadow: 0px 5px 20px rgba(0,0,0,0.5); border-radius: 50%; padding: 12px;">
       </div>
 
-      <h1 style="font-size: 60px; font-weight: 900; -webkit-text-stroke: 1px black; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin-top: 20px;">
-        Dr Avishkar Seth
+      <br><br>
+
+      <h1 style="font-size: 60px; font-weight: 1000; -webkit-text-stroke: 1.2px rgb(0, 0, 0); text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7); color: #ffffff;">
+        Avishkar Seth
       </h1>
 
-      <h2 style="font-size: 28px; font-weight: 600;">
+      <h2 style="font-size: 28px; font-weight: 600; color: #ffffff; margin-top: 10px;">
         Research Engineer in Robotics
       </h2>
 
-      <hr style="width: 40%; border: 1px solid #fff; margin: 20px auto;">
+      <hr style="width: 40%; border-top: 2px solid #fff; margin: 20px auto; opacity: 0.8;">
 
-      <h3 style="font-size: 22px; font-weight: 400;">
+      <h3 style="font-size: 22px; font-weight: 400; color: #ffffff;">
         Advanced Drone Systems Research Centre<br>
         Macquarie University
       </h3>
 
+      <div class="social-links mt-4" style="font-size: 24px;">
+          <a title="Google Scholar" href="https://scholar.google.com/citations?user=bAMQU8MAAAAJ&hl=en" class="mx-2 text-white"><i class="ai ai-google-scholar"></i></a>
+          <a title="Github" href="https://github.com/AvishkarSeth" class="mx-2 text-white"><i class="ri-github-fill"></i></a>
+          <a title="LinkedIn" href="https://www.linkedin.com/in/avishkar-s-586981126/" class="mx-2 text-white"><i class="icofont-linkedin"></i></a>
+          <a title="Email" href="mailto:avishkar.seth@mq.edu.au" class="mx-2 text-white"><i class='ri-mail-fill'></i></a>
+      </div>
+    </div>
+  </section>
+
   <div class="credits">
-    <!-- All the links in the footer should remain intact. -->
-    <!-- You can delete the links only if you purchased the pro version. -->
-    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
-    <!-- Designed by <a href="https://bootstrapmade.com/"></a> -->
-    <div class="social-links">
-          <!-- <div class="col-6" style="justify-content: center"> -->
-          <a title="Google Scholar" href="https://scholar.google.com/citations?user=bAMQU8MAAAAJ&hl=en" class="ai"><i class="ai ai-google-scholar-square"></i></a>
-          <a title="Github" href="https://github.com/AvishkarSeth" class="github"><i class="ri-github-fill"></i></a>
-          <a title="YouTube" href="https://www.youtube.com/@avishkarseth1955" class="youtube"><i class="icofont-youtube"></i></a>
-          <a title="LinkedIn" href="https://www.linkedin.com/in/avishkar-s-586981126/" class="linkedin"><i class="icofont-linkedin"></i></a>
-          <a title="Threads" href="https://www.threads.net/@trick_finger" class="twitter"><i class="icofont-twitter"></i></a>
-          <a title="Email" href="mailto:avishkar.seth@mq.edu.au" class="quora"><i class='ri-mail-fill'></i>
-          <a title="Facebook" href="https://www.facebook.com/profile.php?id=100000562311491&mibextid=ZbWKwL" class="facebook"><i class="icofont-facebook"></i></a>
-          <a title="Instagram" href="https://www.instagram.com/trick_finger/" class="ri-camera-3-fill"><i class="icofont-ri-camera-3-fill"></i></a>
-          <a title="ORCID" href="https://orcid.org/0000-0002-0902-9753" class="orcid"><i class="ai ai-orcid"></i></a>
-          <a title="ResearchGate" href="https://www.researchgate.net/profile/Avishkar-Seth" class="researchgate"><i class="ai ai-researchgate"></i></a>
-          <a title="Macquarie Uni Research Profile" href="https://researchers.mq.edu.au/en/persons/avishkar-seth" class="mq-research"><i class="icofont-university"></i></a>
-</div>
+    <div class="social-links text-center py-4">
+      <a href="https://orcid.org/0000-0002-0902-9753" class="mx-1"><i class="ai ai-orcid"></i></a>
+      <a href="https://www.researchgate.net/profile/Avishkar-Seth" class="mx-1"><i class="ai ai-researchgate"></i></a>
+      <a href="https://researchers.mq.edu.au/en/persons/avishkar-seth" class="mx-1"><i class="icofont-university"></i></a>
+    </div>
   </div>
 
-  <!-- Vendor JS Files -->
   <script src="assets/vendor/jquery/jquery.min.js"></script>
+  
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  
   <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  
   <script src="assets/vendor/counterup/counterup.min.js"></script>
+  
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/venobox/venobox.min.js"></script>
 
-  <!-- Template Main JS File -->
   <script src="assets/js/main_v2.js"></script>
 
 </body>
-
 </html>
