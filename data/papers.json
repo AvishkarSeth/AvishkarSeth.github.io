@@ -4,49 +4,53 @@
     "authors": "Alice James, Avishkar Seth, SC Mukhopadhyay",
     "venue": "Proceedings of International Conference on Computational Intelligence and Computing: ICCIC 2020",
     "year": "2021",
-    "link": "",
-    "image": "assets/img/papers/james2021autonomous.png"
+    "link": "https://doi.org/10.1007/978-981-16-3368-3_27",
+    "image": "assets/img/research/auto_AGV_ICST2021.webp"
   },
   {
     "title": "IoT enabled sensor node: a tutorial paper",
     "authors": "Alice James, Avishkar Seth, Subhas C Mukhopadhyay",
     "venue": "International Journal on Smart Sensing and Intelligent Systems",
     "year": "2020",
-    "link": "",
-    "image": "assets/img/papers/james2020iot.png"
+    "link": "https://sciendo.com/article/10.21307/ijssis-2020-022",
+    "image": "assets/img/research/lora-tutorial-s2is.jpg"
   },
   {
     "title": "1/10th scale autonomous vehicle based on convolutional neural network",
     "authors": "Avishkar Seth, Alice James, Subhas C Mukhopadhyay",
     "venue": "International Journal on Smart Sensing and Intelligent Systems",
     "year": "2020",
-    "link": "",
-    "image": "assets/img/papers/seth20201.png"
+    "link": "https://sciendo.com/article/10.21307/ijssis-2020-021",
+    "image": "assets/img/research/s2is_AGV.jpg"
   },
+  
   {
     "title": "Realtime hand landmark tracking to aid development of a prosthetic arm for reach and grasp motions",
     "authors": "Alice James, Avishkar Seth, Subhas Mukhopadhyay",
     "venue": "2021 IEEE international symposium on robotic and sensors environments (ROSE)",
     "year": "2021",
-    "link": "",
-    "image": "assets/img/papers/james2021realtime.png"
+    "link": "https://ieeexplore.ieee.org/document/9611777",
+    "image": "assets/img/research/realtime_hand_img.gif"
   },
   {
     "title": "Wearable Sensing System to perform Realtime 3D posture estimation for lower back healthcare",
     "authors": "Avishkar Seth, Alice James, Subhas Mukhopadhyay",
     "venue": "2021 IEEE International Symposium on Robotic and Sensors Environments (ROSE)",
     "year": "2021",
-    "link": "",
-    "image": "assets/img/papers/seth2021wearable.png"
+    "link": "https://ieeexplore.ieee.org/document/9611778",
+    "image": "assets/img/research/wss_wearable_rose.gif"
   },
-  {
-    "title": "IoT System Design",
-    "authors": "Alice James, Avishkar Seth, Subhas Chandra Mukhopadhyay",
-    "venue": "",
-    "year": "",
-    "link": "",
-    "image": "assets/img/papers/jamesiot.png"
-  },
+{
+  "title": "IoT System Design",
+  "subtitle": "Project Based Approach",
+  "authors": "Alice James, Avishkar Seth, Subhas Chandra Mukhopadhyay",
+  "series": "Smart Sensors, Measurement and Instrumentation",
+  "year": "2021",
+  "publisher": "Springer Cham",
+  "doi": "https://doi.org/10.1007/978-3-030-85863-6",
+  "image": "/assets/img/research/iot_system_book_cover.webp",
+  "link": "https://doi.org/10.1007/978-3-030-85863-6"
+},
   {
     "title": "TrackInk: An IoT-enabled real-time object tracking system in space",
     "authors": "Cameron Aume, Keith Andrews, Shantanu Pal, Alice James, Avishkar Seth, Subhas Mukhopadhyay",
@@ -55,6 +59,7 @@
     "link": "",
     "image": "assets/img/papers/aume2022trackink.png"
   },
+  
   {
     "title": "Vertical trajectory analysis using qr code detection for drone delivery application",
     "authors": "Avishkar Seth, Alice James, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han",
