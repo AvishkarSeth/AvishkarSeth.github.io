@@ -1,19 +1,234 @@
 [
-{
-"title": "Synchronized Mid-Air Drone Docking During Translational Motion",
-"authors": "A. Seth, J. Smith",
-"venue": "ROBIO",
-"year": 2025,
-"link": "https://doi.org/xxxx",
-"image": "assets/img/research/robio_2025_docking.png"
-},
-
-{
-"title": "Continuous Marine Monitoring via Autonomous UAV Handoff",
-"authors": "A. Seth, J. Smith",
-"venue": "Journal of Field Robotics",
-"year": 2024,
-"link": "https://doi.org/xxxx",
-"image": "assets/img/research/marine_handoff.png"
-}
+  {
+    "title": "Autonomous ground vehicle for off-the-road applications based on neural network",
+    "authors": "Alice James, Avishkar Seth, SC Mukhopadhyay",
+    "venue": "Proceedings of International Conference on Computational Intelligence and Computing: ICCIC 2020",
+    "year": "2021",
+    "link": "",
+    "image": "assets/img/papers/james2021autonomous.png"
+  },
+  {
+    "title": "IoT enabled sensor node: a tutorial paper",
+    "authors": "Alice James, Avishkar Seth, Subhas C Mukhopadhyay",
+    "venue": "International Journal on Smart Sensing and Intelligent Systems",
+    "year": "2020",
+    "link": "",
+    "image": "assets/img/papers/james2020iot.png"
+  },
+  {
+    "title": "1/10th scale autonomous vehicle based on convolutional neural network",
+    "authors": "Avishkar Seth, Alice James, Subhas C Mukhopadhyay",
+    "venue": "International Journal on Smart Sensing and Intelligent Systems",
+    "year": "2020",
+    "link": "",
+    "image": "assets/img/papers/seth20201.png"
+  },
+  {
+    "title": "Realtime hand landmark tracking to aid development of a prosthetic arm for reach and grasp motions",
+    "authors": "Alice James, Avishkar Seth, Subhas Mukhopadhyay",
+    "venue": "2021 IEEE international symposium on robotic and sensors environments (ROSE)",
+    "year": "2021",
+    "link": "",
+    "image": "assets/img/papers/james2021realtime.png"
+  },
+  {
+    "title": "Wearable Sensing System to perform Realtime 3D posture estimation for lower back healthcare",
+    "authors": "Avishkar Seth, Alice James, Subhas Mukhopadhyay",
+    "venue": "2021 IEEE International Symposium on Robotic and Sensors Environments (ROSE)",
+    "year": "2021",
+    "link": "",
+    "image": "assets/img/papers/seth2021wearable.png"
+  },
+  {
+    "title": "IoT System Design",
+    "authors": "Alice James, Avishkar Seth, Subhas Chandra Mukhopadhyay",
+    "venue": "",
+    "year": "",
+    "link": "",
+    "image": "assets/img/papers/jamesiot.png"
+  },
+  {
+    "title": "TrackInk: An IoT-enabled real-time object tracking system in space",
+    "authors": "Cameron Aume, Keith Andrews, Shantanu Pal, Alice James, Avishkar Seth, Subhas Mukhopadhyay",
+    "venue": "Sensors",
+    "year": "2022",
+    "link": "",
+    "image": "assets/img/papers/aume2022trackink.png"
+  },
+  {
+    "title": "Vertical trajectory analysis using qr code detection for drone delivery application",
+    "authors": "Avishkar Seth, Alice James, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han",
+    "venue": "International Conference on Sensing Technology",
+    "year": "2022",
+    "link": "",
+    "image": "assets/img/papers/seth2022vertical.png"
+  },
+  {
+    "title": "AI-enabled wearable sensing system to perform conformity test in healthcare",
+    "authors": "Avishkar Seth",
+    "venue": "Macquarie University",
+    "year": "2021",
+    "link": "",
+    "image": "assets/img/papers/seth2021ai.png"
+  },
+  {
+    "title": "Drone high-rise aerial delivery with vertical grid screening",
+    "authors": "Avishkar Seth, Alice James, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han",
+    "venue": "Drones",
+    "year": "2023",
+    "link": "",
+    "image": "assets/img/papers/seth2023drone.png"
+  },
+  {
+    "title": "Rlaga: A reinforcement learning augmented genetic algorithm for searching real and diverse marker-based landing violations",
+    "authors": "Linfeng Liang, Yao Deng, Kye Morton, Valtteri Kallinen, Alice James, Avishkar Seth, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han, Xi Zheng",
+    "venue": "arXiv preprint arXiv:2310.07378",
+    "year": "2023",
+    "link": "",
+    "image": "assets/img/papers/liang2023rlaga.png"
+  },
+  {
+    "title": "Flying Watchdog-Based Guard Patrol with Check Point Data Verification",
+    "authors": "Endrowednes Kuantama, Avishkar Seth, Alice James, Yihao Zhang",
+    "venue": "Future Internet",
+    "year": "2023",
+    "link": "",
+    "image": "assets/img/papers/kuantama2023flying.png"
+  },
+  {
+    "title": "AeroBridge: Autonomous Drone Handoff System for Emergency Battery Service",
+    "authors": "Avishkar Seth, Alice James, Endrowednes Kuantama, Richard Han, Subhas Mukhopadhyay",
+    "venue": "Proceedings of the 30th Annual International Conference on Mobile Computing and Networking, ACM MobiCom '24",
+    "year": "2024",
+    "link": "",
+    "image": "assets/img/papers/seth2024aerobridge.png"
+  },
+  {
+    "title": "Sensor fusion for autonomous indoor UAV navigation in confined spaces",
+    "authors": "Alice James, Avishkar Seth, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han",
+    "venue": "2023 16th International Conference on Sensing Technology (ICST)",
+    "year": "2023",
+    "link": "",
+    "image": "assets/img/papers/james2023sensor.png"
+  },
+  {
+    "title": "Aerodynamics and sensing analysis for efficient drone-based parcel delivery",
+    "authors": "Avishkar Seth, Alice James, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han",
+    "venue": "2023 16th International Conference on Sensing Technology (ICST)",
+    "year": "2023",
+    "link": "",
+    "image": "assets/img/papers/seth2023aerodynamics.png"
+  },
+  {
+    "title": "Cooperative drone delivery via push-based lift with payload stabilization",
+    "authors": "Alice James, Avishkar Seth, Endrowednes Kuantama, Richard Han, Subhas Mukhopadhyay",
+    "venue": "Proceedings of the 10th Workshop on Micro Aerial Vehicle Networks, Systems, and Applications",
+    "year": "2024",
+    "link": "",
+    "image": "assets/img/papers/james2024cooperative.png"
+  },
+  {
+    "title": "Cooperative Drone Payload Delivery with Self Balancing Tray",
+    "authors": "Alice James, Avishkar Seth, Endrowednes Kuantama, Richard Han, Subhas Mukhopadhyay",
+    "venue": "2024 International Conference on Advanced Robotics and Mechatronics (ICARM)",
+    "year": "2024",
+    "link": "",
+    "image": "assets/img/papers/james2024cooperative2.png"
+  },
+  {
+    "title": "Autonomous Drone Coordination in RF-denied Environments through Leader-Follower Systems and Computer Vision",
+    "authors": "Endrowednes Kuantama, Alice James, Avishkar Seth",
+    "venue": "2024 International Conference on Advanced Robotics and Mechatronics (ICARM)",
+    "year": "2024",
+    "link": "",
+    "image": "assets/img/papers/kuantama2024autonomous.png"
+  },
+  {
+    "title": "Flying IoT: Sensor Fusion Performance Analysis for UAV Applications in Indoor Spaces",
+    "authors": "Alice James, Avishkar Seth, Natalia Chatrath, Endrowednes Kuantama, Richard Han, Subhas Mukhopadhyay",
+    "venue": "IoT Sensors, ML, AI and XAI: Empowering A Smarter World",
+    "year": "2024",
+    "link": "",
+    "image": "assets/img/papers/james2024flying.png"
+  },
+  {
+    "title": "Poster Cooperative UAV Sensor Fusion for Precision Localization and Navigation in Load Transport",
+    "authors": "Alice James, Endrowednes Kuantama, Avishkar Seth, Richard Han, Subhas Mukhopadhyay",
+    "venue": "Proceedings of the 22nd ACM Conference on Embedded Networked Sensor Systems",
+    "year": "2024",
+    "link": "",
+    "image": "assets/img/papers/james2024poster.png"
+  },
+  {
+    "title": "Mecqabot: A modular robot sensing and wireless mechatronics framework for education and research",
+    "authors": "Alice James, Avishkar Seth, Subhas Mukhopadhyay",
+    "venue": "2024 17th International Conference on Sensing Technology (ICST)",
+    "year": "2024",
+    "link": "",
+    "image": "assets/img/papers/james2024mecqabot.png"
+  },
+  {
+    "title": "FlyCount: High-speed counting of black soldier flies using neuromorphic sensors",
+    "authors": "Alice James, Avishkar Seth, Alexandre Marcireau, Subhas Mukhopadhyay, Tomonori Hu, Ramon Atayde",
+    "venue": "IEEE Sensors Journal",
+    "year": "2024",
+    "link": "",
+    "image": "assets/img/papers/james2024flycount.png"
+  },
+  {
+    "title": "Garl: Genetic algorithm-augmented reinforcement learning to detect violations in marker-based autonomous landing systems",
+    "authors": "Linfeng Liang, Yao Deng, Kye Morton, Valtteri Kallinen, Alice James, Avishkar Seth, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han, Xi Zheng",
+    "venue": "2025 IEEE/ACM 47th International Conference on Software Engineering (ICSE)",
+    "year": "2025",
+    "link": "",
+    "image": "assets/img/papers/liang2025garl.png"
+  },
+  {
+    "title": "Towards Robust Autonomous Landing Systems: Iterative Solutions and Key Lessons Learned",
+    "authors": "Sebastian Schroder, Yao Deng, Alice James, Avishkar Seth, Kye Morton, Subhas Mukhopadhyay, Richard Han",
+    "venue": "2025 55th Annual IEEE/IFIP International Conference on Dependable Systems and Networks-Supplemental Volume (DSN-S)",
+    "year": "2025",
+    "link": "",
+    "image": "assets/img/papers/schroder2025towards.png"
+  },
+  {
+    "title": "A step-by-step guide to creating a robust autonomous drone testing pipeline",
+    "authors": "Yupeng Jiang, Yao Deng, Sebastian Schroder, Linfeng Liang, Suhaas Gambhir, Alice James, Avishkar Seth, James Pirrie, Yihao Zhang, Xi Zheng",
+    "venue": "arXiv preprint arXiv:2506.11400",
+    "year": "2025",
+    "link": "",
+    "image": "assets/img/papers/jiang2025step.png"
+  },
+  {
+    "title": "Continuous Marine Monitoring via Autonomous UAV Handoff",
+    "authors": "Heegyeong Kim, Alice James, Avishkar Seth, Endrowednes Kuantama, Jane Williamson, Yimeng Feng, Richard Han",
+    "venue": "Proceedings of the 23rd Annual International Conference on mobile systems, applications and services",
+    "year": "2025",
+    "link": "",
+    "image": "assets/img/papers/kim2025continuous.png"
+  },
+  {
+    "title": "Towards Optimizing Swarm Drone Delivery in RF-Denied Environments",
+    "authors": "Endrowednes Kuantama, Alice James, Avishkar Seth, Richard Han, Subhas Mukhopadhyay",
+    "venue": "International Conference on Advanced Concepts for Intelligent Vision Systems",
+    "year": "2025",
+    "link": "",
+    "image": "assets/img/papers/kuantama2025towards.png"
+  },
+  {
+    "title": "Synchronized Mid-Air Drone Docking During Translational Motion",
+    "authors": "Avishkar Seth, Alice James, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han",
+    "venue": "2025 IEEE International Conference on Robotics and Biomimetics (ROBIO)",
+    "year": "2025",
+    "link": "",
+    "image": "assets/img/papers/seth2025synchronized.png"
+  },
+  {
+    "title": "Cooperative UAV Payload Transport with Autonomous Navigation",
+    "authors": "Alice James, Avishkar Seth, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han",
+    "venue": "Drones and Unmanned Systems",
+    "year": "2026",
+    "link": "",
+    "image": "assets/img/papers/james2026cooperative.png"
+  }
 ]
