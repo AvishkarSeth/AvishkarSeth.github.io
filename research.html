@@ -132,571 +132,72 @@
 
 
 
-<!----------------------------------------------------------------
------------------------- Research Section -----------------------
------------------------------------------------------------------>
-<section id="research" class="services">
-  <div class="container">
+<div id="papers"></div>
+  <script>
 
-    <div class="section-title">
-      <p>Research Publications</p>
-      <h2>Below are all my research publications since 2020. For a complete list, check out my <a href="https://scholar.google.com/citations?user=bAMQU8MAAAAJ&hl=en"> <b>Google Scholar page</h2>
-    </div>
+async function loadPapers(){
 
+const response = await fetch("data/papers.json")
+const papers = await response.json()
 
-        <!---------------------------------------------------> 
-            <hr><h1><center>2026</center></h1><hr>
-       <!--------------------------------------------------->
+papers.sort((a,b)=>b.year-a.year)
 
+let html=""
+let currentYear=""
+
+papers.forEach(p=>{
+
+if(p.year !== currentYear){
+
+if(currentYear !== "") html += "</div>"
+
+currentYear = p.year
+
+html += `
+<hr>
+<h1 style="text-align:center">${p.year}</h1>
+<hr>
 <div class="row">
+`
+}
 
+html += `
 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-  <div class="icon-box">
-    <a href="https://www.researchgate.net/profile/Sergey-Yurish/publication/401427428_DAUS_2026_Proceedings/links/69a55a99526cf2411930f8dd/DAUS-2026-Proceedings.pdf#page=19" target="_blank">
-      <img class="img-fluid" src="assets/img/research/daus_2026.png" style="padding-bottom: 15px; border-radius: 12px;" alt="Cooperative UAV Payload Transport">
-      <h4>Cooperative UAV Payload Transport with Autonomous Navigation</h4>
-      <p style="font-size: 14px; color: #555;">
-        <b>DAUS 2026</b><br>
-        <b>A. James</b>, <b>A. Seth</b>, E. Kuantama, S. Mukhopadhyay, R. Han.<br>
-        <i>International Conference on Drones and Unmanned Systems</i>
-      </p>
-      <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-        <i class="icofont-file-pdf"></i> View Paper
-      </div>
-    </a>
-  </div>
-</div>
-       <!--------------------------------------------------->
 
-  
-       <!--------------------------------------------------->
+<div class="icon-box">
 
+<a href="${p.link}" target="_blank">
 
-        
-       <!---------------------------------------------------> 
-            <hr><h1><center>2025</center></h1><hr>
-       <!--------------------------------------------------->
+<img class="img-fluid"
+src="${p.image}"
+style="padding-bottom:15px;border-radius:12px;">
 
-          
-<div class="row">
-  
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1109/ROBIO66223.2025.11375893" target="_blank">
-        <img class="img-fluid" src="assets/img/research/robio_2025_docking.png" style="padding-bottom: 15px; border-radius: 12px;" alt="Synchronized Mid-Air Drone Docking">
-        
-        <h4>Synchronized Mid-Air Drone Docking During Translational Motion</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE ROBIO 2025</b><br>
-          A. Seth, A. James, et al.<br>
-          <i>2025 IEEE International Conference on Robotics and Biomimetics</i>
-        </p>
-        
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
+<h4>${p.title}</h4>
 
-  </div>
+<p style="font-size:14px;color:#555;">
+${p.authors}<br>
+<i>${p.venue}</i>
+</p>
 
-
-       <!--------------------------------------------------->
-        
- <div class="row">
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1109/ICSE55347.2025.00076" target="_blank">
-        <img class="img-fluid" src="assets/img/research/garl_2025.png" style="padding-bottom: 15px; border-radius: 12px;" alt="GARL Framework">
-        <h4>GARL: Genetic Algorithm-Augmented Reinforcement Learning</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE/ACM ICSE 2025</b><br>
-          L. Liang, Y. Deng, ..., <b>A. Seth</b>, et al.<br>
-          <i>47th Int. Conf. on Software Engineering</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
-       <!--------------------------------------------------->
-   
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.48550/arXiv.2506.11400" target="_blank">
-        <img class="img-fluid" src="assets/img/research/drone_testing_pipeline.png" style="padding-bottom: 15px; border-radius: 12px;" alt="Drone Testing Pipeline">
-        <h4>Robust Autonomous Drone Testing Pipeline Guide</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>arXiv / Software Engineering</b><br>
-          Y. Jiang, Y. Deng, ..., <b>A. Seth</b>, et al.<br>
-          <i>Computer Science > Software Engineering</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
-       <!--------------------------------------------------->
-   
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1145/3711875.3737661" target="_blank">
-        <img class="img-fluid" src="assets/img/research/marine_handoff.png" style="padding-bottom: 15px; border-radius: 12px;" alt="Marine Monitoring">
-        <h4>Continuous Marine Monitoring via Autonomous UAV Handoff</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>ACM MobiSys 2025</b><br>
-          H. Kim, A. James, <b>A. Seth</b>, et al.<br>
-          <i>23rd Int. Conf. on Mobile Systems</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
-       <!--------------------------------------------------->
-   
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1109/DSN-S65789.2025.00058" target="_blank">
-        <img class="img-fluid" src="assets/img/research/dsn_2025.png" style="padding-bottom: 15px; border-radius: 12px;" alt="DSN-S Research">
-        <h4>Robust Autonomous Landing Systems: Iterative Solutions</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE/IFIP DSN-S 2025</b><br>
-          S. Schroder, Y. Deng, ..., <b>A. Seth</b>, et al.<br>
-          <i>55th Int. Conf. on Dependable Systems and Networks</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
-       <!--------------------------------------------------->
-   
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1007/978-3-032-07343-3_48" target="_blank">
-        <img class="img-fluid" src="assets/img/research/acivs_2025.png" style="padding-bottom: 15px; border-radius: 12px;" alt="Swarm Drone Research">
-        <h4>Optimizing Swarm Drone Delivery in RF-Denied Environments</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>ACIVS 2025</b><br>
-          E. Kuantama, A. James, <b>A. Seth</b>, et al.<br>
-          <i>Advanced Concepts for Intelligent Vision Systems</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
+<div style="margin-top:10px;font-weight:bold;color:#007bff;">
+<i class="icofont-globe"></i> View Paper
 </div>
 
-        
-       <!---------------------------------------------------> 
-            <hr><h1><center>2024</center></h1><hr>
-       <!--------------------------------------------------->
-<div class="row">
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://ieeexplore.ieee.org/document/10770156" target="_blank">
-        <img class="img-fluid" src="assets/img/research/flycount.png" style="padding-bottom: 15px; border-radius: 12px;" alt="FlyCount Neuromorphic Sensing">
-        <h4>FlyCount: High-Speed Counting Using Neuromorphic Sensors</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE Sensors Journal 2024</b><br>
-          A. James, <b>A. Seth</b>, et al.<br>
-          <i>Journal Article</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://arxiv.org/html/2411.13156v1" target="_blank">
-        <img class="img-fluid" src="assets/img/morepages/mecqabots/mecqabots_icst.png" style="padding-bottom: 15px; border-radius: 12px;" alt="MecQaBot Framework">
-        <h4>MecQaBot: A Modular Robot Sensing & Mechatronics Framework</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE ICST 2024</b><br>
-          A. James, <b>A. Seth</b>, S. Mukhopadhyay.<br>
-          <i>Int. Conf. on Sensing Technology</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1145/3661810.3663468" target="_blank">
-        <img class="img-fluid" src="assets/img/research/aerobridge.png" style="padding-bottom: 15px; border-radius: 12px;" alt="AeroBridge System">
-        <h4>AeroBridge: Autonomous Drone Handoff for Battery Service</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>ACM MobiCom 2024</b><br>
-          <b>A. Seth</b>, A. James, et al.<br>
-          <i>ACM MobiCom</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1145/3661810.3663468" target="_blank">
-        <img class="img-fluid" src="assets/img/research/dronet_SYS_overview.PNG" style="padding-bottom: 15px; border-radius: 12px;" alt="Push-based Lift">
-        <h4>Cooperative Drone Delivery via Push-based Lift</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>arXiv / MobiSys DroNet</b><br>
-          A. James, <b>A. Seth</b>, et al.<br>
-          <i>Preprint / DroNet 2024</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://ieeexplore.ieee.org/abstract/document/10715791/" target="_blank">
-        <img class="img-fluid" src="assets/img/research/icarm_cv.png" style="padding-bottom: 15px; border-radius: 12px;" alt="RF-denied Coordination">
-        <h4>Drone Coordination in RF-denied Environments</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE ICARM 2024</b><br>
-          E. Kuantama, <b>A. James</b>, <b>A. Seth</b>.<br>
-          <i>Advanced Robotics and Mechatronics</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://ieeexplore.ieee.org/abstract/document/10715797/" target="_blank">
-        <img class="img-fluid" src="assets/img/research/icarm_coop.png" style="padding-bottom: 15px; border-radius: 12px;" alt="Self Balancing Tray">
-        <h4>Cooperative Drone Delivery with Self Balancing Tray</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE ICARM 2024</b><br>
-          <b>A. James</b>, <b>A. Seth</b>, et al.<br>
-          <i>Advanced Robotics and Mechatronics</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1007/978-3-031-68602-3_2" target="_blank">
-        <img class="img-fluid" src="assets/img/research/flyingiot_img.jpg" style="padding-bottom: 15px; border-radius: 12px;" alt="Flying IoT">
-        <h4>Flying IoT: Sensor Fusion for Indoor UAV Applications</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>Springer 2024</b><br>
-          <b>A. James</b>, <b>A. Seth</b>, et al.<br>
-          <i>Book Chapter</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
+</a>
 
 </div>
-<hr>
-       <!---------------------------------------------------> 
-            <hr><h1><center>2023</center></h1><hr>
-       <!--------------------------------------------------->
-        
-<div class="row">
+</div>
+`
+})
 
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1109/ICST59744.2023.10460847" target="_blank">
-        <img class="img-fluid" src="assets/img/research/icst_2023_aero.gif" style="padding-bottom: 15px; border-radius: 12px;" alt="Aerodynamics Analysis">
-        <h4>Aerodynamics & Sensing Analysis for Drone Delivery</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE ICST 2023</b><br>
-          <b>A. Seth</b>, A. James, et al.<br>
-          <i>16th Int. Conf. on Sensing Technology</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
+html += "</div>"
 
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1109/ICST59744.2023.10460820" target="_blank">
-        <img class="img-fluid" src="assets/img/research/icst_2023_sensor_fusion.gif" style="padding-bottom: 15px; border-radius: 12px;" alt="Sensor Fusion Navigation">
-        <h4>Sensor Fusion for Autonomous Indoor Navigation</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE ICST 2023</b><br>
-          <b>A. James</b>, A. Seth, et al.<br>
-          <i>IEEE Xplore, 2023</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
+document.getElementById("papers").innerHTML = html
+}
 
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.3390/fi15100340" target="_blank">
-        <img class="img-fluid" src="assets/img/research/futureinternet-15-00340-g001.webp" style="padding-bottom: 15px; border-radius: 12px;" alt="Flying Watchdog">
-        <h4>Flying Watchdog: Guard Patrol & Data Verification</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>MDPI Future Internet 2023</b><br>
-          E. Kuantama, <b>A. Seth</b>, A. James, et al.<br>
-          <i>Journal Article, Vol 15</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
+loadPapers()
 
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://arxiv.org/pdf/2310.07378" target="_blank">
-        <img class="img-fluid" src="assets/img/research/rlaga_framework.png" style="padding-bottom: 15px; border-radius: 12px;" alt="RLaGA Framework">
-        <h4>RLaGA: RL Augmented GA for Landing Violations</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>arXiv (cs.SE) 2023</b><br>
-          L. Liang, Y. Deng, ..., <b>A. Seth</b>, et al.<br>
-          <i>Software Engineering Preprint</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-         <!--------------------------------------------------->
-
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.3390/drones7050300" target="_blank">
-        <img class="img-fluid" src="assets/img/research/big_cover-drones-v7-i5.png" style="padding-bottom: 15px; border-radius: 12px;" alt="High-Rise Delivery">
-        <h4>Drone High-Rise Aerial Delivery</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>MDPI Drones Journal 2023</b><br>
-          <b>A. Seth</b>, A. James, et al.<br>
-          <i>Drones 7, no. 5: 300</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
-
-  </div>
-<hr>
-
-               <!---------------------------------------------------> 
-            <hr><h1><center>2022</center></h1><hr>
-       <!--------------------------------------------------->
-
-<div class="row">
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://link.springer.com/chapter/10.1007/978-3-031-29871-4_48" target="_blank">
-        <img class="img-fluid" src="assets/img/research/icst_2022_cover.webp" style="padding-bottom: 15px; border-radius: 12px;" alt="QR Code Trajectory Analysis">
-        <h4>Vertical Trajectory Analysis via QR Code Detection</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>ICST 2022</b><br>
-          <b>A. Seth</b>, A. James, et al.<br>
-          <i>Springer Nature Switzerland</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1007/978-3-030-85863-6" target="_blank">
-        <img class="img-fluid" src="assets/img/research/iot_system_book_cover.webp" style="padding-bottom: 15px; border-radius: 12px;" alt="IoT System Design Book">
-        <h4>IoT System Design: Project Based Approach</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>Springer Book 2022</b><br>
-          A. James, <b>A. Seth</b>, S. Mukhopadhyay.<br>
-          <i>Smart Sensors & Instrumentation</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Book
-        </div>
-      </a>
-    </div>
-  </div>
-
-       <!--------------------------------------------------->
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.3390/s22020608" target="_blank">
-        <img class="img-fluid" src="assets/img/research/sensors-22-00608-g003_trackink.webp" style="padding-bottom: 15px; border-radius: 12px;" alt="TrackInk System">
-        <h4>TrackInk: IoT Real-Time Object Tracking</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>MDPI Sensors Journal 2022</b><br>
-          C. Aume, ..., <b>A. Seth</b>, et al.<br>
-          <i>Sensors 22, no. 2: 608</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
-
-  </div>
-
-               <!---------------------------------------------------> 
-            <hr><h1><center>2021</center></h1><hr>
-       <!--------------------------------------------------->
-
-<div class="row">
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://ieeexplore.ieee.org/document/9611777" target="_blank">
-        <img class="img-fluid" src="assets/img/research/realtime_hand_img.gif" style="padding-bottom: 15px; border-radius: 12px;" alt="Hand Tracking">
-        <h4>Realtime Hand Landmark Tracking for Prosthetics</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE ROSE 2021</b><br>
-          <b>A. James</b>, <b>A. Seth</b>, S. Mukhopadhyay.<br>
-          <i>Symp. on Robotic & Sensors</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://ieeexplore.ieee.org/document/9611778" target="_blank">
-        <img class="img-fluid" src="assets/img/research/wss_wearable_rose.gif" style="padding-bottom: 15px; border-radius: 12px;" alt="Wearable Sensing Posture">
-        <h4>Wearable System for 3D Posture Estimation</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IEEE ROSE 2021</b><br>
-          <b>A. Seth</b>, <b>A. James</b>, S. Mukhopadhyay.<br>
-          <i>Lower Back Healthcare</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://doi.org/10.1007/978-981-16-3368-3_27" target="_blank">
-        <img class="img-fluid" src="assets/img/research/auto_AGV_ICST2021.webp" style="padding-bottom: 15px; border-radius: 12px;" alt="Off-Road AGV">
-        <h4>Neural Network Based Off-Road AGV</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>ICST 2021</b><br>
-          <b>A. Seth</b>, <b>A. James</b>, S. Mukhopadhyay.<br>
-          <i>Computational Intelligence</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
-         <!---------------------------------------------------> 
-            <hr><h1><center>2020</center></h1><hr>
-       <!--------------------------------------------------->
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://sciendo.com/article/10.21307/ijssis-2020-021" target="_blank">
-        <img class="img-fluid" src="assets/img/research/s2is_AGV.jpg" style="padding-bottom: 15px; border-radius: 12px;" alt="CNN Autonomous Vehicle">
-        <h4>1/10th Scale CNN Autonomous Vehicle</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IJSSIS 2020</b><br>
-          <b>A. Seth</b>, <b>A. James</b>, S. Mukhopadhyay.<br>
-          <i>Smart Sensing & Intelligent Systems</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-       <!--------------------------------------------------->
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="https://sciendo.com/article/10.21307/ijssis-2020-022" target="_blank">
-        <img class="img-fluid" src="assets/img/research/lora-tutorial-s2is.jpg" style="padding-bottom: 15px; border-radius: 12px;" alt="IoT Tutorial">
-        <h4>IoT Enabled Sensor Node: A Tutorial</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>IJSSIS 2020</b><br>
-          <b>A. James</b>, <b>A. Seth</b>, S. Mukhopadhyay.<br>
-          <i>Tutorial Paper</i>
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
-  </div>
-
-  </div>
-<hr>
-       <!--------------------------------------------------->
-        
-  </div>
-</section>
-  
-  <!-- End Research Section -->
-
+</script>
 
  
 <div class="credits">
