@@ -23,7 +23,6 @@
     "link": "https://sciendo.com/article/10.21307/ijssis-2020-021",
     "image": "assets/img/research/s2is_AGV.jpg"
   },
-  
   {
     "title": "Realtime hand landmark tracking to aid development of a prosthetic arm for reach and grasp motions",
     "authors": "Alice James, Avishkar Seth, Subhas Mukhopadhyay",
@@ -40,7 +39,7 @@
     "link": "https://ieeexplore.ieee.org/document/9611778",
     "image": "assets/img/research/wss_wearable_rose.gif"
   },
-{
+  {
   "title": "IoT System Design",
   "subtitle": "Project Based Approach",
   "authors": "Alice James, Avishkar Seth, Subhas Chandra Mukhopadhyay",
@@ -50,7 +49,7 @@
   "doi": "https://doi.org/10.1007/978-3-030-85863-6",
   "image": "/assets/img/research/iot_system_book_cover.webp",
   "link": "https://doi.org/10.1007/978-3-030-85863-6"
-},
+  },
   {
     "title": "TrackInk: An IoT-enabled real-time object tracking system in space",
     "authors": "Cameron Aume, Keith Andrews, Shantanu Pal, Alice James, Avishkar Seth, Subhas Mukhopadhyay",
@@ -59,7 +58,6 @@
     "link": "",
     "image": "assets/img/papers/aume2022trackink.png"
   },
-  
   {
     "title": "Vertical trajectory analysis using qr code detection for drone delivery application",
     "authors": "Avishkar Seth, Alice James, Endrowednes Kuantama, Subhas Mukhopadhyay, Richard Han",
