@@ -141,7 +141,7 @@
             <div class="col-lg-12">
 
 <!-- WINNER: MQ Uni QUT DRC Droid 2026 Challenge Section -->
-<div style="margin-top: 40px;">
+<div style="margin-top: 40px; display: block; width: 100%;">
   <h5>
     <i class="icofont-trophy"></i> 
     WINNERS: MQ Uni QUT DRC Droid 2026 Challenge
@@ -170,29 +170,33 @@
     • <strong>Suhaas Gambhir</strong> [Software Engg] & <strong>David Young-Min Ahn Cho</strong> [Mechanical Engg]: Provided essential support during early development, testing, and system validation.
   </p>
   
-  <!-- Media Quad Grid Matrix Layout (2x2) -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom: 20px;">
+  <!-- Flex Matrix Layout Container -->
+  <div style="display: flex; flex-direction: column; gap: 15px; width: 100%; margin-bottom: 20px;">
     
-    <!-- Top Left: YouTube Embed Video -->
-    <div style="width: 100%;">
-      <iframe src="https://www.youtube.com/embed/vSD4rYVaMnM" width="100%" style="aspect-ratio: 16/9; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <!-- ROW 1 (Video & Image 1) -->
+    <div style="display: flex; flex-wrap: wrap; gap: 15px; width: 100%;">
+      <!-- Top Left: Video -->
+      <div style="flex: 1; min-width: 280px; box-sizing: border-box;">
+        <iframe src="https://www.youtube.com/embed/vSD4rYVaMnM" width="100%" style="aspect-ratio: 16/9; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); border: none; display: block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <!-- Top Right: Image 1 -->
+      <div style="flex: 1; min-width: 280px; box-sizing: border-box;">
+        <img src="../assets/img/highlights_2026/edits_utqut_drc_1.png" width="100%" style="aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); display: block;" alt="DRC Droid 2026 Challenge Win - Photo 1">
+      </div>
     </div>
     
-    <!-- Top Right: Image 1 -->
-    <div style="width: 100%;">
-      <img src="../assets/img/highlights_2026/edits_utqut_drc_1.png" width="100%" style="aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);" alt="DRC Droid 2026 Challenge Win - Photo 1">
+    <!-- ROW 2 (Image 2 & Image 3) -->
+    <div style="display: flex; flex-wrap: wrap; gap: 15px; width: 100%;">
+      <!-- Bottom Left: Image 2 -->
+      <div style="flex: 1; min-width: 280px; box-sizing: border-box;">
+        <img src="../assets/img/highlights_2026/edits_utqut_drc_2.png" width="100%" style="aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); display: block;" alt="DRC Droid 2026 Challenge Win - Photo 2">
+      </div>
+      <!-- Bottom Right: Image 3 -->
+      <div style="flex: 1; min-width: 280px; box-sizing: border-box;">
+        <img src="../assets/img/highlights_2026/edits_utqut_drc_3.png" width="100%" style="aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); display: block;" alt="DRC Droid 2026 Challenge Win - Photo 3">
+      </div>
     </div>
-    
-    <!-- Bottom Left: Image 2 -->
-    <div style="width: 100%;">
-      <img src="../assets/img/highlights_2026/edits_utqut_drc_2.png" width="100%" style="aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);" alt="DRC Droid 2026 Challenge Win - Photo 2">
-    </div>
-    
-    <!-- Bottom Right: Image 3 -->
-    <div style="width: 100%;">
-      <img src="../assets/img/highlights_2026/edits_utqut_drc_3.png" width="100%" style="aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);" alt="DRC Droid 2026 Challenge Win - Photo 3">
-    </div>
-    
+
   </div>
 </div>
               
