@@ -22,6 +22,10 @@
   label: "Blogs"
   title: "Blogs"
   url: "/tutorials.html#tutorials"
+- id: learn
+  label: "Tutorials"
+  title: "Tutorials"
+  url: "/learn.html#learn"
 - id: portfolio
   label: "Portfolio"
   title: "Portfolio"
