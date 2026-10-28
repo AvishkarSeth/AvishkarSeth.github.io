@@ -1679,3 +1679,8 @@ section .container {
   color: #6c757d;
 }
 
+
+/* Accessibility: skip link and visible keyboard focus */
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 3000; padding: 10px 16px; background: #ffffff; color: #000000; }
+.skip-link:focus { left: 8px; top: 8px; }
+a:focus-visible, button:focus-visible, .nav-menu a:focus-visible { outline: 3px solid #ffbf47 !important; outline-offset: 2px; }
