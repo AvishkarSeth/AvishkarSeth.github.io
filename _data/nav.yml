@@ -1,0 +1,28 @@
+# Main navigation. `id` is matched against `nav:` in each page's front matter.
+- id: home
+  label: "Home"
+  url: "/index.html"
+- id: about
+  label: "About"
+  title: "About"
+  url: "/about.html#about"
+- id: research
+  label: "Research"
+  title: "Research"
+  url: "/research.html#research"
+- id: teaching
+  label: "Teaching"
+  title: "Teaching"
+  url: "/teaching.html#teaching"
+- id: volunteering
+  label: "Volunteering"
+  title: "Volunteering"
+  url: "/volunteering.html#volunteering"
+- id: tutorials
+  label: "Tutorials"
+  title: "Tutorials & Blogs"
+  url: "/tutorials.html#tutorials"
+- id: portfolio
+  label: "Portfolio"
+  title: "Portfolio"
+  url: "https://avishkarseth.github.io/portfolio/"
