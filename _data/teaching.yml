@@ -10,7 +10,7 @@
   gallery_style: 'display: flex; gap: 10px; justify-content: center; align-items: center;'
   img_style: 'border-radius: 12px; object-fit: cover;'
   images:
-  - src: assets/img/teaching/comp8291_lab1.png
+  - src: assets/img/teaching/comp8291_lab1.webp
     width: 100%
     alt: STM32 RTOS Lab
 - role: Co-Designer & Co-Instructor
@@ -23,13 +23,13 @@
   gallery_style: 'display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-content: flex-start;'
   img_style: 'border-radius: 12px; object-fit: cover;'
   images:
-  - src: assets/img/teaching/mtrn4068_img.png
+  - src: assets/img/teaching/mtrn4068_img.webp
     width: 45%
-  - src: assets/img/teaching/Design of a Small Scale Autonomous Vehicle - MTRN4068.png
+  - src: assets/img/teaching/Design of a Small Scale Autonomous Vehicle - MTRN4068.webp
     width: 45%
-  - src: assets/img/teaching/mtrn4068_img_2.png
+  - src: assets/img/teaching/mtrn4068_img_2.webp
     width: 45%
-  - src: assets/img/morepages/mecqabots/mecqabots_icst.png
+  - src: assets/img/morepages/mecqabots/mecqabots_icst.webp
     width: 45%
 - role: Co-Designer & Co-Instructor
   title: ENGG4201/8201 IoT System Design
@@ -41,11 +41,11 @@
   gallery_style: 'display: flex; gap: 10px; align-items: center; justify-content: center;'
   img_style: 'border-radius: 12px;'
   images:
-  - src: assets/img/teaching/iot_system_trackink.png
+  - src: assets/img/teaching/iot_system_trackink.webp
     width: 30%
-  - src: assets/img/teaching/iot_system_vehicle2023.png
+  - src: assets/img/teaching/iot_system_vehicle2023.webp
     width: 32%
-  - src: assets/img/teaching/iot_system_beebottle.png
+  - src: assets/img/teaching/iot_system_beebottle.webp
     width: 32%
 - role: Mentor
   title: School of Engineering & Computing, Macquarie University
@@ -59,7 +59,7 @@
   gallery_style: 'display: flex; justify-content: center; align-items: center;'
   img_style: 'border-radius: 12px;'
   images:
-  - src: assets/img/news/volun_alice.png
+  - src: assets/img/news/volun_alice.webp
     width: 70%
     link: new_pages/mentor_students.html
 - role: Lab Tutor
@@ -72,7 +72,7 @@
   gallery_style: 'display: flex; gap: 10px; align-items: center; justify-content: center;'
   img_style: 'border-radius: 12px;'
   images:
-  - src: assets/img/teaching/ENGGG3000_V2.png
+  - src: assets/img/teaching/ENGGG3000_V2.webp
     width: 40%
   - src: assets/img/my_pics/AviWithLiftEngg600.jpg
     width: 30%

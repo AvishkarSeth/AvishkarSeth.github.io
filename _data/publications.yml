@@ -8,7 +8,7 @@
     authors: A. James, A. Seth, et al.
     venue: 2nd International Conference on Drones and Unmanned Systems (DAUS 2026)
     url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=bAMQU8MAAAAJ&sortby=pubdate&citation_for_view=bAMQU8MAAAAJ:qUcmZB5y_30C
-    image: assets/img/research/daus_2026.png
+    image: assets/img/research/daus_2026.webp
     alt: Cooperative UAV Payload Transport with Autonomous Navigation
   - title: 'ModCAM: Scalable Multi-UAV System for Cooperative Aerial Manipulation'
     kind: Springer Book Chapter
@@ -22,7 +22,7 @@
     authors: E. Kuantama, A. James, A. Seth, N. Hou, M. Bishop
     venue: 2026 IEEE Conference on Technologies for Sustainability (SusTech)
     url: https://ieeexplore.ieee.org/document/11536245
-    image: assets/img/research/CMD.jpg
+    image: assets/img/research/CMD.webp
     note: 'DOI: 10.1109/SUSTECH67720.2026.11536245'
     alt: Multi-Modal Coordinated Sensing for Spatially-Aware Marine Monitoring
 - year: 2025
@@ -44,7 +44,7 @@
     authors: Y. Jiang, Y. Deng, ..., <b>A. Seth</b>
     venue: Software Engineering
     url: https://doi.org/10.48550/arXiv.2506.11400
-    image: assets/img/research/drone_testing_pipeline.png
+    image: assets/img/research/drone_testing_pipeline.webp
   - title: Continuous Marine Monitoring via Autonomous UAV Handoff
     kind: ACM MobiSys 2025
     authors: H. Kim, A. James, <b>A. Seth</b>
@@ -70,42 +70,42 @@
     authors: A. James, <b>A. Seth</b>, et al.
     venue: Journal Article
     url: https://ieeexplore.ieee.org/document/10770156
-    image: assets/img/research/flycount.png
+    image: assets/img/research/flycount.webp
     alt: FlyCount Neuromorphic Sensing
   - title: 'MecQaBot: A Modular Robot Sensing & Mechatronics Framework'
     kind: IEEE ICST 2024
     authors: A. James, <b>A. Seth</b>, S. Mukhopadhyay.
     venue: Int. Conf. on Sensing Technology
     url: https://arxiv.org/html/2411.13156v1
-    image: assets/img/morepages/mecqabots/mecqabots_icst.png
+    image: assets/img/morepages/mecqabots/mecqabots_icst.webp
     alt: MecQaBot Framework
   - title: 'AeroBridge: Autonomous Drone Handoff for Battery Service'
     kind: ACM MobiCom 2024
     authors: <b>A. Seth</b>, A. James, et al.
     venue: ACM MobiCom
     url: https://doi.org/10.1145/3636534.3649382
-    image: assets/img/research/aerobridge.png
+    image: assets/img/research/aerobridge.webp
     alt: AeroBridge System
   - title: Cooperative Drone Delivery via Push-based Lift
     kind: arXiv / MobiSys DroNet
     authors: A. James, <b>A. Seth</b>, et al.
     venue: Preprint / DroNet 2024
     url: https://doi.org/10.1145/3661810.3663468
-    image: assets/img/research/dronet_SYS_overview.PNG
+    image: assets/img/research/dronet_SYS_overview.webp
     alt: Push-based Lift
   - title: Drone Coordination in RF-denied Environments
     kind: IEEE ICARM 2024
     authors: E. Kuantama, <b>A. James</b>, <b>A. Seth</b>.
     venue: Advanced Robotics and Mechatronics
     url: https://ieeexplore.ieee.org/abstract/document/10715791/
-    image: assets/img/research/icarm_cv.png
+    image: assets/img/research/icarm_cv.webp
     alt: RF-denied Coordination
   - title: Cooperative Drone Delivery with Self Balancing Tray
     kind: IEEE ICARM 2024
     authors: <b>A. James</b>, <b>A. Seth</b>, et al.
     venue: Advanced Robotics and Mechatronics
     url: https://ieeexplore.ieee.org/abstract/document/10715797/
-    image: assets/img/research/icarm_coop.png
+    image: assets/img/research/icarm_coop.webp
     alt: Self Balancing Tray
   - title: 'Flying IoT: Sensor Fusion for Indoor UAV Applications'
     kind: Springer 2024
@@ -142,14 +142,14 @@
     authors: L. Liang, Y. Deng, ..., <b>A. Seth</b>, et al.
     venue: Software Engineering Preprint
     url: https://arxiv.org/pdf/2310.07378
-    image: assets/img/research/rlaga_framework.png
+    image: assets/img/research/rlaga_framework.webp
     alt: RLaGA Framework
   - title: Drone High-Rise Aerial Delivery
     kind: MDPI Drones Journal 2023
     authors: <b>A. Seth</b>, A. James, et al.
     venue: 'Drones 7, no. 5: 300'
     url: https://doi.org/10.3390/drones7050300
-    image: assets/img/research/big_cover-drones-v7-i5.png
+    image: assets/img/research/big_cover-drones-v7-i5.webp
     alt: High-Rise Delivery
 - year: 2022
   items:
@@ -181,14 +181,14 @@
     authors: <b>A. James</b>, <b>A. Seth</b>, S. Mukhopadhyay.
     venue: Symp. on Robotic & Sensors
     url: https://ieeexplore.ieee.org/document/9611777
-    image: assets/img/research/realtime_hand_img.gif
+    image: assets/img/research/realtime_hand_img.webp
     alt: Hand Tracking
   - title: Wearable System for 3D Posture Estimation
     kind: IEEE ROSE 2021
     authors: <b>A. Seth</b>, <b>A. James</b>, S. Mukhopadhyay.
     venue: Lower Back Healthcare
     url: https://ieeexplore.ieee.org/document/9611778
-    image: assets/img/research/wss_wearable_rose.gif
+    image: assets/img/research/wss_wearable_rose.webp
     alt: Wearable Sensing Posture
   - title: Neural Network Based Off-Road AGV
     kind: ICST 2021
