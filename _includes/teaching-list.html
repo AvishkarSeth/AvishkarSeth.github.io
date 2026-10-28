@@ -15,7 +15,7 @@
       </div>
       <div class="col-lg-6" style="{{ c.gallery_style }}">
 {% for img in c.images %}{% if img.link %}        <a href="{{ img.link }}" target="_blank">
-  {% endif %}        <img src="{{ img.src }}" width="{{ img.width }}" style="{{ c.img_style }}"{% if img.alt %} alt="{{ img.alt | escape }}"{% endif %}>
+  {% endif %}        <img src="{{ img.src }}" width="{{ img.width }}" style="{{ c.img_style }}" loading="lazy" decoding="async"{% if img.alt %} alt="{{ img.alt | escape }}"{% endif %}>
 {% if img.link %}        </a>
 {% endif %}{% endfor %}      </div>
     </div>
