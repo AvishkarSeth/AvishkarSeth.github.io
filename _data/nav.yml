@@ -19,8 +19,8 @@
   title: "Volunteering"
   url: "/volunteering.html#volunteering"
 - id: tutorials
-  label: "Tutorials"
-  title: "Tutorials & Blogs"
+  label: "Blogs"
+  title: "Blogs"
   url: "/tutorials.html#tutorials"
 - id: portfolio
   label: "Portfolio"
