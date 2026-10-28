@@ -25,12 +25,16 @@
   images:
   - src: assets/img/teaching/mtrn4068_img.webp
     width: 45%
+    alt: "MTRN4068 small-scale autonomous vehicle project"
   - src: assets/img/teaching/Design of a Small Scale Autonomous Vehicle - MTRN4068.webp
     width: 45%
+    alt: "Poster: Design of a Small Scale Autonomous Vehicle, MTRN4068"
   - src: assets/img/teaching/mtrn4068_img_2.webp
     width: 45%
+    alt: "MTRN4068 students with their autonomous vehicle"
   - src: assets/img/morepages/mecqabots/mecqabots_icst.webp
     width: 45%
+    alt: "MecQaBot student team at ICST"
 - role: Co-Designer & Co-Instructor
   title: ENGG4201/8201 IoT System Design
   url: https://unitguides.mq.edu.au/unit_offerings/149908/unit_guide
@@ -43,10 +47,13 @@
   images:
   - src: assets/img/teaching/iot_system_trackink.webp
     width: 30%
+    alt: "IoT System Design student project: tracking system"
   - src: assets/img/teaching/iot_system_vehicle2023.webp
     width: 32%
+    alt: "IoT System Design student project: vehicle, 2023"
   - src: assets/img/teaching/iot_system_beebottle.webp
     width: 32%
+    alt: "IoT System Design student project: bee bottle"
 - role: Mentor
   title: School of Engineering & Computing, Macquarie University
   url: new_pages/mentor_students.html
@@ -62,6 +69,7 @@
   - src: assets/img/news/volun_alice.webp
     width: 70%
     link: new_pages/mentor_students.html
+    alt: "Alice James mentoring students"
 - role: Lab Tutor
   title: ENGG2000/3000 Engineering Project Practice
   url: https://unitguides.mq.edu.au/unit_offerings/129626/unit_guide
@@ -74,5 +82,7 @@
   images:
   - src: assets/img/teaching/ENGGG3000_V2.webp
     width: 40%
+    alt: "ENGG3000 engineering project showcase"
   - src: assets/img/my_pics/AviWithLiftEngg600.jpg
     width: 30%
+    alt: "Dr Avishkar Seth with the ENGG2000 lift project"

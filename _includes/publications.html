@@ -8,7 +8,7 @@
   <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
     <div class="icon-box">
       <a href="{{ paper.url }}" target="_blank" rel="noopener">
-        <img class="img-fluid" src="{{ paper.image }}" style="padding-bottom: 15px; border-radius: 12px;" loading="lazy" decoding="async"{% if paper.alt %} alt="{{ paper.alt | escape }}"{% endif %}>
+        <img class="img-fluid" src="{{ paper.image }}" style="padding-bottom: 15px; border-radius: 12px;" loading="lazy" decoding="async"alt="{{ paper.alt | default: paper.title | strip_html | escape }}">
         <h4>{{ paper.title | escape }}</h4>
         <p style="font-size: 14px; color: #555;">
           <b>{{ paper.kind | escape }}</b><br>
