@@ -14,6 +14,38 @@
   <title>{{ page.title | default: site.title }}</title>
 {% if page.description %}  <meta content="{{ page.description | escape }}" name="description">
 {% endif %}
+{% assign seo_title = page.title | default: site.title %}
+{% assign seo_desc = page.description | default: site.description %}
+{% assign seo_path = page.url | replace: "index.html", "" %}
+{% assign seo_url = site.url | append: seo_path %}
+  <link rel="canonical" href="{{ seo_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta property="og:title" content="{{ seo_title | escape }}">
+  <meta property="og:description" content="{{ seo_desc | escape }}">
+  <meta property="og:url" content="{{ seo_url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/img/social-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ seo_title | escape }}">
+  <meta name="twitter:description" content="{{ seo_desc | escape }}">
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/social-card.jpg">
+{% if page.url == "/index.html" or page.url == "/" %}  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Avishkar Seth",
+    "honorificPrefix": "Dr",
+    "jobTitle": "Robotics Research Engineer",
+    "url": "{{ site.url }}/",
+    "image": "{{ site.url }}/assets/img/social-card.jpg",
+    "email": "mailto:avishkar.seth@mq.edu.au",
+    "worksFor": {"@type": "CollegeOrUniversity", "name": "Macquarie University", "department": "Advanced Drone Systems Research Centre"},
+    "sameAs": [{% for s in site.data.social %}{% unless s.url contains "mailto:" %}"{{ s.url }}"{% unless forloop.last %}, {% endunless %}{% endunless %}{% endfor %}]
+  }
+  </script>
+{% endif %}
   <!-- Favicons -->
   <link href="/assets/img/favicon_io/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
   <link href="/assets/img/favicon_io/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
