@@ -1,0 +1,7 @@
+# Core-concept tutorials on the Tutorials page, newest first. Add one by copying an entry.
+# `url` is a page on this site or an outside link; `image` is optional (path from the site root).
+- title: Introduction to IoT and Sensor Networks
+  summary: "Tutorial: IoT sensor nodes, LoRaWAN and how data travels from sensor to cloud."
+  url: new_pages/IoT_enabled_tut_2020.html
+  image: assets/img/morepages/IoT_enabled_project1/An array of modern IoT sensor nodes deployed in an urban smart city environment, with visible elements like small sensor devices, wireless signals ind.webp
+  alt: Illustration of IoT sensor nodes in a smart city
