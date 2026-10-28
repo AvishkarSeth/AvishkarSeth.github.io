@@ -1,0 +1,42 @@
+name: External link check
+
+# Monthly check that outside links (papers, profiles, partner sites) still work.
+# Opens or updates one GitHub issue when something is broken.
+on:
+  schedule:
+    - cron: "17 21 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+      - run: bundle exec jekyll build
+      - name: Check external links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --max-retries 2 --timeout 20
+            --accept 200,201,202,203,204,206,301,302,307,308,403,429,999
+            --exclude "^mailto:" --exclude "scholar.google.com" --exclude "linkedin.com"
+            --exclude "facebook.com" --exclude "instagram.com" --exclude "threads.net"
+            './_site/**/*.html'
+          output: lychee/out.md
+          fail: false
+      - name: Open issue if links are broken
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Broken external links
+          content-filepath: lychee/out.md
+          labels: maintenance

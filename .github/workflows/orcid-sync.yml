@@ -1,0 +1,31 @@
+name: ORCID publication check
+
+# Monthly: compares your public ORCID works with _data/publications.yml and
+# opens an issue listing any works that are not on the Research page yet.
+on:
+  schedule:
+    - cron: "43 22 2 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  orcid:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml requests
+      - name: Compare ORCID works with publications.yml
+        run: python scripts/orcid_sync.py --orcid 0000-0002-0902-9753 --out orcid-report.md
+      - name: Open issue if new works found
+        if: hashFiles('orcid-report.md') != ''
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: New ORCID works not on the Research page
+          content-filepath: orcid-report.md
+          labels: maintenance
