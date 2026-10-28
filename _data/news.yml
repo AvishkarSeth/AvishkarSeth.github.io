@@ -1,0 +1,13 @@
+# Homepage "News". Newest first; the homepage shows the first 4. `url` is optional.
+- date: "June 2026"
+  text: "Macquarie University's robotics club team won the QUT Droid Racing Challenge 2026 (1st place)."
+  url: "/new_pages/highlights_2026.html"
+- date: "July 2026"
+  text: "New Defence Innovation Network grant (A$20,000) with ØVRD: a flexible-PCB sEMG wristband for a tactical neural interface."
+  url: "https://defenceinnovationnetwork.com/project/ovrd/"
+- date: "2026"
+  text: "ADSRC at ADSTAR 2026 in Adelaide, alongside defence, industry and research partners."
+  url: "/new_pages/highlights_2026.html"
+- date: "2026"
+  text: "New publications: DAUS 2026, the ModCAM chapter in Novel Sensing for Robotics and Drones, and IEEE SusTech 2026."
+  url: "/research.html#research"

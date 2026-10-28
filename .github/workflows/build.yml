@@ -1,0 +1,27 @@
+name: Build and check
+
+# Runs on every pull request and push to main: builds the site with Jekyll and
+# fails if any internal link, image or script reference is broken.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+      - name: Build
+        run: bundle exec jekyll build --trace
+      - name: Check internal links, images and scripts
+        run: |
+          gem install html-proofer -v '~> 5.0'
+          htmlproofer ./_site \
+            --disable-external \
+            --no-enforce-https \
+            --ignore-urls "/^mailto:/,/^tel:/"
