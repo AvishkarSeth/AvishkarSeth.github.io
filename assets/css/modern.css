@@ -306,3 +306,13 @@ section > .container.hero {
   #header.header-top h1 { padding: 0; margin-right: 0; }
   .hero { padding: 0 16px !important; }
 }
+
+/* Hero: rotating line and profile links */
+.hero-typed { margin: 0 0 14px !important; font-family: var(--font-head); font-size: clamp(20px, 2.2vw, 26px) !important; color: #e6edf5 !important; min-height: 1.5em; }
+.typed-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 600; }
+.typed-caret { display: inline-block; width: 2px; height: 1.1em; margin-left: 3px; vertical-align: text-bottom; background: var(--accent); animation: caret-blink 1s steps(1) infinite; }
+@keyframes caret-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .typed-caret { animation: none; } }
+.hero-links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
+.hero-links a { color: #c9d6e2; font-size: 16px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(56, 214, 240, 0.35); padding-bottom: 2px; }
+.hero-links a:hover { color: #ffffff; border-bottom-color: var(--accent); opacity: 1; }

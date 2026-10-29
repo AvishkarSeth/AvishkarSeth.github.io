@@ -28,6 +28,8 @@ section: home
       <h1>Dr Avishkar<br>Seth</h1>
       <h2>Robotics Research Engineer</h2>
 
+      <p class="hero-typed">I build robots that <span class="typed-text" id="typed-text">swap batteries mid-air</span><span class="typed-caret" aria-hidden="true"></span></p>
+
       <p>
         Aerial autonomy, sensing systems and hardware-software integration at the
         Advanced Drone Systems Research Centre. I also lead
@@ -39,6 +41,10 @@ section: home
         <a class="hero-btn primary" href="mailto:avishkar.seth@mq.edu.au"><i class="ri-mail-fill"></i> Get in touch</a>
         <a class="hero-btn ghost" href="/research.html#research">View research</a>
       </div>
+
+      <div class="hero-links">
+{% for s in site.data.social %}{% if s.title == "Github" or s.title == "LinkedIn" or s.title == "ORCID" or s.title == "Google Scholar" %}        <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title | replace: "Github", "GitHub" }}</a>
+{% endif %}{% endfor %}      </div>
     </div>
 
 {% include news.html %}
@@ -54,3 +60,24 @@ section: home
 
 
   
+
+<script>
+  // Rotating "I build robots that ..." line. Static first phrase for no-JS or reduced motion.
+  (function () {
+    var el = document.getElementById('typed-text');
+    if (!el) return;
+    var phrases = ['swap batteries mid-air', 'lift payloads together', 'monitor the ocean', 'race on their own'];
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var i = 0, n = phrases[0].length, deleting = false;
+    function tick() {
+      var full = phrases[i];
+      el.textContent = full.slice(0, n);
+      var delay = deleting ? 35 : 70;
+      if (!deleting && n === full.length) { deleting = true; delay = 1800; }
+      else if (deleting && n === 0) { deleting = false; i = (i + 1) % phrases.length; delay = 350; }
+      n += deleting ? -1 : 1;
+      setTimeout(tick, delay);
+    }
+    setTimeout(tick, 1800);
+  })();
+</script>
