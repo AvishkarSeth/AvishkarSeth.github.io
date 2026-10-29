@@ -358,3 +358,19 @@ section > .container.hero {
 @media (max-width: 767px) {
   #tutorials .row:has(> :nth-child(2):last-child), #learn .row:has(> :nth-child(2):last-child) { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Inner pages: faint aerial-robotics blueprint behind the content (the home page has the video) */
+body:not(:has(#bgvid))::before {
+  background: var(--accent);
+  opacity: 0.24;
+  -webkit-mask: url("../img/bg-aerial.svg") center / cover no-repeat;
+  mask: url("../img/bg-aerial.svg") center / cover no-repeat;
+}
+:root[data-theme="light"] body:not(:has(#bgvid))::before { opacity: 0.2; }
+section > .container:not(.hero) {
+  background: color-mix(in srgb, var(--panel) 60%, transparent) !important;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.resume .resume-item h5 { background: var(--card); color: var(--text); }
