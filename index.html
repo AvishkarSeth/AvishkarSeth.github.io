@@ -17,58 +17,35 @@ section: home
        
 <!-- ======= Home Section ======= -->
 <section id="home" class="about">
-  <div class="about-me container" 
-       style="background: rgba(0, 0, 0, 0); color: #ffffff; margin-top: 30px;">
+  <div class="about-me container hero theme-dark">
 
-    <div index-title>
-      <img src="assets/img/logo/adsrc_logo_v7.webp"
-           class="img-fluid"
-           width="15%"
-           alt="Macquarie University Logo"
-           style="
-             background-color: rgba(255,255,255,0.5);
-             box-shadow: 5px 5px 25px #303030;
-             border-radius: 50%;
-             padding: 10px;
-           ">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <img src="assets/img/logo/adsrc_logo_v7.webp" alt="Advanced Drone Systems Research Centre logo">
+        <span>ADSRC / MACQUARIE UNIVERSITY / SYDNEY</span>
+      </div>
+
+      <h1>Dr Avishkar<br>Seth</h1>
+      <h2>Robotics Research Engineer</h2>
+
+      <p class="hero-typed">I build robots that <span class="typed-text" id="typed-text">swap batteries mid-air</span><span class="typed-caret" aria-hidden="true"></span></p>
+
+      <p>
+        Aerial autonomy, sensing systems and hardware-software integration at the
+        Advanced Drone Systems Research Centre. I also lead
+        <a href="https://www.dronergy.co/" target="_blank" rel="noopener">Dronergy</a>,
+        a startup commercialising mid-air battery swapping for drones.
+      </p>
+
+      <div class="hero-cta">
+        <a class="hero-btn primary" href="mailto:avishkar.seth@mq.edu.au"><i class="ri-mail-fill"></i> Get in touch</a>
+        <a class="hero-btn ghost" href="/research.html#research">View research</a>
+      </div>
+
+      <div class="hero-links">
+{% for s in site.data.social %}{% if s.title == "Github" or s.title == "LinkedIn" or s.title == "ORCID" or s.title == "Google Scholar" %}        <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title | replace: "Github", "GitHub" }}</a>
+{% endif %}{% endfor %}      </div>
     </div>
-
-    <br><br>
-
-    <h1 style="
-        font-size: 60px;
-        font-weight: 1000;
-        -webkit-text-stroke: 1.2px rgb(0, 0, 0);
-        text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
-      ">
-      Dr Avishkar Seth
-    </h1>
-
-    <h2 style="
-        font-size: 28px;
-        font-weight: 600;
-        margin-top: 10px;
-      ">
-      Robotics Research Engineer
-    </h2>
-
-    <hr style="width: 60%; margin: 20px auto;">
-
-    <h3 style="
-        font-size: 22px;
-        font-weight: 400;
-      ">
-      Advanced Drone Systems Research Centre<br>
-      Macquarie University
-    </h3>
-
-    <p style="font-size: 18px; margin-top: 22px;">
-      I also lead
-      <a href="https://www.dronergy.co/" target="_blank" rel="noopener" style="color: #ffffff; text-decoration: underline;"><strong>Dronergy</strong></a>,
-      a startup commercialising mid-air battery swapping for drones.
-    </p>
-
-    <a class="btn btn-outline-light" href="mailto:avishkar.seth@mq.edu.au" style="margin-top: 6px;"><i class="ri-mail-fill"></i> Get in touch</a>
 
 {% include news.html %}
 
@@ -83,3 +60,24 @@ section: home
 
 
   
+
+<script>
+  // Rotating "I build robots that ..." line. Static first phrase for no-JS or reduced motion.
+  (function () {
+    var el = document.getElementById('typed-text');
+    if (!el) return;
+    var phrases = ['swap batteries mid-air', 'lift payloads together', 'monitor the ocean', 'race on their own'];
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var i = 0, n = phrases[0].length, deleting = false;
+    function tick() {
+      var full = phrases[i];
+      el.textContent = full.slice(0, n);
+      var delay = deleting ? 35 : 70;
+      if (!deleting && n === full.length) { deleting = true; delay = 1800; }
+      else if (deleting && n === 0) { deleting = false; i = (i + 1) % phrases.length; delay = 350; }
+      n += deleting ? -1 : 1;
+      setTimeout(tick, delay);
+    }
+    setTimeout(tick, 1800);
+  })();
+</script>

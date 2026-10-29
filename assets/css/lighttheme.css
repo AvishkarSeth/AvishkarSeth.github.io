@@ -1684,3 +1684,13 @@ section .container {
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 3000; padding: 10px 16px; background: #ffffff; color: #000000; }
 .skip-link:focus { left: 8px; top: 8px; }
 a:focus-visible, button:focus-visible, .nav-menu a:focus-visible { outline: 3px solid #ffbf47 !important; outline-offset: 2px; }
+
+/* Desktop header: larger, pill-style nav buttons */
+@media (min-width: 993px) {
+  #header.header-top h1 { white-space: nowrap; }
+  .nav-menu li + li { margin-left: 4px; }
+  .nav-menu a { font-size: 21px; font-weight: 600; padding: 9px 18px; border-radius: 999px; color: #1476c7; transition: background 0.2s, color 0.2s, transform 0.2s; }
+  .nav-menu a:before { display: none; }
+  .nav-menu a:hover, .nav-menu li:hover > a { background: rgba(20, 118, 199, 0.12); color: #0b4f8a; transform: translateY(-1px); }
+  .nav-menu .active > a, .nav-menu .active a { background: #1476c7; color: #ffffff; box-shadow: 0 4px 14px rgba(20, 118, 199, 0.35); }
+}
