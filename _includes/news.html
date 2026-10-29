@@ -1,8 +1,8 @@
 {% if site.data.news and site.data.news.size > 0 %}
-    <div class="home-news" style="max-width: 820px; margin: 32px auto 0; padding: 18px 26px; text-align: left; background: rgba(0, 0, 0, 0.5); border-radius: 12px;">
-      <h4 style="margin: 0 0 10px; font-size: 20px; font-weight: 600; color: #ffffff;">News</h4>
-      <ul style="list-style: none; margin: 0; padding: 0; font-size: 16px; color: #ffffff;">
-{% for item in site.data.news limit: 4 %}        <li style="padding: 5px 0;"><strong>{{ item.date | escape }}</strong>: {% if item.url %}<a href="{{ item.url }}" style="color: #ffffff; text-decoration: underline;">{{ item.text | escape }}</a>{% else %}{{ item.text | escape }}{% endif %}</li>
+    <aside class="home-news theme-dark" aria-label="News">
+      <div class="news-label"><span class="dot"></span>NEWS</div>
+      <ul>
+{% for item in site.data.news limit: 4 %}        <li><span class="news-date">{{ item.date | escape }}</span><span>{% if item.url %}<a href="{{ item.url }}">{{ item.text | escape }}</a>{% else %}{{ item.text | escape }}{% endif %}</span></li>
 {% endfor %}      </ul>
-    </div>
+    </aside>
 {% endif %}
