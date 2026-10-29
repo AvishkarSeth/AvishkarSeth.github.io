@@ -54,8 +54,11 @@
     var initial_nav = window.location.hash;
     if ($(initial_nav).length) {
       $('#header').addClass('header-top');
-      $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-      $('.nav-menu, .mobile-nav').find('a[href="' + initial_nav + '"]').parent('li').addClass('active');
+      var $match = $('.nav-menu, .mobile-nav').find('a[href$="' + initial_nav + '"]').parent('li');
+      if ($match.length) {
+        $('.nav-menu .active, .mobile-nav .active').removeClass('active');
+        $match.addClass('active');
+      }
       setTimeout(function() {
         $("section").removeClass('section-show');
         $(initial_nav).addClass('section-show');
