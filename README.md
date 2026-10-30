@@ -1,7 +1,7 @@
 # AvishkarSeth.github.io
 I build physical systems that operate in the real world.
 
-I'm [Avishkar Seth](https://avishkarseth.github.io/#home), a Robotics Research Engineer at Macquarie University. My work sits at the edge of aerial autonomy, sensing systems, and hardware-software integration. Simulations set the baseline, but my focus is getting hardware off the bench, testing under real physical constraints, and iterating fast until it works reliably in the field.
+I'm [Avishkar Seth](https://avishkarseth.github.io/#home), a Senior Research Officer (robotics and drone systems) at Macquarie University. My work sits at the edge of aerial autonomy, sensing systems, and hardware-software integration. Simulations set the baseline, but my focus is getting hardware off the bench, testing under real physical constraints, and iterating fast until it works reliably in the field.
 
 What I do:
 
