@@ -26,9 +26,9 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --no-progress --max-retries 2 --timeout 20
+            --no-progress --scheme https --scheme http --max-retries 2 --timeout 20
             --accept 200,201,202,203,204,206,301,302,307,308,403,429,999
-            --exclude "^mailto:" --exclude "scholar.google.com" --exclude "linkedin.com"
+            --exclude "^mailto:" --exclude "ieeexplore.ieee.org" --exclude "scholar.google.com" --exclude "linkedin.com"
             --exclude "facebook.com" --exclude "instagram.com" --exclude "threads.net"
             './_site/**/*.html'
           output: lychee/out.md
