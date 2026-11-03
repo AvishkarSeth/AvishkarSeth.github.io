@@ -37,10 +37,37 @@ def fetch_works(orcid):
     return works
 
 
-def known_titles(path):
+STOP = {"a", "an", "and", "of", "for", "the", "to", "with", "in", "on", "based", "via", "using", "by", "at"}
+
+
+def words(text):
+    return {w for w in norm(text).split() if w not in STOP}
+
+
+def load_known(path):
+    """Return (titles, raw text) of publications.yml."""
     with open(path, encoding="utf-8") as f:
-        data = yaml.safe_load(f) or []
-    return {norm(item["title"]) for group in data for item in group.get("items", [])}
+        raw = f.read()
+    data = yaml.safe_load(raw) or []
+    titles = [words(item["title"]) for group in data for item in group.get("items", [])]
+    return titles, raw.lower()
+
+
+def is_known(work, titles, raw):
+    """A work counts as already listed if its DOI or DOI number appears in the file,
+    or its title shares most of its words with a listed title (page titles are shortened)."""
+    doi = (work["doi"] or "").lower()
+    if doi:
+        if doi in raw:
+            return True
+        tail = re.search(r"(\d{6,})(?:\D*)$", doi)
+        if tail and tail.group(1) in raw:
+            return True
+    w = words(work["title"])
+    for k in titles:
+        if k and w and len(k & w) / min(len(k), len(w)) >= 0.75:
+            return True
+    return False
 
 
 def main():
@@ -50,9 +77,8 @@ def main():
     ap.add_argument("--out", default="orcid-report.md")
     args = ap.parse_args()
 
-    known = known_titles(args.data)
-    missing = [w for w in fetch_works(args.orcid)
-               if w["title"] and not any(norm(w["title"]) in k or k in norm(w["title"]) for k in known)]
+    titles, raw = load_known(args.data)
+    missing = [w for w in fetch_works(args.orcid) if w["title"] and not is_known(w, titles, raw)]
     if not missing:
         print("All ORCID works are already on the site.")
         return 0
