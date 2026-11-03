@@ -3,6 +3,12 @@
 # Everything else is plain text.
 - year: 2026
   items:
+  - title: 'PATH: Continuous Target Sensing among Autonomous Cooperative Drones'
+    kind: arXiv Preprint 2026
+    authors: H. Kim, <b>A. James</b>, <b>A. Seth</b>, E. Kuantama, J. Williamson, Y. Feng, R. Han
+    venue: arXiv:2609.12456 [cs.RO]
+    url: https://arxiv.org/abs/2609.12456
+    alt: PATH continuous target sensing among cooperative drones
   - title: Cooperative UAV Payload Transport with Autonomous Navigation
     kind: Drones and Unmanned Systems
     authors: A. James, A. Seth, et al.
@@ -65,6 +71,12 @@
     image: assets/img/research/acivs_2025.png
 - year: 2024
   items:
+  - title: Poster, Cooperative UAV Sensor Fusion for Precision Localization and Navigation in Load Transport
+    kind: ACM SenSys 2024 Poster
+    authors: <b>A. James</b>, E. Kuantama, <b>A. Seth</b>, R. Han, S. Mukhopadhyay
+    venue: 22nd ACM Conference on Embedded Networked Sensor Systems, pp. 895-896
+    url: https://doi.org/10.1145/3666025.3699425
+    alt: Poster on cooperative UAV sensor fusion for load transport
   - title: 'FlyCount: High-Speed Counting Using Neuromorphic Sensors'
     kind: IEEE Sensors Journal 2024
     authors: A. James, <b>A. Seth</b>, et al.
