@@ -3,12 +3,20 @@
 # Everything else is plain text.
 - year: 2026
   items:
+  - title: 'HARP: Handoff-Aware Recovery Planning for Active Target Acquisition in Multi-UAV Handoff'
+    kind: arXiv Preprint 2026
+    authors: H. Kim, <b>A. James</b>, <b>A. Seth</b>, E. Kuantama, R. Han
+    venue: arXiv:2610.33640 [cs.RO]
+    url: https://arxiv.org/abs/2610.33640
+    image: assets/img/research/harp_2026.webp
+    alt: Sender and receiver drone views with the estimated target projection, from the HARP paper
   - title: 'PATH: Continuous Target Sensing among Autonomous Cooperative Drones'
     kind: arXiv Preprint 2026
     authors: H. Kim, <b>A. James</b>, <b>A. Seth</b>, E. Kuantama, J. Williamson, Y. Feng, R. Han
     venue: arXiv:2609.12456 [cs.RO]
     url: https://arxiv.org/abs/2609.12456
-    alt: PATH continuous target sensing among cooperative drones
+    image: assets/img/research/path_2026.webp
+    alt: Receiving drone view with beacons and the tracked target, from the PATH paper
   - title: Cooperative UAV Payload Transport with Autonomous Navigation
     kind: Drones and Unmanned Systems
     authors: A. James, A. Seth, et al.
