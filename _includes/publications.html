@@ -1,29 +1,20 @@
 {% for group in site.data.publications %}
-<!--------------------------------------------------->
-<hr><h1><center>{{ group.year }}</center></h1><hr>
-<!--------------------------------------------------->
-
-<div class="row">
-{% for paper in group.items %}
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-    <div class="icon-box">
-      <a href="{{ paper.url }}" target="_blank" rel="noopener">
-        {% if paper.image %}<img class="img-fluid" src="{{ paper.image }}" style="padding-bottom: 15px; border-radius: 12px;" loading="lazy" decoding="async" alt="{{ paper.alt | default: paper.title | strip_html | escape }}">{% endif %}
-        <h4>{{ paper.title | escape }}</h4>
-        <p style="font-size: 14px; color: #555;">
-          <b>{{ paper.kind | escape }}</b><br>
-          {{ paper.authors }}<br>
-          <i>{{ paper.venue | escape }}</i>{% if paper.note %}<br>
-          {{ paper.note }}{% endif %}
-        </p>
-        <div style="margin-top: 10px; font-weight: bold; color: #007bff;">
-          <i class="icofont-globe"></i> View Paper
-        </div>
-      </a>
-    </div>
+<section class="band pub-year" id="y{{ group.year }}" aria-labelledby="y{{ group.year }}-h">
+  <div class="wrap split">
+    <header class="split-head sticky">
+      <h2 id="y{{ group.year }}-h">{{ group.year }}</h2>
+    </header>
+    <div class="pub-list">
+{% for paper in group.items %}      <article class="pub">
+        <div class="pub-thumb figure-matte{% unless paper.image %} is-empty{% endunless %}">{% if paper.image %}<img src="/{{ paper.image }}" alt="{{ paper.alt | default: paper.title | strip_html | escape }}" loading="lazy" decoding="async">{% endif %}</div>
+        <div>
+          <h3><a href="{{ paper.url }}" target="_blank" rel="noopener">{{ paper.title | escape }}</a></h3>
+          <p class="authors">{{ paper.authors }}</p>
+          <p class="meta">{{ paper.kind | escape }}{% if paper.venue %}, {{ paper.venue | escape }}{% endif %}</p>
+{% if paper.note %}          <p class="meta">{{ paper.note }}</p>
+{% endif %}        </div>
+      </article>
+{% endfor %}    </div>
   </div>
-{% endfor %}
-</div>
-
-<hr>
+</section>
 {% endfor %}

@@ -3,81 +3,136 @@ layout: site
 title: "Avishkar Seth"
 description: "Avishkar Seth, Senior Research Officer (Robotics and Drone Systems) at Macquarie University's Advanced Drone Systems Research Centre. Aerial autonomy, sensing systems and hardware-software integration."
 nav: home
-section: home
 ---
-<!-- ======= Video Background ======= -->
-
-        <video poster="assets/img/videos/bck_vid_sep_24_poster.webp" id="bgvid" playsinline autoplay muted loop>
-          <!-- <source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4">  -->
-            <source src="assets/img/videos/bck_vid_sep_24.mp4" type="video/mp4"> 
-        </video>
-
-        <!-- ======= Video Background ======= -->
-
-       
-<!-- ======= Home Section ======= -->
-<section id="home" class="about">
-  <div class="about-me container hero theme-dark">
+<section class="hero" id="home">
+  <div class="wrap">
 
     <div class="hero-text">
-      <div class="hero-eyebrow">
-        <img src="assets/img/logo/adsrc_logo_v7.webp" alt="Advanced Drone Systems Research Centre logo">
-        <span>ADSRC / MACQUARIE UNIVERSITY / SYDNEY</span>
-      </div>
-
-      <h1>Dr Avishkar<br>Seth</h1>
-      <h2>Senior Research Officer, Robotics and Drone Systems</h2>
-
-      <p class="hero-typed">I build robots that <span class="typed-text" id="typed-text">swap batteries mid-air</span><span class="typed-caret" aria-hidden="true"></span></p>
-
-      <p>
-        Aerial autonomy, sensing systems and hardware-software integration at the
-        Advanced Drone Systems Research Centre. I also lead
+      <h1>Drones that swap batteries without landing.</h1>
+      <p class="hero-intro">
+        I'm <strong>Dr Avishkar Seth</strong>, Senior Research Officer in robotics and drone systems at
+        Macquarie University's Advanced Drone Systems Research Centre. I work on aerial autonomy,
+        sensing systems and hardware-software integration, and I lead
         <a href="https://www.dronergy.co/" target="_blank" rel="noopener">Dronergy</a>,
-        a startup commercialising mid-air battery swapping for drones.
+        a startup commercialising mid-air battery swapping.
       </p>
-
-      <div class="hero-cta">
-        <a class="hero-btn primary" href="mailto:avishkar.seth@mq.edu.au"><i class="ri-mail-fill"></i> Get in touch</a>
-        <a class="hero-btn ghost" href="/research.html#research">View research</a>
+      <div class="btn-row">
+        <a class="btn btn-solid" href="mailto:{{ site.email }}">Get in touch</a>
+        <a class="btn btn-line" href="/research.html">Read the research</a>
       </div>
-
-      <div class="hero-links">
-{% for s in site.data.social %}{% if s.title == "Github" or s.title == "LinkedIn" or s.title == "ORCID" or s.title == "Google Scholar" %}        <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title | replace: "Github", "GitHub" }}</a>
-{% endif %}{% endfor %}      </div>
+      <ul class="hero-profiles">
+{% for s in site.data.social %}{% if s.title == "Github" or s.title == "LinkedIn" or s.title == "ORCID" or s.title == "Google Scholar" %}        <li><a href="{{ s.url }}" target="_blank" rel="noopener me">{{ s.title | replace: "Github", "GitHub" }}</a></li>
+{% endif %}{% endfor %}      </ul>
     </div>
 
-{% include news.html %}
+    <figure class="handoff" id="handoff">
+      <div class="handoff-stage">
+        <svg viewBox="128 84 470 312" role="img" aria-labelledby="handoff-title handoff-desc">
+          <title id="handoff-title">Mid-air battery handoff between two drones</title>
+          <desc id="handoff-desc">A service drone flies in above and behind a mission drone that is low on battery, links to it with a bridge, passes a fresh battery down the bridge, then releases. The mission drone flies on fully charged.</desc>
+
+          <path class="ground" d="M-60 366H700"/>
+          <path class="faint" d="M-60 382H700"/>
+
+          <g class="formation">
+            <path class="ink bridge" d="M250 167L430 270" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0"/>
+
+            <g class="service">
+              <text class="tag" x="250" y="112" text-anchor="middle">Service drone</text>
+              <g transform="translate(250 150)">
+{% include drone.html %}
+                <rect class="cell cell-carried" x="-11" y="11" width="22" height="12" rx="2"/>
+              </g>
+            </g>
+
+            <rect class="cell cell-moving" x="239" y="161" width="22" height="12" rx="2"/>
+
+            <g transform="translate(430 270)">
+              <path class="ink" d="M-10 -9v-8M10 -9v-8"/>
+{% include drone.html %}
+              <rect class="cell cell-fitted" x="-11" y="-6" width="22" height="12" rx="2"/>
+            </g>
+            <text class="tag" x="430" y="326" text-anchor="middle">Mission drone</text>
+
+            <g transform="translate(520 228)">
+              <rect class="gauge-frame" x="0" y="0" width="46" height="22" rx="4"/>
+              <path class="ink-fill" d="M48 7h4v8h-4z"/>
+              <rect class="gauge-level" x="4" y="4" width="38" height="14" rx="1.5"/>
+            </g>
+          </g>
+        </svg>
+        <button type="button" class="icon-btn handoff-pause" id="handoff-pause" aria-label="Pause animation">
+          <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+          <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg>
+        </button>
+      </div>
+      <ol class="phases" aria-hidden="true">
+        <li>Low battery</li>
+        <li>Approach</li>
+        <li>Dock</li>
+        <li>Handoff</li>
+        <li>Fly on</li>
+      </ol>
+      <figcaption>
+        Schematic of the idea behind
+        <a href="https://doi.org/10.1145/3636534.3649382" target="_blank" rel="noopener">AeroBridge</a>
+        (ACM MobiCom 2024) and our
+        <a href="https://doi.org/10.1109/ROBIO66223.2025.11375893" target="_blank" rel="noopener">mid-air docking work</a>
+        (IEEE ROBIO 2025). Not to scale.
+      </figcaption>
+    </figure>
 
   </div>
 </section>
 
-<!-- ======= Home Section ======= -->
+{% if site.data.news and site.data.news.size > 0 %}
+<section class="band" aria-labelledby="latest-h">
+  <div class="wrap split">
+    <header class="split-head">
+      <h2 id="latest-h">Latest</h2>
+    </header>
+    <ul class="news-list">
+{% for item in site.data.news limit: 4 %}      <li>
+        <span class="meta">{{ item.date | escape }}</span>
+        <span>{% if item.url %}<a href="{{ item.url }}">{{ item.text | escape }}</a>{% else %}{{ item.text | escape }}{% endif %}</span>
+      </li>
+{% endfor %}    </ul>
+  </div>
+</section>
+{% endif %}
 
+<section class="band" aria-labelledby="work-h">
+  <div class="wrap split">
+    <header class="split-head">
+      <h2 id="work-h">Selected work</h2>
+      <p><a href="/research.html">All publications</a></p>
+    </header>
+    <div class="work-grid">
+{% for group in site.data.publications %}{% for paper in group.items %}{% if paper.featured %}      <article class="work">
+        <a href="{{ paper.url }}" target="_blank" rel="noopener">
+          <div class="figure-matte"><img src="/{{ paper.image }}" alt="{{ paper.alt | default: paper.title | strip_html | escape }}" loading="lazy" decoding="async"></div>
+          <h3>{{ paper.title | escape }}</h3>
+          <p class="meta">{{ paper.kind | escape }}</p>
+        </a>
+      </article>
+{% endif %}{% endfor %}{% endfor %}    </div>
+  </div>
+</section>
 
-
-
-
-
-  
-
-<script>
-  // Rotating "I build robots that ..." line. Static first phrase for no-JS or reduced motion.
-  (function () {
-    var el = document.getElementById('typed-text');
-    if (!el) return;
-    var phrases = ['swap batteries mid-air', 'lift payloads together', 'monitor the ocean', 'race on their own'];
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var i = 0, n = phrases[0].length, deleting = false;
-    function tick() {
-      var full = phrases[i];
-      el.textContent = full.slice(0, n);
-      var delay = deleting ? 35 : 70;
-      if (!deleting && n === full.length) { deleting = true; delay = 1800; }
-      else if (deleting && n === 0) { deleting = false; i = (i + 1) % phrases.length; delay = 350; }
-      n += deleting ? -1 : 1;
-      setTimeout(tick, delay);
-    }
-    setTimeout(tick, 1800);
-  })();
-</script>
+<section class="band" aria-labelledby="teach-h">
+  <div class="wrap split">
+    <header class="split-head">
+      <h2 id="teach-h">Teaching</h2>
+      <p><a href="/teaching.html">Courses and mentoring</a></p>
+    </header>
+    <div>
+      <p class="prose prose-lg">
+        I teach autonomous systems at Macquarie University and mentor student teams in the
+        MQ Robotics Club, Drone Society and MARS Rover.
+      </p>
+      <ul class="plain-list">
+{% for c in site.data.teaching %}{% if c.dates contains "Present" %}        <li><a href="{{ c.url }}"{% unless c.url contains "new_pages" %} target="_blank" rel="noopener"{% endunless %}>{{ c.title | escape }}</a> <span class="meta">{{ c.role | escape }}</span></li>
+{% endif %}{% endfor %}      </ul>
+    </div>
+  </div>
+</section>

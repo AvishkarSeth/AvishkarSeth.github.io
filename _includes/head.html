@@ -12,6 +12,7 @@
   <script data-goatcounter="https://avishkarseth.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="theme-color" id="theme-color" content="#eef2f1">
 
   <title>{{ page.title | default: site.title }}</title>
 {% if page.description %}  <meta content="{{ page.description | escape }}" name="description">
@@ -59,34 +60,17 @@
       var t = null;
       try { t = localStorage.getItem('theme'); } catch (e) {}
       if (t !== 'light' && t !== 'dark') {
-        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
       }
       document.documentElement.setAttribute('data-theme', t);
+      var m = document.getElementById('theme-color');
+      if (m) m.setAttribute('content', t === 'dark' ? '#0a2030' : '#eef2f1');
     })();
   </script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Space+Grotesk:500,700|Inter:400,500,600|JetBrains+Mono:400,500|Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/assets/vendor/academicons/css/academicons.min.css" rel="stylesheet">
-  <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="/assets/css/lighttheme.css" rel="stylesheet">
-  <link href="/assets/css/modern.css" rel="stylesheet">
+  <!-- Type: Archivo variable, self-hosted -->
+  <link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="/assets/css/site.css" rel="stylesheet">
 {% if page.mathjax %}
   <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 {% endif %}
-  <!-- The template shows a section based on the URL hash. Set it here instead of
-       reloading the whole page (the old window.onload trick loaded every page twice). -->
-  <script>
-    if (!location.hash) {
-      history.replaceState(null, '', location.pathname + location.search + '#{{ page.section | default: "home" }}');
-    }
-  </script>

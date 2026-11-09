@@ -1,29 +1,30 @@
 ---
 layout: site
-title: "Avishkar Seth"
+title: "Research | Avishkar Seth"
 description: "Publications and projects by Avishkar Seth: aerial robotics, cooperative drone payload transfer, mid-air battery handoff and sensing systems."
 nav: research
-section: research
 ---
-  
-<!----------------------------------------------------------------
------------------------- Research Section -----------------------
------------------------------------------------------------------>
-<section id="research" class="services">
-  <div class="container">
-
-    <div class="section-title">
-      <p>Research Publications</p>
-      <h2>Below are all my research publications since 2020. For a complete list, check out my <a href="https://scholar.google.com/citations?user=bAMQU8MAAAAJ&hl=en"> <b>Google Scholar page</h2>
+<div class="wrap" id="research">
+  <header class="page-head">
+    <h1>Research</h1>
+    <p class="lead">
+      Papers, book chapters and preprints since 2020 on aerial robotics, cooperative drones,
+      mid-air battery handoff and sensing systems. The complete record is on
+      <a href="https://scholar.google.com/citations?user=bAMQU8MAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+    </p>
+    <div class="pub-tools">
+      <label class="visually-hidden" for="pub-search">Search publications</label>
+      <input class="pub-search" id="pub-search" type="search" placeholder="Search by title, author or venue" autocomplete="off">
+      <span class="meta" id="pub-count" aria-live="polite"></span>
+      <ul class="year-jump" aria-label="Jump to year">
+{% for group in site.data.publications %}        <li><a href="#y{{ group.year }}">{{ group.year }}</a></li>
+{% endfor %}      </ul>
     </div>
+  </header>
+</div>
 
 {% include publications.html %}
-  </div>
-</section>
-  
-  <!-- End Research Section -->
 
-
-
-
-<!-- ===== Footer / Social Links ===== -->
+<div class="wrap">
+  <p class="pub-empty" id="pub-empty" hidden>No publications match that search. Try a shorter word, or clear the box to see everything.</p>
+</div>

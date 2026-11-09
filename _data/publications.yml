@@ -1,6 +1,6 @@
-# Publications shown on the Research page, newest year first. Add a new paper by copying an entry.
-# `authors` may contain HTML (<b> highlights the lab members); `note` is an optional extra line (e.g. a DOI).
-# Everything else is plain text.
+# Publications on the Research page, newest year first.
+# `featured: true` also shows a paper under "Selected work" on the home page (keep it to four).
+# `authors` may contain <b> tags. `image` is optional (path from the site root).
 - year: 2026
   items:
   - title: 'HARP: Handoff-Aware Recovery Planning for Active Target Acquisition in Multi-UAV Handoff'
@@ -25,6 +25,7 @@
     image: assets/img/research/daus_2026.webp
     alt: Cooperative UAV Payload Transport with Autonomous Navigation
   - title: 'ModCAM: Scalable Multi-UAV System for Cooperative Aerial Manipulation'
+    featured: true
     kind: Springer Book Chapter
     authors: A. James, A. Seth, E. Kuantama, R. Han, S. Mukhopadhyay
     venue: Novel Sensing for Robotics and Drones
@@ -42,6 +43,7 @@
 - year: 2025
   items:
   - title: Synchronized Mid-Air Drone Docking During Translational Motion
+    featured: true
     kind: IEEE ROBIO 2025
     authors: A. Seth, A. James, et al.
     venue: IEEE International Conference on Robotics and Biomimetics
@@ -60,6 +62,7 @@
     url: https://doi.org/10.48550/arXiv.2506.11400
     image: assets/img/research/drone_testing_pipeline.webp
   - title: Continuous Marine Monitoring via Autonomous UAV Handoff
+    featured: true
     kind: ACM MobiSys 2025
     authors: H. Kim, A. James, <b>A. Seth</b>
     venue: International Conference on Mobile Systems
@@ -100,6 +103,7 @@
     image: assets/img/morepages/mecqabots/mecqabots_icst.webp
     alt: MecQaBot Framework
   - title: 'AeroBridge: Autonomous Drone Handoff for Battery Service'
+    featured: true
     kind: ACM MobiCom 2024
     authors: <b>A. Seth</b>, A. James, et al.
     venue: ACM MobiCom
