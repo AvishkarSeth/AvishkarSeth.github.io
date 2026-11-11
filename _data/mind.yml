@@ -1,9 +1,10 @@
-# The six signals hidden in the forest on the home page, and the "Inside my head"
+# The six signals hidden in the forest on the home page, and the "The work"
 # chapters below it. Same content in both places. Order = order on the page.
 #
 # id        short name, used in links (#mind-<id>) and in the game
 # name      the side of you this signal stands for
 # headline  big line shown first
+# summary   one short line shown in the side panel when a signal is found in the game
 # body      one or two short paragraphs (HTML allowed)
 # facts     short lines shown as a list (HTML allowed)
 # images    optional: src (from the site root) and alt
@@ -12,12 +13,13 @@
 #           any time (music, shows, games, places) and they appear on the page.
 
 - id: engineer
-  name: Engineer
-  headline: I make hardware think.
+  name: Systems engineering
+  headline: Hardware that thinks for itself.
+  summary: Flight controllers, onboard computers and the code that lets drones fly themselves.
   body: >-
-    Give me a flight controller, a companion computer and a problem that has not been solved yet.
-    I design the full chain: sensors, power, embedded code, autonomy, and the ground station that
-    talks to all of it.
+    Every drone we fly starts as a stack of parts and a problem nobody has solved yet. The work is
+    the full chain: sensors, power, embedded code, autonomy, and the ground station that talks to
+    all of it.
   facts:
     - Raspberry Pi 5 and Jetson Orin on board, talking to CubePilot Orange and Pixhawk 6C
     - ROS 2 on Ubuntu, PX4 and ArduPilot, MAVLink over TCP and UDP
@@ -31,11 +33,12 @@
     label: Full skill set
 
 - id: builder
-  name: Builder
+  name: Field robotics
   headline: Off the bench. Into the wind.
+  summary: Aerial, surface and underwater robots tested outdoors, where it counts.
   body: >-
     Simulation sets the baseline. The real test is outside, with wind, water and a battery that
-    is running out. I fly, break, fix and fly again until it works in the field.
+    is running out. Fly, break, fix, fly again, until it works in the field.
   facts:
     - Licensed pilot running flight tests for aerial, surface and underwater robots
     - Uncrewed boats and underwater ROVs for marine monitoring
@@ -51,10 +54,11 @@
     label: Read the blogs
 
 - id: founder
-  name: Founder
+  name: Dronergy
   headline: Drones that do not have to land.
+  summary: A startup turning mid-air battery swapping into a product.
   body: >-
-    I lead <a href="https://www.dronergy.co/" target="_blank" rel="noopener">Dronergy</a>, a startup
+    <a href="https://www.dronergy.co/" target="_blank" rel="noopener">Dronergy</a> is a startup
     turning mid-air battery swapping into a product. A service drone meets a working drone in the
     air, hands over a fresh battery and leaves. The mission never stops.
   facts:
@@ -67,10 +71,11 @@
     label: Visit Dronergy
 
 - id: visionary
-  name: Visionary
+  name: Research
   headline: Swarms that share the load and pass the job along.
+  summary: What drones can do together that none can do alone.
   body: >-
-    My research asks what drones can do together that none can do alone: carry one payload
+    The research asks what drones can do together that none can do alone: carry one payload
     between several aircraft, dock in mid-air, and hand a moving target from one drone to the next
     without losing sight of it.
   facts:
@@ -84,10 +89,11 @@
     label: All research
 
 - id: teacher
-  name: Teacher
+  name: Teaching
   headline: Teaching robots to students, and students to robots.
+  summary: Embedded systems and mobile robotics units, and student teams that win.
   body: >-
-    I teach embedded systems and mobile robotics at Macquarie University and mentor student teams
+    Embedded systems and mobile robotics at Macquarie University, and mentoring for student teams
     who build things that move.
   facts:
     - COMP8291 IoT and Embedded Systems, and MTRN4068 Wireless Mechatronics
@@ -101,8 +107,9 @@
     label: Courses and mentoring
 
 - id: creative
-  name: Creative
-  headline: The rest of my head.
+  name: Beyond the lab
+  headline: Where the ideas come from.
+  summary: Music, photography, travel, games and the night sky.
   body: >-
     Curiosity does not switch off after work. Most of my ideas start somewhere far from a lab:
     on a trail, behind a camera, in a game, or looking up at the night sky.

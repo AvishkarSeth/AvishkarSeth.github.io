@@ -24,25 +24,29 @@ function webglAvailable() {
 
 /* ---------- Shared: the signal list and the chapter dialog ---------- */
 
-function chapterFor(id) { return document.getElementById('mind-' + id); }
-
-function openCard(id, onClose) {
-  const dialog = document.getElementById('xp-card');
-  const body = document.getElementById('xp-card-body');
-  const chapter = chapterFor(id);
-  if (!dialog || !body || !chapter) return;
-  body.innerHTML = '';
-  const clone = chapter.querySelector('.mind-inner').cloneNode(true);
-  clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
-  body.appendChild(clone);
-  const done = () => { dialog.removeEventListener('close', done); if (onClose) onClose(); };
-  dialog.addEventListener('close', done);
-  if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open', '');
+/* A small panel at the side of the forest. It never pauses the flight. */
+let sideTimer = null;
+function showSide(btn, countText) {
+  const side = document.getElementById('xp-side');
+  if (!side || !btn) return;
+  document.getElementById('xp-side-count').textContent = countText || '';
+  document.getElementById('xp-side-name').textContent = btn.dataset.name;
+  document.getElementById('xp-side-headline').textContent = btn.dataset.headline || '';
+  document.getElementById('xp-side-summary').textContent = btn.dataset.summary || '';
+  document.getElementById('xp-side-more').setAttribute('href', '#mind-' + btn.dataset.id);
+  side.hidden = false;
+  side.classList.remove('is-in'); void side.offsetWidth; side.classList.add('is-in');
+  clearTimeout(sideTimer);
+  sideTimer = setTimeout(() => { side.hidden = true; }, 9000);
 }
+(function () {
+  const close = document.getElementById('xp-side-close');
+  if (close) close.addEventListener('click', () => { document.getElementById('xp-side').hidden = true; });
+})();
 
 function setupStaticSignals() {
   document.querySelectorAll('.xp-signal').forEach((btn) => {
-    btn.addEventListener('click', () => openCard(btn.dataset.id));
+    btn.addEventListener('click', () => showSide(btn));
   });
 }
 
@@ -289,10 +293,160 @@ function start() {
     return d;
   }
 
-  const drone = buildDrone(1, 0x5cf2c8);
+
+  /* ---------- Forms: the drone changes shape each time it finds a signal ---------- */
+  function mat(color, opts) { return new THREE.MeshStandardMaterial(Object.assign({ color, roughness: 0.45, metalness: 0.2 }, opts || {})); }
+  function glowMat(color, opacity) { return new THREE.MeshBasicMaterial({ color, transparent: opacity < 1, opacity: opacity == null ? 1 : opacity, side: THREE.DoubleSide, depthWrite: opacity == null || opacity >= 1 }); }
+
+  function buildMulti(arms, scale, led, shellColor) {
+    const d = new THREE.Group();
+    const dark = mat(0x1b2328, { metalness: 0.4, roughness: 0.55 });
+    const shell = mat(shellColor, { emissive: 0x30444c, metalness: 0.15, roughness: 0.35 });
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.95, 1.05, 0.5, arms), shell);
+    const top = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.6, 0.3, arms), dark);
+    top.position.y = 0.38;
+    d.add(body, top);
+    const props = [];
+    for (let i = 0; i < arms; i++) {
+      const a = (i / arms) * Math.PI * 2 + Math.PI / arms;
+      const arm = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.12, 2.2), dark);
+      arm.position.set(Math.sin(a) * 1.1, 0.05, Math.cos(a) * 1.1); arm.rotation.y = a;
+      const mx = Math.sin(a) * 2.15, mz = Math.cos(a) * 2.15;
+      const motor = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.3, 10), dark);
+      motor.position.set(mx, 0.2, mz);
+      const prop = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.03, 0.14), glowMat(0x9aa7ad, 0.55));
+      prop.position.set(mx, 0.38, mz);
+      const disc = new THREE.Mesh(new THREE.CircleGeometry(0.8, 24), glowMat(0xbfd0d6, 0.12));
+      disc.rotation.x = -Math.PI / 2; disc.position.copy(prop.position);
+      const ledM = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 6), glowMat(led));
+      ledM.position.set(mx, 0.0, mz);
+      d.add(arm, motor, prop, disc, ledM);
+      props.push(prop);
+    }
+    const strip = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.06, 0.06), glowMat(led));
+    strip.position.set(0, 0.05, 1.02);
+    d.add(strip);
+    d.scale.setScalar(scale);
+    return { group: d, light: led, animate: (dt) => props.forEach((p, i) => { p.rotation.y += dt * (i % 2 ? -42 : 42); }) };
+  }
+
+  function buildPlane() {
+    const d = new THREE.Group();
+    const white = mat(0xe8eef2, { emissive: 0x24343c }), blue = mat(0x2f7dd1, { emissive: 0x0d2440 }), dark = mat(0x1b2328);
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.22, 4.2, 10), white);
+    body.rotation.x = Math.PI / 2;
+    const nose = new THREE.Mesh(new THREE.ConeGeometry(0.35, 0.9, 10), blue);
+    nose.rotation.x = Math.PI / 2; nose.position.z = 2.55;
+    const wing = new THREE.Mesh(new THREE.BoxGeometry(7.2, 0.08, 1.1), white);
+    wing.position.set(0, 0.15, 0.4);
+    const tips = [-1, 1].map((s) => { const m = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.5, 0.8), blue); m.position.set(s * 3.6, 0.35, 0.3); return m; });
+    const tail = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.06, 0.6), white); tail.position.set(0, 0.2, -1.9);
+    const fin = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.8, 0.6), blue); fin.position.set(0, 0.6, -1.9);
+    const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.3, 8), dark); hub.rotation.x = Math.PI / 2; hub.position.z = -2.2;
+    const prop = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.12, 0.04), glowMat(0x9aa7ad, 0.6)); prop.position.z = -2.35;
+    const navL = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 6), glowMat(0xff3b3b)); navL.position.set(-3.6, 0.2, 0.5);
+    const navR = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 6), glowMat(0x3bff8a)); navR.position.set(3.6, 0.2, 0.5);
+    d.add(body, nose, wing, ...tips, tail, fin, hub, prop, navL, navR);
+    return { group: d, light: 0x7fb6ff, animate: (dt) => { prop.rotation.z += dt * 50; } };
+  }
+
+  function buildBird() {
+    const d = new THREE.Group();
+    const feather = mat(0xa86c3e, { roughness: 0.8, emissive: 0x4a2a12 }), light = mat(0xe8cba2, { roughness: 0.8, emissive: 0x3a2c1a });
+    const body = new THREE.Mesh(new THREE.SphereGeometry(0.8, 12, 10), feather); body.scale.set(1, 0.85, 1.6);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.55, 12, 10), feather); head.position.set(0, 0.45, 1.25);
+    const face = new THREE.Mesh(new THREE.SphereGeometry(0.42, 12, 10), light); face.position.set(0, 0.42, 1.5); face.scale.set(1, 0.9, 0.5);
+    const eyes = [-1, 1].map((s) => { const e = new THREE.Mesh(new THREE.SphereGeometry(0.11, 8, 6), glowMat(0xffc65c)); e.position.set(s * 0.18, 0.52, 1.72); return e; });
+    const beak = new THREE.Mesh(new THREE.ConeGeometry(0.1, 0.3, 6), mat(0x3a2a1a)); beak.rotation.x = Math.PI / 2; beak.position.set(0, 0.35, 1.85);
+    const tail = new THREE.Mesh(new THREE.ConeGeometry(0.6, 1.2, 4), feather); tail.rotation.x = -Math.PI / 2; tail.position.z = -1.5; tail.scale.set(1.4, 1, 0.25);
+    const wings = [-1, 1].map((s) => {
+      const pivot = new THREE.Group(); pivot.position.set(s * 0.55, 0.25, 0.1);
+      const inner = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.08, 1.2), feather); inner.position.x = s * 0.9;
+      const outer = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.06, 0.8), light); outer.position.x = s * 2.5; outer.position.z = -0.2;
+      pivot.add(inner, outer); pivot.userData.s = s; return pivot;
+    });
+    d.add(body, head, face, ...eyes, beak, tail, ...wings);
+    return { group: d, light: 0xffc65c, animate: (dt, time) => { const f = Math.sin(time * 7) * 0.55; wings.forEach((w) => { w.rotation.z = w.userData.s * f; }); } };
+  }
+
+  function buildDragonfly() {
+    const d = new THREE.Group();
+    const shell = mat(0x1fa37f, { metalness: 0.6, roughness: 0.25, emissive: 0x06362a });
+    const segs = [];
+    for (let i = 0; i < 6; i++) {
+      const s = new THREE.Mesh(new THREE.SphereGeometry(0.28 - i * 0.025, 10, 8), shell);
+      s.position.z = -0.4 - i * 0.48; s.scale.set(1, 1, 1.4); segs.push(s);
+    }
+    const thorax = new THREE.Mesh(new THREE.SphereGeometry(0.45, 12, 10), shell); thorax.scale.set(1, 0.9, 1.3); thorax.position.z = 0.3;
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.32, 12, 10), shell); head.position.z = 0.95;
+    const eyes = [-1, 1].map((s) => { const e = new THREE.Mesh(new THREE.SphereGeometry(0.24, 12, 10), glowMat(0x5cf2c8)); e.position.set(s * 0.25, 0.1, 1.05); return e; });
+    const wingMat = glowMat(0xb8fff0, 0.35);
+    const wings = [];
+    [[0.45, 1], [0.05, -1]].forEach(([z, ph]) => [-1, 1].forEach((s) => {
+      const pivot = new THREE.Group(); pivot.position.set(s * 0.3, 0.25, z);
+      const w = new THREE.Mesh(new THREE.PlaneGeometry(2.8, 0.55), wingMat); w.rotation.x = -Math.PI / 2; w.position.x = s * 1.45;
+      pivot.add(w); pivot.userData = { s, ph }; wings.push(pivot);
+    }));
+    d.add(...segs, thorax, head, ...eyes, ...wings);
+    d.scale.setScalar(1.3);
+    return { group: d, light: 0x5cf2c8, animate: (dt, time) => { wings.forEach((w) => { w.rotation.z = w.userData.s * Math.sin(time * 38 + w.userData.ph) * 0.35; }); } };
+  }
+
+  function buildJelly() {
+    const d = new THREE.Group();
+    const bell = new THREE.Mesh(new THREE.SphereGeometry(1.4, 24, 14, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xc58bff, emissive: 0x7a2fd1, emissiveIntensity: 0.9, transparent: true, opacity: 0.75, side: THREE.DoubleSide }));
+    const core = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 12), glowMat(0xffd6ff));
+    core.position.y = 0.4;
+    const tentacles = [];
+    for (let i = 0; i < 10; i++) {
+      const a = (i / 10) * Math.PI * 2;
+      const pivot = new THREE.Group(); pivot.position.set(Math.cos(a) * 0.9, -0.05, Math.sin(a) * 0.9);
+      const tube = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.015, 2.6, 5), glowMat(0xe2b3ff, 0.8)); tube.position.y = -1.3;
+      pivot.add(tube); pivot.userData.a = a; tentacles.push(pivot);
+    }
+    d.add(bell, core, ...tentacles);
+    return { group: d, light: 0xc58bff, animate: (dt, time) => {
+      const pulse = 1 + Math.sin(time * 3) * 0.08;
+      bell.scale.set(pulse, 2 - pulse, pulse);
+      tentacles.forEach((p) => { p.rotation.x = Math.sin(time * 2.2 + p.userData.a) * 0.3; p.rotation.z = Math.cos(time * 1.8 + p.userData.a) * 0.3; });
+    } };
+  }
+
+  function buildManta() {
+    const d = new THREE.Group();
+    const gold = mat(0xffc65c, { metalness: 0.8, roughness: 0.25, emissive: 0x6b4100 });
+    const body = new THREE.Mesh(new THREE.OctahedronGeometry(1, 0), gold); body.scale.set(1.2, 0.35, 1.8);
+    const wings = [-1, 1].map((s) => {
+      const pivot = new THREE.Group(); pivot.position.x = s * 0.9;
+      const w = new THREE.Mesh(new THREE.ConeGeometry(1.2, 3.2, 3), gold); w.rotation.z = -s * Math.PI / 2; w.position.x = s * 1.5; w.scale.set(1, 1, 0.12);
+      pivot.add(w); pivot.userData.s = s; return pivot;
+    });
+    const tail = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.01, 3.2, 6), gold); tail.rotation.x = Math.PI / 2; tail.position.z = -2.9;
+    const halo = new THREE.Mesh(new THREE.TorusGeometry(1.9, 0.05, 6, 48), glowMat(0xfff0b0, 0.9)); halo.rotation.x = Math.PI / 2; halo.position.y = 0.9;
+    const eyes = [-1, 1].map((s) => { const e = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 6), glowMat(0xffffff)); e.position.set(s * 0.45, 0.15, 1.55); return e; });
+    d.add(body, ...wings, tail, halo, ...eyes);
+    return { group: d, light: 0xffc65c, animate: (dt, time) => {
+      wings.forEach((w) => { w.rotation.z = w.userData.s * Math.sin(time * 2.6) * 0.45; });
+      halo.rotation.z = time; halo.position.y = 0.9 + Math.sin(time * 2) * 0.1;
+    } };
+  }
+
+  const FORMS = [
+    { name: 'quadcopter', make: () => buildMulti(4, 1, 0x5cf2c8, 0xdfe6e8) },
+    { name: 'hexacopter', make: () => buildMulti(6, 1.05, 0xff8a2a, 0xf2f0ea) },
+    { name: 'fixed-wing glider', make: buildPlane },
+    { name: 'night owl', make: buildBird },
+    { name: 'dragonfly', make: buildDragonfly },
+    { name: 'glowing jellyfish', make: buildJelly },
+    { name: 'golden manta ray', make: buildManta }
+  ];
+  let form = FORMS[0].make();
+  form.baseScale = form.group.scale.x;
+  const drone = form.group;
   const frame = new THREE.Group(); // position + yaw
   const tilt = new THREE.Group(); // pitch + roll
   tilt.add(drone);
+  const formHolder = tilt;
   frame.add(tilt);
   const spot = new THREE.SpotLight(0xd8fff2, 40, 60, 0.55, 0.6, 1.6);
   spot.position.set(0, -0.2, 0.4);
@@ -495,7 +649,7 @@ function start() {
 
   signals.forEach((s) => {
     s.btn.addEventListener('click', () => {
-      if (s.found || reduceMotion) { openCard(s.id); return; }
+      if (s.found || reduceMotion) { showSide(s.btn, s.found ? 'Found' : ''); return; }
       state.target = s;
       startTiming();
       if (soundPref !== 'off' && !sound.on) setSound(true, false);
@@ -630,21 +784,46 @@ function start() {
     s.btn.setAttribute('aria-label', s.name + ' signal, found. Open it.');
     applyPalette();
     const n = updateFound();
-    keys.clear(); touch.fwd = touch.turn = touch.up = 0;
     sound.chime(n);
     burst(s.x, s.y + 10, s.z, 160, 16, [palette.beacon, 0xc9ff7a, 0xffffff, palette.beacon], 4);
     burst(s.x, s.y + 22, s.z, 90, 10, [palette.beacon, 0xffffff], 2);
     if (hud.found) { hud.found.classList.remove('is-pop'); void hud.found.offsetWidth; hud.found.classList.add('is-pop'); }
-    toast('Signal ' + n + ' of ' + signals.length + ': ' + s.name + '.', 1800);
     state.target = null;
-    setTimeout(() => {
-      paused = true;
-      openCard(s.id, () => {
-        paused = false;
-        last = performance.now();
-        if (n === signals.length) celebrate();
-      });
-    }, reduceMotion ? 0 : 1100);
+    const next = FORMS[Math.min(n, FORMS.length - 1)];
+    morphTo(Math.min(n, FORMS.length - 1));
+    showSide(s.btn, 'Signal ' + n + ' of ' + signals.length + '. You are now a ' + next.name + '.');
+    if (n === signals.length) setTimeout(celebrate, reduceMotion ? 0 : 1600);
+  }
+
+  /* ---------- Morph into the next form ---------- */
+  function morphTo(index) {
+    state.morph = { t: 0, index, swapped: false };
+    sound.whoosh();
+  }
+  function updateMorph(dt) {
+    const m = state.morph; m.t += dt;
+    if (!m.swapped) {
+      const k = 1 - smoothstep(0, 0.28, m.t);
+      form.group.scale.setScalar(Math.max(0.001, k) * (form.baseScale || 1));
+      form.group.rotation.y += dt * 18;
+      if (m.t >= 0.28) {
+        formHolder.remove(form.group);
+        form = FORMS[m.index].make();
+        form.baseScale = form.group.scale.x;
+        form.group.scale.setScalar(0.001);
+        formHolder.add(form.group);
+        glow.color.setHex(form.light);
+        const p = frame.position;
+        burst(p.x, p.y, p.z, 140, 12, [form.light, 0xffffff]);
+        m.swapped = true;
+      }
+    } else {
+      const k = smoothstep(0.28, 0.75, m.t);
+      const over = 1 + Math.sin(k * Math.PI) * 0.35;
+      form.group.scale.setScalar(Math.max(0.001, k * over) * form.baseScale);
+      form.group.rotation.y = (1 - k) * Math.PI * 2;
+      if (m.t >= 0.75) { form.group.scale.setScalar(form.baseScale); form.group.rotation.y = 0; state.morph = null; }
+    }
   }
 
   /* ---------- All six found ---------- */
@@ -674,6 +853,7 @@ function start() {
     won = false;
     signals.forEach((s) => { s.found = false; s.btn.classList.remove('is-found'); s.btn.setAttribute('aria-label', s.name + ' signal. Fly there.'); });
     state.clock = 0; state.timing = true; state.celebrate = 0;
+    morphTo(0);
     if (winEl) winEl.hidden = true;
     root.classList.remove('xp-won');
     applyPalette();
@@ -767,7 +947,8 @@ function start() {
     const forwardSpeed = state.vx * fx + state.vz * fz;
     tilt.rotation.x += ((forwardSpeed / maxSpeed) * 0.28 - tilt.rotation.x) * Math.min(1, dt * 5);
     tilt.rotation.z += (-state.yawRate * 0.18 - tilt.rotation.z) * Math.min(1, dt * 5);
-    drone.userData.props.forEach((p, i) => { p.rotation.y += dt * (i % 2 ? -42 : 42); });
+    form.animate(dt, time);
+    if (state.morph) updateMorph(dt);
 
     /* Battery and the swap */
     if (state.mode !== 'intro' && dt > 0 && !state.swap) state.battery = Math.max(0, state.battery - dt * 0.75);
