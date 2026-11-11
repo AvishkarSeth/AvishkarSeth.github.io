@@ -8,6 +8,7 @@
   signals as plain buttons.
 */
 import * as THREE from '/assets/vendor/three/three.module.min.js';
+import { Sound } from '/assets/js/sound.js';
 
 const root = document.getElementById('experience');
 const canvas = document.getElementById('xp-canvas');
@@ -148,7 +149,7 @@ function start() {
   const signalButtons = Array.from(document.querySelectorAll('.xp-signal'));
   const signals = signalButtons.map((btn, i) => {
     const a = (i / signalButtons.length) * Math.PI * 2 + 0.6;
-    const r = 70 + (i % 2) * 45 + rand() * 15;
+    const r = 34 + (i % 2) * 16 + rand() * 6;
     const x = Math.cos(a) * r, z = Math.sin(a) * r;
     return { id: btn.dataset.id, name: btn.dataset.name, btn, x, z, y: groundHeight(x, z), found: false };
   });
@@ -314,6 +315,60 @@ function start() {
   tether.visible = false;
   scene.add(tether);
 
+  /* ---------- Sparks: bursts when a signal is found, fireworks when all six are ---------- */
+  const SPARKS = 1800;
+  const spGeo = new THREE.BufferGeometry();
+  const spPos = new Float32Array(SPARKS * 3), spCol = new Float32Array(SPARKS * 3), spLife = new Float32Array(SPARKS);
+  const spVel = new Float32Array(SPARKS * 3);
+  spGeo.setAttribute('position', new THREE.BufferAttribute(spPos, 3));
+  spGeo.setAttribute('color', new THREE.BufferAttribute(spCol, 3));
+  spGeo.setAttribute('life', new THREE.BufferAttribute(spLife, 1));
+  const spMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    uniforms: { scale: { value: 1 } },
+    vertexShader: `
+      attribute vec3 color; attribute float life; uniform float scale; varying vec3 vC; varying float vL;
+      void main(){ vC = color; vL = life; vec4 mv = modelViewMatrix * vec4(position,1.0);
+        gl_PointSize = life > 0.0 ? min(9.0, max(1.5, scale * 0.45 * (0.4 + life) / -mv.z)) : 0.0;
+        gl_Position = projectionMatrix * mv; }`,
+    fragmentShader: `
+      varying vec3 vC; varying float vL;
+      void main(){ if (vL <= 0.0) discard; float d = length(gl_PointCoord-0.5); float a = smoothstep(0.5,0.0,d);
+        gl_FragColor = vec4(vC, a * min(1.0, vL * 1.6)); }`
+  });
+  const sparks = new THREE.Points(spGeo, spMat);
+  sparks.frustumCulled = false;
+  scene.add(sparks);
+  let spNext = 0;
+  const burstColour = new THREE.Color();
+  function burst(x, y, z, count, speed, hexes, up) {
+    for (let k = 0; k < count; k++) {
+      const i = spNext; spNext = (spNext + 1) % SPARKS;
+      spPos[i * 3] = x; spPos[i * 3 + 1] = y; spPos[i * 3 + 2] = z;
+      const th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
+      const s = speed * (0.55 + Math.random() * 0.45);
+      spVel[i * 3] = Math.sin(ph) * Math.cos(th) * s;
+      spVel[i * 3 + 1] = Math.cos(ph) * s + (up || 0);
+      spVel[i * 3 + 2] = Math.sin(ph) * Math.sin(th) * s;
+      burstColour.setHex(hexes[k % hexes.length]);
+      spCol[i * 3] = burstColour.r; spCol[i * 3 + 1] = burstColour.g; spCol[i * 3 + 2] = burstColour.b;
+      spLife[i] = 1 + Math.random() * 0.6;
+    }
+  }
+  function updateSparks(dt) {
+    const drag = Math.pow(0.4, dt);
+    for (let i = 0; i < SPARKS; i++) {
+      if (spLife[i] <= 0) continue;
+      spLife[i] -= dt * 0.55;
+      spVel[i * 3 + 1] -= 6 * dt;
+      spVel[i * 3] *= drag; spVel[i * 3 + 1] *= drag; spVel[i * 3 + 2] *= drag;
+      spPos[i * 3] += spVel[i * 3] * dt; spPos[i * 3 + 1] += spVel[i * 3 + 1] * dt; spPos[i * 3 + 2] += spVel[i * 3 + 2] * dt;
+    }
+    spGeo.attributes.position.needsUpdate = true;
+    spGeo.attributes.life.needsUpdate = true;
+    spGeo.attributes.color.needsUpdate = true;
+  }
+
   /* ---------- Theme ---------- */
   function applyPalette() {
     const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
@@ -335,8 +390,9 @@ function start() {
     starMat.opacity = p.stars;
     stars.visible = p.stars > 0;
     signals.forEach((s) => {
-      s.beam.material.uniforms.color.value.setHex(s.found ? 0xffffff : p.beacon);
-      s.rings.forEach((r) => r.material.color.setHex(s.found ? 0xffffff : p.beacon));
+      const c = won ? 0xffc65c : s.found ? 0xffffff : p.beacon;
+      s.beam.material.uniforms.color.value.setHex(c);
+      s.rings.forEach((r) => r.material.color.setHex(c));
     });
     renderer.toneMappingExposure = p.exposure;
     spot.intensity = theme === 'dark' ? 40 : 8;
@@ -344,13 +400,15 @@ function start() {
     palette = p;
   }
   let palette = PALETTES.dark;
+  let won = false;
   applyPalette();
   new MutationObserver(applyPalette).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   /* ---------- Flight state ---------- */
   const state = {
     x: 0, z: -30, alt: 18, yaw: 0, vx: 0, vz: 0, vy: 0, yawRate: 0,
-    mode: 'intro', battery: 100, swap: null, bump: 0, target: null, lastInput: 0
+    mode: 'intro', battery: 100, swap: null, bump: 0, target: null, lastInput: 0,
+    clock: 0, timing: false, celebrate: 0
   };
   const keys = new Set();
   const touch = { fwd: 0, turn: 0, up: 0 };
@@ -359,7 +417,7 @@ function start() {
   const route = [];
   for (let i = 0; i < 12; i++) {
     const a = (i / 12) * Math.PI * 2;
-    const r = 60 + Math.sin(i * 1.7) * 30;
+    const r = 88 + Math.sin(i * 1.7) * 18;
     route.push(new THREE.Vector3(Math.cos(a) * r, 0, Math.sin(a) * r));
   }
   const curve = new THREE.CatmullRomCurve3(route, true, 'catmullrom', 0.5);
@@ -371,7 +429,7 @@ function start() {
     bat: document.getElementById('hud-bat'), batBar: document.getElementById('hud-bat-bar'),
     found: document.getElementById('hud-found'), mode: document.getElementById('hud-mode'),
     toast: document.getElementById('xp-toast'), radar: document.getElementById('xp-radar'),
-    markers: document.getElementById('xp-markers')
+    markers: document.getElementById('xp-markers'), clock: document.getElementById('hud-time')
   };
   const radarCtx = hud.radar ? hud.radar.getContext('2d') : null;
   const markers = signals.map((s) => {
@@ -405,12 +463,31 @@ function start() {
   }
   setMode('intro');
 
+  /* Sound: off until the visitor asks for it or takes the controls */
+  const sound = new Sound();
+  const soundBtns = Array.from(document.querySelectorAll('.xp-sound'));
+  let soundPref = null;
+  try { soundPref = localStorage.getItem('sound'); } catch (e) {}
+  function setSound(on, remember) {
+    const ok = sound.set(on);
+    soundBtns.forEach((b) => {
+      b.setAttribute('aria-pressed', ok ? 'true' : 'false');
+      b.setAttribute('aria-label', ok ? 'Turn music off' : 'Turn music on');
+      b.classList.toggle('is-on', !!ok);
+    });
+    if (remember) { soundPref = on ? 'on' : 'off'; try { localStorage.setItem('sound', soundPref); } catch (e) {} }
+  }
+  soundBtns.forEach((b) => b.addEventListener('click', () => setSound(!sound.on, true)));
+  function startTiming() { if (!state.timing && !won) { state.timing = true; } }
+
   /* Buttons */
   const takeBtn = document.getElementById('xp-take');
   const exitBtn = document.getElementById('xp-exit');
   if (takeBtn) takeBtn.addEventListener('click', () => {
     setMode('pilot');
     state.lastInput = performance.now();
+    startTiming();
+    if (soundPref !== 'off' && !sound.on) setSound(true, false);
     root.focus({ preventScroll: true });
     toast(isTouch ? 'Left stick to fly, right buttons to climb and descend.' : 'W A S D or arrows to fly. Space to climb, Shift to descend.', 5200);
   });
@@ -420,7 +497,8 @@ function start() {
     s.btn.addEventListener('click', () => {
       if (s.found || reduceMotion) { openCard(s.id); return; }
       state.target = s;
-      if (state.mode === 'intro') root.classList.add('xp-flying');
+      startTiming();
+      if (soundPref !== 'off' && !sound.on) setSound(true, false);
       setMode('seek');
       toast('Autopilot: flying to the ' + s.name.toLowerCase() + ' signal.', 2600);
     });
@@ -482,11 +560,12 @@ function start() {
     camera.fov = w < 700 ? 72 : 60;
     camera.updateProjectionMatrix();
     ffMat.uniforms.scale.value = (h / 2) / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    spMat.uniforms.scale.value = ffMat.uniforms.scale.value;
   }
   resize();
   window.addEventListener('resize', () => { resize(); renderedStill = false; });
-  new IntersectionObserver((entries) => { inView = entries[0].isIntersecting; }, { threshold: 0.05 }).observe(root);
-  document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; });
+  new IntersectionObserver((entries) => { inView = entries[0].isIntersecting; sound.setDuck(inView ? 1 : 0.3); }, { threshold: 0.05 }).observe(root);
+  document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; sound.suspend(document.hidden); });
 
   /* ---------- Collision with trees ---------- */
   function treeCollide() {
@@ -504,7 +583,7 @@ function start() {
           state.x = t.x + dx / d * reach; state.z = t.z + dz / d * reach;
           const speed = Math.hypot(state.vx, state.vz);
           state.vx *= -0.3; state.vz *= -0.3;
-          if (speed > 3 && state.bump <= 0) { state.bump = 0.35; toast('Branch strike. The frame is fine, the pride less so.', 2200); }
+          if (speed > 3 && state.bump <= 0) { state.bump = 0.35; sound.bump(); toast('Branch strike. The frame is fine, the pride less so.', 2200); }
         }
       }
     }
@@ -515,6 +594,7 @@ function start() {
     state.swap = { t: 0 };
     service.visible = true;
     toast('Battery low. Service drone inbound for a mid-air swap.', 3500);
+    sound.whoosh();
   }
   function updateSwap(dt, dronePos) {
     const s = state.swap; s.t += dt;
@@ -539,7 +619,7 @@ function start() {
       const arr = tether.geometry.attributes.position;
       arr.setXYZ(0, p.x, p.y - 0.4, p.z); arr.setXYZ(1, cellPos.x, cellPos.y, cellPos.z); arr.needsUpdate = true;
     }
-    if (s.t > 5.6 && state.battery < 99) { state.battery = 100; toast('Mid-air swap complete. Full battery, no landing. That is what Dronergy builds.', 4600); }
+    if (s.t > 5.6 && state.battery < 99) { state.battery = 100; sound.powerUp(); burst(cell.position.x, cell.position.y, cell.position.z, 60, 6, [0xff8a2a, 0xffd27a]); toast('Mid-air swap complete. Full battery, no landing. That is what Dronergy builds.', 4600); }
     if (s.t > 10) { state.swap = null; service.visible = false; tether.visible = false; cell.visible = false; }
   }
 
@@ -551,13 +631,61 @@ function start() {
     applyPalette();
     const n = updateFound();
     keys.clear(); touch.fwd = touch.turn = touch.up = 0;
-    paused = true;
-    openCard(s.id, () => {
-      paused = false;
-      last = performance.now();
-      if (n === signals.length) toast('All six signals found. You have seen inside my head. Scroll on for the long version.', 6000);
-    });
+    sound.chime(n);
+    burst(s.x, s.y + 10, s.z, 160, 16, [palette.beacon, 0xc9ff7a, 0xffffff, palette.beacon], 4);
+    burst(s.x, s.y + 22, s.z, 90, 10, [palette.beacon, 0xffffff], 2);
+    if (hud.found) { hud.found.classList.remove('is-pop'); void hud.found.offsetWidth; hud.found.classList.add('is-pop'); }
+    toast('Signal ' + n + ' of ' + signals.length + ': ' + s.name + '.', 1800);
+    state.target = null;
+    setTimeout(() => {
+      paused = true;
+      openCard(s.id, () => {
+        paused = false;
+        last = performance.now();
+        if (n === signals.length) celebrate();
+      });
+    }, reduceMotion ? 0 : 1100);
   }
+
+  /* ---------- All six found ---------- */
+  const winEl = document.getElementById('xp-win');
+  function fmtTime(sec) { const m = Math.floor(sec / 60), s = Math.floor(sec % 60); return m + ':' + String(s).padStart(2, '0'); }
+  function celebrate() {
+    won = true;
+    state.timing = false;
+    state.celebrate = 12;
+    applyPalette();
+    sound.win();
+    signals.forEach((s, i) => setTimeout(() => burst(s.x, s.y + 30, s.z, 220, 22, [0xffc65c, 0xffffff, palette.beacon, 0xff8a2a], 6), i * 160));
+    let best = null;
+    try { best = parseFloat(localStorage.getItem('xp-best')); } catch (e) {}
+    const isBest = !best || state.clock < best;
+    if (isBest) { try { localStorage.setItem('xp-best', String(state.clock)); } catch (e) {} }
+    const timeEl = document.getElementById('xp-win-time');
+    if (timeEl) timeEl.textContent = fmtTime(state.clock) + (isBest ? ', your best yet' : ', your best is ' + fmtTime(best));
+    if (winEl) setTimeout(() => {
+      winEl.hidden = false;
+      root.classList.add('xp-won');
+      const first = winEl.querySelector('a, button');
+      if (first) first.focus({ preventScroll: true });
+    }, 1400);
+  }
+  function resetGame() {
+    won = false;
+    signals.forEach((s) => { s.found = false; s.btn.classList.remove('is-found'); s.btn.setAttribute('aria-label', s.name + ' signal. Fly there.'); });
+    state.clock = 0; state.timing = true; state.celebrate = 0;
+    if (winEl) winEl.hidden = true;
+    root.classList.remove('xp-won');
+    applyPalette();
+    updateFound();
+    setMode('pilot');
+    root.focus({ preventScroll: true });
+    toast('New run. The clock is ticking.', 2400);
+  }
+  const againBtn = document.getElementById('xp-again');
+  if (againBtn) againBtn.addEventListener('click', resetGame);
+  const closeWin = document.getElementById('xp-win-close');
+  if (closeWin) closeWin.addEventListener('click', () => { winEl.hidden = true; root.classList.remove('xp-won'); root.focus({ preventScroll: true }); });
 
   /* ---------- Loop ---------- */
   let last = performance.now(), time = 0, paused = false, renderedStill = false;
@@ -646,6 +774,17 @@ function start() {
     if (state.mode === 'intro' && !state.swap && state.battery < 100) state.battery = Math.min(100, state.battery + dt * 4);
     if (!state.swap && state.battery < 18 && state.mode !== 'intro') startSwap();
     if (state.swap) updateSwap(dt, frame.position);
+    if (state.timing && dt > 0) state.clock += dt;
+    if (state.celebrate > 0 && dt > 0) {
+      state.celebrate -= dt;
+      if (Math.random() < dt * 3.2) {
+        const a = Math.random() * Math.PI * 2, r = 15 + Math.random() * 40;
+        burst(frame.position.x + Math.cos(a) * r, frame.position.y + 18 + Math.random() * 22, frame.position.z + Math.sin(a) * r, 140, 18,
+          [[0xffc65c, 0xffffff], [0x5cf2c8, 0xffffff], [0xff8a2a, 0xffd27a], [0x9fc4ff, 0xffffff]][Math.floor(Math.random() * 4)]);
+        sound.firework();
+      }
+    }
+    if (dt > 0) updateSparks(dt);
 
     /* Signals */
     signals.forEach((s) => {
@@ -686,6 +825,7 @@ function start() {
     if (hud.alt) hud.alt.textContent = state.alt.toFixed(1);
     if (hud.spd) hud.spd.textContent = speed.toFixed(1);
     if (hud.bat) hud.bat.textContent = Math.round(state.battery);
+    if (hud.clock) hud.clock.textContent = fmtTime(state.clock);
     if (hud.batBar) {
       hud.batBar.style.transform = 'scaleX(' + (state.battery / 100).toFixed(3) + ')';
       hud.batBar.classList.toggle('is-low', state.battery < 25);
