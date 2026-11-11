@@ -165,7 +165,7 @@ strong, b { font-weight: 700; }
 .nav-toggle .icon-close, .nav-open .nav-toggle .icon-menu { display: none; }
 .nav-open .nav-toggle .icon-close { display: block; }
 
-@media (max-width: 1040px) {
+@media (max-width: 1140px) {
   .nav-toggle { display: inline-grid; }
   .site-nav {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
@@ -628,3 +628,19 @@ kbd { font-family: var(--mono); font-size: 0.72rem; font-weight: 600; display: i
 .post-body .media-pair { display: grid; grid-template-columns: 2.2fr 1fr; gap: 10px; margin-bottom: 20px; height: clamp(260px, 32vw, 440px); }
 .post-body .media-pair img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); display: block; min-width: 0; }
 @media (max-width: 620px) { .post-body .media-pair { grid-template-columns: 1fr; height: auto; } .post-body .media-pair img.is-tall { max-height: 520px; object-position: center 30%; } }
+
+/* Off the clock */
+.oc-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; padding: 0; }
+.oc-tags li { padding: 6px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); font-weight: 500; font-size: 0.95rem; }
+.oc-player { width: 100%; height: 352px; border: 0; border-radius: 12px; margin-bottom: 20px; display: block; }
+.oc-list { list-style: none; margin: 0; padding: 0; }
+.oc-list li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.oc-list li:first-child { border-top: 0; padding-top: 0; }
+.oc-title { font-weight: 600; font-size: 1.08rem; }
+.oc-why { color: var(--muted); }
+.oc-dislikes li { display: block; }
+.oc-dislikes li::before { content: "No: "; color: var(--energy); font-weight: 700; }
+.oc-gallery { columns: 2 260px; column-gap: 14px; }
+.oc-gallery figure { margin: 0 0 14px; break-inside: avoid; }
+.oc-gallery img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--rule); }
+.oc-gallery figcaption { margin-top: 6px; }

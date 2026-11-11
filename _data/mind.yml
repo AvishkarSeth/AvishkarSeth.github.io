@@ -126,4 +126,6 @@
       alt: Avishkar on a coastal walking trail above the sea
     - src: assets/img/mind/creative-2.webp
       alt: Avishkar at Darling Harbour at night with the city lights behind
-  likes: []
+  link:
+    url: /off-the-clock.html
+    label: Off the clock

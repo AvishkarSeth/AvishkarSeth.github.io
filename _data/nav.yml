@@ -20,6 +20,9 @@
 - id: learn
   label: "Tutorials"
   url: "/learn.html"
+- id: offclock
+  label: "Off the clock"
+  url: "/off-the-clock.html"
 - id: portfolio
   label: "Portfolio"
   url: "https://avishkarseth.github.io/portfolio/"

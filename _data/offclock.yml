@@ -1,0 +1,47 @@
+# The "Off the clock" page: music, shows, games, art, places and pet hates.
+# Every section is optional. A section only appears on the page once it has something in it,
+# so you can fill this in a bit at a time. Copy an example line, remove the "# " in front,
+# and replace the text. Keep each "why" to one short line in your own words.
+
+# Music -------------------------------------------------------------------------------------
+# Paste the share link of a Spotify playlist (Share > Copy link to playlist) and it becomes a
+# player on the page. Leave it empty if you would rather just list tracks.
+playlist: ""
+
+# Tracks or artists on repeat right now, newest first.
+music: []
+#  - title: "Song or album name"
+#    artist: "Artist"
+#    why: "One line on why it is on repeat"
+#    url: "https://open.spotify.com/track/..."   # optional
+
+# Shows and films ---------------------------------------------------------------------------
+watching: []
+#  - title: "Show or film"
+#    why: "One line"
+#    url: ""                                       # optional
+
+# Games -------------------------------------------------------------------------------------
+playing: []
+#  - title: "Game"
+#    why: "One line"
+#    url: ""                                       # optional
+
+# Art, photography and things I make --------------------------------------------------------
+# Photos live in assets/img/offclock/ (send them to Claude to add and shrink them).
+gallery:
+  - src: assets/img/mind/creative.webp
+    alt: A coastal walking trail above the sea
+    caption: Out on a coastal trail
+  - src: assets/img/mind/creative-2.webp
+    alt: Darling Harbour at night with the city lights behind
+    caption: Darling Harbour after dark
+
+# Places I keep going back to, or want to go -----------------------------------------------
+places: []
+#  - name: "Place"
+#    why: "One line"
+
+# Things I cannot stand (keep it light) ----------------------------------------------------
+dislikes: []
+#  - "Props that are not balanced"
