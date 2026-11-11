@@ -1,0 +1,121 @@
+# The six signals hidden in the forest on the home page, and the "Inside my head"
+# chapters below it. Same content in both places. Order = order on the page.
+#
+# id        short name, used in links (#mind-<id>) and in the game
+# name      the side of you this signal stands for
+# headline  big line shown first
+# body      one or two short paragraphs (HTML allowed)
+# facts     short lines shown as a list (HTML allowed)
+# images    optional: src (from the site root) and alt
+# link      optional: where to go next (url + label)
+# likes     optional, Creative only: groups of things you like. Add to these lists
+#           any time (music, shows, games, places) and they appear on the page.
+
+- id: engineer
+  name: Engineer
+  headline: I make hardware think.
+  body: >-
+    Give me a flight controller, a companion computer and a problem that has not been solved yet.
+    I design the full chain: sensors, power, embedded code, autonomy, and the ground station that
+    talks to all of it.
+  facts:
+    - Raspberry Pi 5 and Jetson Orin on board, talking to CubePilot Orange and Pixhawk 6C
+    - ROS 2 on Ubuntu, PX4 and ArduPilot, MAVLink over TCP and UDP
+    - OptiTrack for indoor flight, GPS RTK and UWB outdoors
+    - STM32 and RTOS on the bench, KiCad when the board does not exist yet
+  images:
+    - src: assets/img/mind/engineer.webp
+      alt: Avishkar in the lab holding a drone payload module
+  link:
+    url: /about.html
+    label: Full skill set
+
+- id: builder
+  name: Builder
+  headline: Off the bench. Into the wind.
+  body: >-
+    Simulation sets the baseline. The real test is outside, with wind, water and a battery that
+    is running out. I fly, break, fix and fly again until it works in the field.
+  facts:
+    - Licensed pilot running flight tests for aerial, surface and underwater robots
+    - Uncrewed boats and underwater ROVs for marine monitoring
+    - Warehouse inventory drone with Legrand, as Chief Investigator
+    - Field trips, competitions and demos written up on the blog
+  images:
+    - src: assets/img/mind/builder.webp
+      alt: A drone mounted on an uncrewed surface boat on the water
+    - src: assets/img/mind/builder-2.webp
+      alt: An underwater robot with its light on, tethered below a rocky shore
+  link:
+    url: /tutorials.html
+    label: Read the blogs
+
+- id: founder
+  name: Founder
+  headline: Drones that do not have to land.
+  body: >-
+    I lead <a href="https://www.dronergy.co/" target="_blank" rel="noopener">Dronergy</a>, a startup
+    turning mid-air battery swapping into a product. A service drone meets a working drone in the
+    air, hands over a fresh battery and leaves. The mission never stops.
+  facts:
+    - Backed by an AEA Innovate grant of A$2.24M at Macquarie University
+    - Provisional patents on mid-air drone-to-drone handoff and on balanced lift with drone swarms
+    - Australian made and tested
+  link:
+    url: https://www.dronergy.co/
+    label: Visit Dronergy
+
+- id: visionary
+  name: Visionary
+  headline: Swarms that share the load and pass the job along.
+  body: >-
+    My research asks what drones can do together that none can do alone: carry one payload
+    between several aircraft, dock in mid-air, and hand a moving target from one drone to the next
+    without losing sight of it.
+  facts:
+    - AeroBridge, autonomous drone handoff for battery service (ACM MobiCom 2024)
+    - Synchronised mid-air docking during translational motion (IEEE ROBIO 2025)
+    - ModCAM, scalable cooperative aerial manipulation (Springer, 2026)
+    - PATH and HARP, continuous target sensing and handoff recovery (2026 preprints)
+    - 32 papers, chapters and preprints since 2020
+  link:
+    url: /research.html
+    label: All research
+
+- id: teacher
+  name: Teacher
+  headline: Teaching robots to students, and students to robots.
+  body: >-
+    I teach embedded systems and mobile robotics at Macquarie University and mentor student teams
+    who build things that move.
+  facts:
+    - COMP8291 IoT and Embedded Systems, and MTRN4068 Wireless Mechatronics
+    - Mentor to the MQ Robotics Club, winners of the QUT Droid Racing Challenge 2026
+    - Mentor to the Drone Society and MARS Rover teams
+  images:
+    - src: assets/img/mind/teacher.webp
+      alt: The Macquarie University Robotics Club team with their racing robot
+  link:
+    url: /teaching.html
+    label: Courses and mentoring
+
+- id: creative
+  name: Creative
+  headline: The rest of my head.
+  body: >-
+    Curiosity does not switch off after work. Most of my ideas start somewhere far from a lab:
+    on a trail, behind a camera, in a game, or looking up at the night sky.
+  facts:
+    - Music
+    - Photography
+    - Travel
+    - Favourite shows
+    - Gaming
+    - Science and tech
+    - Nature and the universe
+  images:
+    - src: assets/img/mind/creative.webp
+      alt: Avishkar on a coastal walking trail above the sea
+    - src: assets/img/mind/creative-2.webp
+      alt: Avishkar at Darling Harbour at night with the city lights behind
+  likes: []

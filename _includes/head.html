@@ -12,7 +12,7 @@
   <script data-goatcounter="https://avishkarseth.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta name="theme-color" id="theme-color" content="#eef2f1">
+  <meta name="theme-color" id="theme-color" content="#061419">
 
   <title>{{ page.title | default: site.title }}</title>
 {% if page.description %}  <meta content="{{ page.description | escape }}" name="description">
@@ -59,18 +59,19 @@
     (function () {
       var t = null;
       try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') {
-        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-      }
+      if (t !== 'light' && t !== 'dark') t = 'dark';
       document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
       var m = document.getElementById('theme-color');
-      if (m) m.setAttribute('content', t === 'dark' ? '#0a2030' : '#eef2f1');
+      if (m) m.setAttribute('content', t === 'dark' ? '#061419' : '#eef3f1');
     })();
   </script>
 
   <!-- Type: Archivo variable, self-hosted -->
   <link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link href="/assets/css/site.css" rel="stylesheet">
+{% if page.home %}  <link rel="modulepreload" href="/assets/vendor/three/three.module.min.js">
+{% endif %}
 {% if page.mathjax %}
   <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 {% endif %}

@@ -1,9 +1,10 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-contact">
-      <p>Working on aerial robotics, or want to? Write to me.</p>
+{% unless page.home %}      <p>Working on aerial robotics, or want to? Write to me.</p>
       <a class="footer-mail" href="mailto:{{ site.email }}">{{ site.email }}</a>
-    </div>
+{% else %}      <p class="footer-sign">Engineer. Builder. Creative. Visionary roboticist.</p>
+{% endunless %}    </div>
     <ul class="footer-links">
 {% for s in site.data.social %}{% unless s.url contains "mailto:" %}      <li><a href="{{ s.url }}" target="_blank" rel="noopener me">{{ s.title | replace: "Github", "GitHub" | replace: "Macquarie Uni Research Profile", "Macquarie profile" }}</a></li>
 {% endunless %}{% endfor %}    </ul>
