@@ -21,12 +21,18 @@ nav: offclock
   <div class="wrap split">
     <header class="split-head sticky">
       <h2 id="oc-music">On repeat</h2>
+      <p>Most played on YouTube Music lately.</p>
     </header>
     <div>
 {% if oc.playlist != "" %}{% assign pl = oc.playlist | split: "?" | first | replace: "open.spotify.com/", "open.spotify.com/embed/" %}      <iframe class="oc-player" src="{{ pl }}?utm_source=generator&theme=0" title="Spotify playlist" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-{% endif %}{% if oc.music.size > 0 %}      <ol class="oc-list">
-{% for t in oc.music %}        <li><span class="oc-title">{% if t.url %}<a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.title | escape }}</a>{% else %}{{ t.title | escape }}{% endif %}</span>{% if t.artist %} <span class="meta">{{ t.artist | escape }}</span>{% endif %}{% if t.why %}<span class="oc-why">{{ t.why | escape }}</span>{% endif %}</li>
+{% else %}{% assign ids = "" %}{% for t in oc.music %}{% if t.youtube %}{% assign ids = ids | append: t.youtube | append: "," %}{% endif %}{% endfor %}{% if ids != "" %}{% assign idlist = ids | split: "," %}{% assign rest = idlist | shift | join: "," %}      <div class="oc-video"><iframe src="https://www.youtube-nocookie.com/embed/{{ idlist[0] }}?playlist={{ rest }}&rel=0" title="Tracks on repeat" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+{% endif %}{% endif %}{% if oc.music.size > 0 %}      <ol class="oc-list oc-tracks">
+{% for t in oc.music %}        <li><span class="oc-title">{% if t.url %}<a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.title | escape }}</a>{% else %}{{ t.title | escape }}{% endif %}</span> <span class="meta">{{ t.artist | escape }}</span>{% if t.why %}<span class="oc-why">{{ t.why | escape }}</span>{% endif %}</li>
 {% endfor %}      </ol>
+{% endif %}{% if oc.artists and oc.artists.size > 0 %}      <h3 class="oc-sub">Artists in heavy rotation</h3>
+      <ul class="oc-tags oc-artists">
+{% for a in oc.artists %}        <li>{{ a | escape }}</li>
+{% endfor %}      </ul>
 {% endif %}    </div>
   </div>
 </section>

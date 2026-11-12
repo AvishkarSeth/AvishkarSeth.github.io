@@ -4,16 +4,69 @@
 # and replace the text. Keep each "why" to one short line in your own words.
 
 # Music -------------------------------------------------------------------------------------
-# Paste the share link of a Spotify playlist (Share > Copy link to playlist) and it becomes a
-# player on the page. Leave it empty if you would rather just list tracks.
+# Paste the share link of a Spotify playlist (Share > Copy link to playlist) and it becomes the
+# player on the page. Leave it empty to play the tracks listed below through YouTube instead.
 playlist: ""
 
-# Tracks or artists on repeat right now, newest first.
-music: []
-#  - title: "Song or album name"
-#    artist: "Artist"
-#    why: "One line on why it is on repeat"
-#    url: "https://open.spotify.com/track/..."   # optional
+# Most played on YouTube Music, June to November 2026 (from your listening history).
+# `youtube` is the video ID; tracks with one also play in the player on the page.
+# Add a "why" line to any track in your own words.
+music:
+  - title: "Morph"
+    artist: "Twenty One Pilots"
+    youtube: "rYuBU7YzZ-c"
+    url: "https://music.youtube.com/watch?v=rYuBU7YzZ-c"
+  - title: "12 to 12"
+    artist: "sombr"
+    youtube: "Lylp6w7LpHc"
+    url: "https://music.youtube.com/watch?v=Lylp6w7LpHc"
+  - title: "still feel."
+    artist: "half·alive"
+    youtube: "ggv-0PBmkcg"
+    url: "https://music.youtube.com/watch?v=ggv-0PBmkcg"
+  - title: "I Need Help"
+    artist: "Nerv"
+    youtube: "MJSOPyjpLf0"
+    url: "https://music.youtube.com/watch?v=MJSOPyjpLf0"
+  - title: "Dracula"
+    artist: "Tame Impala"
+    youtube: "cuMuMnCRfqk"
+    url: "https://music.youtube.com/watch?v=cuMuMnCRfqk"
+  - title: "City Walls"
+    artist: "Twenty One Pilots"
+    youtube: "LZy5vrzeKE4"
+    url: "https://music.youtube.com/watch?v=LZy5vrzeKE4"
+  - title: "Routines In The Night"
+    artist: "Twenty One Pilots"
+    youtube: "D9pOuGOaumI"
+    url: "https://music.youtube.com/watch?v=D9pOuGOaumI"
+  - title: "Loser"
+    artist: "Tame Impala"
+    youtube: "MX7FSAnRPug"
+    url: "https://music.youtube.com/watch?v=MX7FSAnRPug"
+  - title: "back to friends"
+    artist: "sombr"
+    youtube: "c-8abSPAPOU"
+    url: "https://music.youtube.com/watch?v=c-8abSPAPOU"
+  - title: "Sweater Weather"
+    artist: "The Neighbourhood"
+    youtube: "cULQhvuq1Zc"
+    url: "https://music.youtube.com/watch?v=cULQhvuq1Zc"
+
+# Artists I play the most, in order
+artists:
+  - "Twenty One Pilots"
+  - "half·alive"
+  - "sombr"
+  - "Linkin Park"
+  - "Tame Impala"
+  - "Tokyo Tea Room"
+  - "Men I Trust"
+  - "Nerv"
+  - "The Neighbourhood"
+  - "Poets Of The Fall"
+  - "Steven Wilson"
+  - "Hans Zimmer"
 
 # Shows and films ---------------------------------------------------------------------------
 watching: []
