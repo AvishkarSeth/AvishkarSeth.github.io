@@ -652,3 +652,21 @@ kbd { font-family: var(--mono); font-size: 0.72rem; font-weight: 600; display: i
 .oc-tracks .oc-why { grid-column: 2 / -1; }
 .oc-sub { font-size: 1.05rem; margin: 28px 0 0; }
 .oc-artists { margin-top: 12px; }
+.oc-stats-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; align-items: center; }
+.oc-clock { margin: 0; }
+.listening-clock { width: 100%; max-width: 420px; height: auto; display: block; margin: 0 auto 8px; }
+.lc-bar { fill: color-mix(in srgb, var(--accent) 70%, transparent); transition: fill 0.2s; }
+.lc-bar:hover { fill: var(--accent-ink); }
+.lc-bar.is-peak { fill: var(--energy); }
+.lc-ring { fill: none; stroke: var(--rule); stroke-width: 1.5; }
+.lc-ring.faint { stroke-dasharray: 3 5; }
+.lc-label { fill: var(--muted); font: 600 12px var(--font); }
+.lc-centre { fill: var(--ink); font: 800 24px var(--font); font-stretch: 125%; }
+.lc-centre-sub { fill: var(--muted); font: 500 11px var(--font); }
+.oc-clock figcaption { text-align: center; }
+.oc-stats { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 24px; }
+.oc-stats div { border-top: 2px solid var(--accent); padding-top: 10px; }
+.oc-stats dt { color: var(--muted); font-size: 0.92rem; }
+.oc-stats dd { margin: 0; order: -1; font-stretch: 112%; font-weight: 800; font-size: clamp(1.4rem, 2.2vw, 1.8rem); letter-spacing: -0.02em; line-height: 1.1; overflow-wrap: normal; word-break: keep-all; }
+.oc-stats div { display: flex; flex-direction: column; }
+@media (max-width: 1040px) { .oc-stats-grid { grid-template-columns: minmax(0, 1fr); } }

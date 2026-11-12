@@ -33,7 +33,30 @@ nav: offclock
       <ul class="oc-tags oc-artists">
 {% for a in oc.artists %}        <li>{{ a | escape }}</li>
 {% endfor %}      </ul>
+{% endif %}{% if oc.scores and oc.scores.size > 0 %}      <h3 class="oc-sub">Scores and soundtracks in the mix</h3>
+      <ul class="oc-tags oc-artists">
+{% for a in oc.scores %}        <li>{{ a | escape }}</li>
+{% endfor %}      </ul>
 {% endif %}    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if oc.stats and oc.stats.size > 0 %}
+<section class="band" aria-labelledby="oc-stats">
+  <div class="wrap split">
+    <header class="split-head sticky">
+      <h2 id="oc-stats">By the numbers</h2>
+      <p>From my YouTube Music history, July to November 2026.</p>
+    </header>
+    <div class="oc-stats-grid">
+      <figure class="oc-clock">
+{% include listening-clock.html %}        <figcaption class="meta">The soundtrack to a working day: on by 7 am, loudest after lunch, off by 9 pm.</figcaption>
+      </figure>
+      <dl class="oc-stats">
+{% for s in oc.stats %}        <div><dt>{{ s.label | escape }}</dt><dd>{{ s.value | escape }}</dd></div>
+{% endfor %}      </dl>
+    </div>
   </div>
 </section>
 {% endif %}

@@ -53,6 +53,29 @@ music:
     youtube: "cULQhvuq1Zc"
     url: "https://music.youtube.com/watch?v=cULQhvuq1Zc"
 
+# Listening stats from the same history (Sydney time). The clock on the page is drawn from
+# these hourly numbers when the page is built: _includes/listening-clock.html.
+stats:
+  - value: "3,772"
+    label: plays since July
+  - value: "1,600+"
+    label: different artists
+  - value: "1 pm"
+    label: peak listening hour
+  - value: "147"
+    label: plays on the busiest day
+  - value: "Wednesday"
+    label: loudest day of the week
+  - value: "Saturday"
+    label: quietest day, by a mile
+
+# Film and game scores that keep showing up
+scores:
+  - "Hans Zimmer"
+  - "Poets Of The Fall"
+  - "Old Gods of Asgard"
+  - "Justice"
+
 # Artists I play the most, in order
 artists:
   - "Twenty One Pilots"
