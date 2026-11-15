@@ -27,7 +27,7 @@
     - STM32 and RTOS on the bench, KiCad when the board does not exist yet
   images:
     - src: assets/img/mind/engineer.webp
-      alt: Avishkar in the lab holding a drone payload module
+      alt: Working with students at a bench in the drone lab, with drones on the wall behind
   link:
     url: /about.html
     label: Full skill set
@@ -91,17 +91,17 @@
 - id: teacher
   name: Teaching
   headline: Teaching robots to students, and students to robots.
-  summary: Embedded systems and mobile robotics units, and student teams that win.
+  summary: Taught embedded systems and mobile robotics until 2025, and still mentor student teams.
   body: >-
-    Embedded systems and mobile robotics at Macquarie University, and mentoring for student teams
-    who build things that move.
+    Embedded systems, IoT and mobile robotics at Macquarie University from 2020 to 2025, and
+    mentoring for student teams who build things that move.
   facts:
-    - COMP8291 IoT and Embedded Systems, and MTRN4068 Wireless Mechatronics
+    - COMP8291 IoT and Embedded Systems, and MTRN4068 Wireless Mechatronics, until December 2025
     - Mentor to the MQ Robotics Club, winners of the QUT Droid Racing Challenge 2026
     - Mentor to the Drone Society and MARS Rover teams
   images:
     - src: assets/img/mind/teacher.webp
-      alt: The Macquarie University Robotics Club team with their racing robot
+      alt: The Macquarie University Robotics Club team celebrating their QUT Droid Racing Challenge 2026 win
   link:
     url: /teaching.html
     label: Courses and mentoring
@@ -121,11 +121,6 @@
     - Gaming
     - Science and tech
     - Nature and the universe
-  images:
-    - src: assets/img/mind/creative.webp
-      alt: Avishkar on a coastal walking trail above the sea
-    - src: assets/img/mind/creative-2.webp
-      alt: Avishkar at Darling Harbour at night with the city lights behind
   link:
     url: /off-the-clock.html
     label: Off the clock

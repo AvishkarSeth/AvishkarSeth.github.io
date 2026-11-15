@@ -4,7 +4,7 @@
 - role: Co-Designer & Co-Instructor
   title: COMP8291 IoT and Embedded Systems
   url: https://unitguides.mq.edu.au/unit_offerings/171469/unit_guide
-  dates: Jan 2025 – Present
+  dates: Jan 2025 – Dec 2025
   description: This unit teaches the principles of IoT and Embedded Systems using RTOS and the STM32 dev board.
   images:
   - src: assets/img/teaching/comp8291_lab1.webp
@@ -12,7 +12,7 @@
 - role: Co-Designer & Co-Instructor
   title: MTRN4068 Wireless Mechatronics
   url: https://unitguides.mq.edu.au/unit_offerings/149936/unit_guide
-  dates: July 2020 – Present
+  dates: July 2020 – Dec 2025
   description: Co-designed and co-taught an advanced undergraduate course focused on hands-on experience designing, building, and programming mobile robots using ROS. Lab sessions aim to develop student skills in ROS, computer vision, motor control, sensor integration, mapping, localization, and navigation.
   images:
   - src: assets/img/teaching/mtrn4068_img.webp

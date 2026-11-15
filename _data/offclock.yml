@@ -8,7 +8,7 @@
 # player on the page. Leave it empty to play the tracks listed below through YouTube instead.
 playlist: ""
 
-# Most played on YouTube Music, June to November 2026 (from your listening history).
+# A few tracks on repeat (from YouTube Music history, June to November 2026).
 # `youtube` is the video ID; tracks with one also play in the player on the page.
 # Add a "why" line to any track in your own words.
 music:
@@ -32,49 +32,6 @@ music:
     artist: "Tame Impala"
     youtube: "cuMuMnCRfqk"
     url: "https://music.youtube.com/watch?v=cuMuMnCRfqk"
-  - title: "City Walls"
-    artist: "Twenty One Pilots"
-    youtube: "LZy5vrzeKE4"
-    url: "https://music.youtube.com/watch?v=LZy5vrzeKE4"
-  - title: "Routines In The Night"
-    artist: "Twenty One Pilots"
-    youtube: "D9pOuGOaumI"
-    url: "https://music.youtube.com/watch?v=D9pOuGOaumI"
-  - title: "Loser"
-    artist: "Tame Impala"
-    youtube: "MX7FSAnRPug"
-    url: "https://music.youtube.com/watch?v=MX7FSAnRPug"
-  - title: "back to friends"
-    artist: "sombr"
-    youtube: "c-8abSPAPOU"
-    url: "https://music.youtube.com/watch?v=c-8abSPAPOU"
-  - title: "Sweater Weather"
-    artist: "The Neighbourhood"
-    youtube: "cULQhvuq1Zc"
-    url: "https://music.youtube.com/watch?v=cULQhvuq1Zc"
-
-# Listening stats from the same history (Sydney time). The clock on the page is drawn from
-# these hourly numbers when the page is built: _includes/listening-clock.html.
-stats:
-  - value: "3,772"
-    label: plays since July
-  - value: "1,600+"
-    label: different artists
-  - value: "1 pm"
-    label: peak listening hour
-  - value: "147"
-    label: plays on the busiest day
-  - value: "Wednesday"
-    label: loudest day of the week
-  - value: "Saturday"
-    label: quietest day, by a mile
-
-# Film and game scores that keep showing up
-scores:
-  - "Hans Zimmer"
-  - "Poets Of The Fall"
-  - "Old Gods of Asgard"
-  - "Justice"
 
 # Artists I play the most, in order
 artists:
@@ -84,12 +41,6 @@ artists:
   - "Linkin Park"
   - "Tame Impala"
   - "Tokyo Tea Room"
-  - "Men I Trust"
-  - "Nerv"
-  - "The Neighbourhood"
-  - "Poets Of The Fall"
-  - "Steven Wilson"
-  - "Hans Zimmer"
 
 # Shows and films ---------------------------------------------------------------------------
 watching: []
@@ -105,13 +56,10 @@ playing: []
 
 # Art, photography and things I make --------------------------------------------------------
 # Photos live in assets/img/offclock/ (send them to Claude to add and shrink them).
-gallery:
-  - src: assets/img/mind/creative.webp
-    alt: A coastal walking trail above the sea
-    caption: Out on a coastal trail
-  - src: assets/img/mind/creative-2.webp
-    alt: Darling Harbour at night with the city lights behind
-    caption: Darling Harbour after dark
+gallery: []
+#  - src: assets/img/offclock/photo.webp
+#    alt: "What is in the photo"
+#    caption: "Short caption"
 
 # Places I keep going back to, or want to go -----------------------------------------------
 places: []

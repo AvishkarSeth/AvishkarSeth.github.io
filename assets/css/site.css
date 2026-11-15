@@ -670,3 +670,5 @@ kbd { font-family: var(--mono); font-size: 0.72rem; font-weight: 600; display: i
 .oc-stats dd { margin: 0; order: -1; font-stretch: 112%; font-weight: 800; font-size: clamp(1.4rem, 2.2vw, 1.8rem); letter-spacing: -0.02em; line-height: 1.1; overflow-wrap: normal; word-break: keep-all; }
 .oc-stats div { display: flex; flex-direction: column; }
 @media (max-width: 1040px) { .oc-stats-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.post-body .post-hero { width: 100%; max-height: 520px; object-fit: cover; border-radius: var(--radius); display: block; margin: 4px 0 20px; }

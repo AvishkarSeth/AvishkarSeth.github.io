@@ -17,9 +17,6 @@
 - id: tutorials
   label: "Blogs"
   url: "/tutorials.html"
-- id: learn
-  label: "Tutorials"
-  url: "/learn.html"
 - id: offclock
   label: "Off the clock"
   url: "/off-the-clock.html"

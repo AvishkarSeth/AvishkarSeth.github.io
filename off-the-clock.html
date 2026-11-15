@@ -9,7 +9,7 @@ nav: offclock
 <div class="wrap" id="offclock">
   <header class="page-head">
     <h1 class="kinetic">Off the clock</h1>
-    <p class="lead">What is playing, what I am watching, and what fills the time while the batteries charge.</p>
+    <p class="lead">What is playing while the batteries charge.</p>
 {% if creative and creative.facts %}    <ul class="oc-tags" aria-label="Interests">
 {% for f in creative.facts %}      <li>{{ f }}</li>
 {% endfor %}    </ul>
@@ -21,7 +21,7 @@ nav: offclock
   <div class="wrap split">
     <header class="split-head sticky">
       <h2 id="oc-music">On repeat</h2>
-      <p>Most played on YouTube Music lately.</p>
+      <p>A few songs on repeat lately.</p>
     </header>
     <div>
 {% if oc.playlist != "" %}{% assign pl = oc.playlist | split: "?" | first | replace: "open.spotify.com/", "open.spotify.com/embed/" %}      <iframe class="oc-player" src="{{ pl }}?utm_source=generator&theme=0" title="Spotify playlist" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -29,34 +29,11 @@ nav: offclock
 {% endif %}{% endif %}{% if oc.music.size > 0 %}      <ol class="oc-list oc-tracks">
 {% for t in oc.music %}        <li><span class="oc-title">{% if t.url %}<a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.title | escape }}</a>{% else %}{{ t.title | escape }}{% endif %}</span> <span class="meta">{{ t.artist | escape }}</span>{% if t.why %}<span class="oc-why">{{ t.why | escape }}</span>{% endif %}</li>
 {% endfor %}      </ol>
-{% endif %}{% if oc.artists and oc.artists.size > 0 %}      <h3 class="oc-sub">Artists in heavy rotation</h3>
+{% endif %}{% if oc.artists and oc.artists.size > 0 %}      <h3 class="oc-sub">Usually playing</h3>
       <ul class="oc-tags oc-artists">
 {% for a in oc.artists %}        <li>{{ a | escape }}</li>
 {% endfor %}      </ul>
-{% endif %}{% if oc.scores and oc.scores.size > 0 %}      <h3 class="oc-sub">Scores and soundtracks in the mix</h3>
-      <ul class="oc-tags oc-artists">
-{% for a in oc.scores %}        <li>{{ a | escape }}</li>
-{% endfor %}      </ul>
 {% endif %}    </div>
-  </div>
-</section>
-{% endif %}
-
-{% if oc.stats and oc.stats.size > 0 %}
-<section class="band" aria-labelledby="oc-stats">
-  <div class="wrap split">
-    <header class="split-head sticky">
-      <h2 id="oc-stats">By the numbers</h2>
-      <p>From my YouTube Music history, July to November 2026.</p>
-    </header>
-    <div class="oc-stats-grid">
-      <figure class="oc-clock">
-{% include listening-clock.html %}        <figcaption class="meta">The soundtrack to a working day: on by 7 am, loudest after lunch, off by 9 pm.</figcaption>
-      </figure>
-      <dl class="oc-stats">
-{% for s in oc.stats %}        <div><dt>{{ s.label | escape }}</dt><dd>{{ s.value | escape }}</dd></div>
-{% endfor %}      </dl>
-    </div>
   </div>
 </section>
 {% endif %}
