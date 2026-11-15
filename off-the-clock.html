@@ -1,0 +1,105 @@
+---
+layout: site
+title: "Off the clock | Avishkar Seth"
+description: "Music, shows, games, art and places: what Avishkar Seth is into when the drones are charging."
+nav: offclock
+---
+{% assign oc = site.data.offclock %}
+{% assign creative = site.data.mind | where: "id", "creative" | first %}
+<div class="wrap" id="offclock">
+  <header class="page-head">
+    <h1 class="kinetic">Off the clock</h1>
+    <p class="lead">What is playing, what I am watching, and what fills the time while the batteries charge.</p>
+{% if creative and creative.facts %}    <ul class="oc-tags" aria-label="Interests">
+{% for f in creative.facts %}      <li>{{ f }}</li>
+{% endfor %}    </ul>
+{% endif %}  </header>
+</div>
+
+{% if oc.playlist != "" or oc.music.size > 0 %}
+<section class="band" aria-labelledby="oc-music">
+  <div class="wrap split">
+    <header class="split-head sticky">
+      <h2 id="oc-music">On repeat</h2>
+      <p>Most played on YouTube Music lately.</p>
+    </header>
+    <div>
+{% if oc.playlist != "" %}{% assign pl = oc.playlist | split: "?" | first | replace: "open.spotify.com/", "open.spotify.com/embed/" %}      <iframe class="oc-player" src="{{ pl }}?utm_source=generator&theme=0" title="Spotify playlist" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+{% else %}{% assign ids = "" %}{% for t in oc.music %}{% if t.youtube %}{% assign ids = ids | append: t.youtube | append: "," %}{% endif %}{% endfor %}{% if ids != "" %}{% assign idlist = ids | split: "," %}{% assign rest = idlist | shift | join: "," %}      <div class="oc-video"><iframe src="https://www.youtube-nocookie.com/embed/{{ idlist[0] }}?playlist={{ rest }}&rel=0" title="Tracks on repeat" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+{% endif %}{% endif %}{% if oc.music.size > 0 %}      <ol class="oc-list oc-tracks">
+{% for t in oc.music %}        <li><span class="oc-title">{% if t.url %}<a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.title | escape }}</a>{% else %}{{ t.title | escape }}{% endif %}</span> <span class="meta">{{ t.artist | escape }}</span>{% if t.why %}<span class="oc-why">{{ t.why | escape }}</span>{% endif %}</li>
+{% endfor %}      </ol>
+{% endif %}{% if oc.artists and oc.artists.size > 0 %}      <h3 class="oc-sub">Artists in heavy rotation</h3>
+      <ul class="oc-tags oc-artists">
+{% for a in oc.artists %}        <li>{{ a | escape }}</li>
+{% endfor %}      </ul>
+{% endif %}{% if oc.scores and oc.scores.size > 0 %}      <h3 class="oc-sub">Scores and soundtracks in the mix</h3>
+      <ul class="oc-tags oc-artists">
+{% for a in oc.scores %}        <li>{{ a | escape }}</li>
+{% endfor %}      </ul>
+{% endif %}    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if oc.stats and oc.stats.size > 0 %}
+<section class="band" aria-labelledby="oc-stats">
+  <div class="wrap split">
+    <header class="split-head sticky">
+      <h2 id="oc-stats">By the numbers</h2>
+      <p>From my YouTube Music history, July to November 2026.</p>
+    </header>
+    <div class="oc-stats-grid">
+      <figure class="oc-clock">
+{% include listening-clock.html %}        <figcaption class="meta">The soundtrack to a working day: on by 7 am, loudest after lunch, off by 9 pm.</figcaption>
+      </figure>
+      <dl class="oc-stats">
+{% for s in oc.stats %}        <div><dt>{{ s.label | escape }}</dt><dd>{{ s.value | escape }}</dd></div>
+{% endfor %}      </dl>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% assign lists = "watching|Watching,playing|Playing,places|Places I keep going back to" | split: "," %}
+{% for pair in lists %}{% assign key = pair | split: "|" | first %}{% assign label = pair | split: "|" | last %}{% assign items = oc[key] %}{% if items and items.size > 0 %}
+<section class="band" aria-labelledby="oc-{{ key }}">
+  <div class="wrap split">
+    <header class="split-head sticky">
+      <h2 id="oc-{{ key }}">{{ label }}</h2>
+    </header>
+    <ul class="oc-list">
+{% for t in items %}      <li><span class="oc-title">{% assign name = t.title | default: t.name %}{% if t.url and t.url != "" %}<a href="{{ t.url }}" target="_blank" rel="noopener">{{ name | escape }}</a>{% else %}{{ name | escape }}{% endif %}</span>{% if t.why %}<span class="oc-why">{{ t.why | escape }}</span>{% endif %}</li>
+{% endfor %}    </ul>
+  </div>
+</section>
+{% endif %}{% endfor %}
+
+{% if oc.gallery and oc.gallery.size > 0 %}
+<section class="band" aria-labelledby="oc-gallery">
+  <div class="wrap split">
+    <header class="split-head sticky">
+      <h2 id="oc-gallery">Through the lens</h2>
+    </header>
+    <div class="oc-gallery">
+{% for g in oc.gallery %}      <figure>
+        <img src="/{{ g.src }}" alt="{{ g.alt | escape }}" loading="lazy" decoding="async">
+{% if g.caption %}        <figcaption class="meta">{{ g.caption | escape }}</figcaption>
+{% endif %}      </figure>
+{% endfor %}    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if oc.dislikes and oc.dislikes.size > 0 %}
+<section class="band" aria-labelledby="oc-dislikes">
+  <div class="wrap split">
+    <header class="split-head sticky">
+      <h2 id="oc-dislikes">Cannot stand</h2>
+    </header>
+    <ul class="oc-list oc-dislikes">
+{% for d in oc.dislikes %}      <li>{{ d | escape }}</li>
+{% endfor %}    </ul>
+  </div>
+</section>
+{% endif %}

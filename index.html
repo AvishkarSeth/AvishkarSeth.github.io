@@ -1,83 +1,199 @@
 ---
 layout: site
 title: "Avishkar Seth"
-description: "Avishkar Seth, Senior Research Officer (Robotics and Drone Systems) at Macquarie University's Advanced Drone Systems Research Centre. Aerial autonomy, sensing systems and hardware-software integration."
+description: "Avishkar Seth: engineer, builder, creative and visionary roboticist. Senior Research Officer (Robotics and Drone Systems) at Macquarie University's Advanced Drone Systems Research Centre, and founder at Dronergy."
 nav: home
-section: home
+home: true
 ---
-<!-- ======= Video Background ======= -->
+<section class="xp" id="experience" tabindex="-1" aria-labelledby="xp-name">
+  <canvas id="xp-canvas" aria-hidden="true"></canvas>
+  <div class="xp-shade" aria-hidden="true"></div>
+  <div class="xp-markers" id="xp-markers" aria-hidden="true"></div>
 
-        <video poster="assets/img/videos/bck_vid_sep_24_poster.webp" id="bgvid" playsinline autoplay muted loop>
-          <!-- <source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4">  -->
-            <source src="assets/img/videos/bck_vid_sep_24.mp4" type="video/mp4"> 
-        </video>
+  <div class="xp-intro">
+    <h1 class="xp-name kinetic" id="xp-name">Avishkar Seth</h1>
+    <p class="xp-roles">Engineer. Builder. Creative. Visionary roboticist.</p>
+    <p class="xp-lede">
+      Senior Research Officer in robotics and drone systems at Macquarie University,
+      and founder at <a href="https://www.dronergy.co/" target="_blank" rel="noopener">Dronergy</a>.
+      Six signals are hidden in this forest. Each one leads to a part of the work.
+    </p>
+    <div class="btn-row">
+      <button type="button" class="btn btn-glow" id="xp-take">Take the controls</button>
+      <a class="btn btn-ghost" href="#mind">Read it instead</a>
+      <button type="button" class="icon-btn xp-sound" aria-pressed="false" aria-label="Turn music on">
+        <svg class="icon-note" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+        <svg class="icon-mute" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/><path d="M3 3l18 18"/></svg>
+      </button>
+    </div>
+    <p class="xp-hint">Find all six signals. <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> to fly, best with sound on.</p>
+  </div>
 
-        <!-- ======= Video Background ======= -->
-
-       
-<!-- ======= Home Section ======= -->
-<section id="home" class="about">
-  <div class="about-me container hero theme-dark">
-
-    <div class="hero-text">
-      <div class="hero-eyebrow">
-        <img src="assets/img/logo/adsrc_logo_v7.webp" alt="Advanced Drone Systems Research Centre logo">
-        <span>ADSRC / MACQUARIE UNIVERSITY / SYDNEY</span>
-      </div>
-
-      <h1>Dr Avishkar<br>Seth</h1>
-      <h2>Senior Research Officer, Robotics and Drone Systems</h2>
-
-      <p class="hero-typed">I build robots that <span class="typed-text" id="typed-text">swap batteries mid-air</span><span class="typed-caret" aria-hidden="true"></span></p>
-
-      <p>
-        Aerial autonomy, sensing systems and hardware-software integration at the
-        Advanced Drone Systems Research Centre. I also lead
-        <a href="https://www.dronergy.co/" target="_blank" rel="noopener">Dronergy</a>,
-        a startup commercialising mid-air battery swapping for drones.
-      </p>
-
-      <div class="hero-cta">
-        <a class="hero-btn primary" href="mailto:avishkar.seth@mq.edu.au"><i class="ri-mail-fill"></i> Get in touch</a>
-        <a class="hero-btn ghost" href="/research.html#research">View research</a>
-      </div>
-
-      <div class="hero-links">
-{% for s in site.data.social %}{% if s.title == "Github" or s.title == "LinkedIn" or s.title == "ORCID" or s.title == "Google Scholar" %}        <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title | replace: "Github", "GitHub" }}</a>
-{% endif %}{% endfor %}      </div>
+  <div class="xp-hud">
+    <div class="xp-telemetry" aria-hidden="true">
+      <span class="xp-mode" id="hud-mode">Autopilot</span>
+      <dl>
+        <div><dt>Alt</dt><dd><span id="hud-alt">0.0</span> m</dd></div>
+        <div><dt>Speed</dt><dd><span id="hud-spd">0.0</span> m/s</dd></div>
+        <div><dt>Battery</dt><dd><span id="hud-bat">100</span>%</dd></div>
+        <div><dt>Time</dt><dd><span id="hud-time">0:00</span></dd></div>
+      </dl>
+      <span class="xp-bat"><span id="hud-bat-bar"></span></span>
     </div>
 
-{% include news.html %}
+    <nav class="xp-signals" aria-label="Signals hidden in the forest">
+      <p class="xp-signals-head">Signals found <span id="hud-found">0 of 6</span></p>
+      <ul>
+{% for m in site.data.mind %}        <li><button type="button" class="xp-signal" data-id="{{ m.id }}" data-name="{{ m.name | escape }}" data-headline="{{ m.headline | escape }}" data-summary="{{ m.summary | escape }}" aria-label="{{ m.name | escape }} signal. Fly there.">{{ m.name }}</button></li>
+{% endfor %}      </ul>
+    </nav>
 
+    <canvas class="xp-radar" id="xp-radar" width="144" height="144" aria-hidden="true"></canvas>
+    <div class="xp-top-right">
+      <button type="button" class="icon-btn xp-sound" aria-pressed="false" aria-label="Turn music on">
+          <svg class="icon-note" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+          <svg class="icon-mute" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/><path d="M3 3l18 18"/></svg>
+        </button>
+      <button type="button" class="btn btn-ghost xp-exit" id="xp-exit">Exit flight</button>
+    </div>
+    <p class="xp-toast" id="xp-toast" role="status" aria-live="polite"></p>
+
+    <aside class="xp-side" id="xp-side" aria-live="polite" hidden>
+      <button type="button" class="icon-btn xp-side-close" id="xp-side-close" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <p class="xp-side-count" id="xp-side-count"></p>
+      <h3 class="xp-side-name" id="xp-side-name"></h3>
+      <p class="xp-side-headline" id="xp-side-headline"></p>
+      <p class="xp-side-summary" id="xp-side-summary"></p>
+      <a class="xp-side-more" id="xp-side-more" href="#mind">Read more below</a>
+    </aside>
+
+    <div class="xp-keys" aria-hidden="true">
+      <span class="xp-keys-desk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows fly</span>
+      <span class="xp-keys-desk"><kbd>Space</kbd> climb</span>
+      <span class="xp-keys-desk"><kbd>Shift</kbd> descend</span>
+      <span class="xp-keys-desk"><kbd>Esc</kbd> exit</span>
+      <span class="xp-keys-touch">Stick to fly, buttons to climb</span>
+    </div>
+  </div>
+
+  <div class="xp-win" id="xp-win" role="dialog" aria-labelledby="xp-win-h" hidden>
+    <p class="xp-win-badge">Mission complete</p>
+    <h2 id="xp-win-h">All six signals found.</h2>
+    <p class="xp-win-time">Six of six signals in <span id="xp-win-time">0:00</span>.</p>
+    <p class="xp-win-text">Systems engineering, field robotics, Dronergy, research, teaching and what happens beyond the lab. If any of it sparks an idea, get in touch.</p>
+    <div class="btn-row">
+      <a class="btn btn-glow" href="mailto:{{ site.email }}">Say hello</a>
+      <button type="button" class="btn btn-ghost" id="xp-again">Fly again</button>
+      <a class="btn btn-ghost" href="#mind">Read it all</a>
+    </div>
+    <button type="button" class="icon-btn xp-win-close" id="xp-win-close" aria-label="Close and keep flying">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="xp-touch" aria-hidden="true">
+    <div class="xp-stick" id="xp-stick"><span class="xp-knob" id="xp-knob"></span></div>
+    <div class="xp-climb">
+      <button type="button" data-climb="1" tabindex="-1">Up</button>
+      <button type="button" data-climb="-1" tabindex="-1">Down</button>
+    </div>
+  </div>
+
+  <a class="xp-down" href="#mind" aria-label="Scroll to The work">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+  </a>
+</section>
+
+
+<section class="mind" id="mind" aria-labelledby="mind-h">
+  <div class="wrap mind-intro">
+    <h2 id="mind-h" class="kinetic">The work</h2>
+    <p class="lead">The six signals from the forest, for anyone who would rather scroll than fly.</p>
+  </div>
+
+{% for m in site.data.mind %}
+  <article class="mind-chapter" id="mind-{{ m.id }}" data-reveal>
+    <div class="mind-word" aria-hidden="true">{{ m.name }}</div>
+    <div class="wrap">
+      <div class="mind-inner">
+        <h3 class="mind-name">{{ m.name }}</h3>
+        <p class="mind-headline">{{ m.headline }}</p>
+        <div class="mind-grid{% unless m.images or m.id == "founder" %} no-media{% endunless %}">
+          <div class="mind-text">
+            <p>{{ m.body }}</p>
+{% if m.facts %}            <ul class="mind-facts">
+{% for f in m.facts %}              <li>{{ f }}</li>
+{% endfor %}            </ul>
+{% endif %}{% if m.likes and m.likes.size > 0 %}{% for g in m.likes %}            <h4 class="mind-likes-h">{{ g.group }}</h4>
+            <ul class="mind-likes">
+{% for item in g.items %}              <li>{% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}</li>
+{% endfor %}            </ul>
+{% endfor %}{% endif %}{% if m.link %}            <p class="mind-link"><a href="{{ m.link.url }}"{% if m.link.url contains "://" %} target="_blank" rel="noopener"{% endif %}>{{ m.link.label }}</a></p>
+{% endif %}          </div>
+{% if m.images %}          <div class="mind-media mind-media-{{ m.images.size }}">
+{% for img in m.images %}            <img src="/{{ img.src }}" alt="{{ img.alt | escape }}" loading="lazy" decoding="async">
+{% endfor %}          </div>
+{% elsif m.id == "founder" %}          <div class="mind-media mind-handoff">
+            <svg viewBox="128 84 470 312" role="img" aria-label="Diagram: a service drone passes a fresh battery down to a working drone in mid-air">
+              <g class="hf-service" transform="translate(250 150)">
+{% include drone.html %}
+              </g>
+              <path class="hf-line" d="M250 167L430 270"/>
+              <rect class="hf-cell" x="329" y="208" width="22" height="12" rx="2"/>
+              <g transform="translate(430 270)">
+{% include drone.html %}
+              </g>
+            </svg>
+          </div>
+{% endif %}        </div>
+      </div>
+    </div>
+  </article>
+{% endfor %}
+</section>
+
+{% if site.data.news and site.data.news.size > 0 %}
+<section class="band" aria-labelledby="latest-h">
+  <div class="wrap split">
+    <header class="split-head">
+      <h2 id="latest-h">Latest</h2>
+    </header>
+    <ul class="news-list">
+{% for item in site.data.news limit: 4 %}      <li>
+        <span class="meta">{{ item.date | escape }}</span>
+        <span>{% if item.url %}<a href="{{ item.url }}">{{ item.text | escape }}</a>{% else %}{{ item.text | escape }}{% endif %}</span>
+      </li>
+{% endfor %}    </ul>
+  </div>
+</section>
+{% endif %}
+
+<section class="band" aria-labelledby="work-h">
+  <div class="wrap split">
+    <header class="split-head">
+      <h2 id="work-h">Selected work</h2>
+      <p><a href="/research.html">All publications</a></p>
+    </header>
+    <div class="work-grid">
+{% for group in site.data.publications %}{% for paper in group.items %}{% if paper.featured %}      <article class="work">
+        <a href="{{ paper.url }}" target="_blank" rel="noopener">
+          <div class="figure-matte"><img src="/{{ paper.image }}" alt="{{ paper.alt | default: paper.title | strip_html | escape }}" loading="lazy" decoding="async"></div>
+          <h3>{{ paper.title | escape }}</h3>
+          <p class="meta">{{ paper.kind | escape }}</p>
+        </a>
+      </article>
+{% endif %}{% endfor %}{% endfor %}    </div>
   </div>
 </section>
 
-<!-- ======= Home Section ======= -->
+<section class="band call" aria-labelledby="call-h">
+  <div class="wrap">
+    <h2 id="call-h" class="kinetic">Let's build something that flies.</h2>
+    <p class="lead">Research collaborations, field trials, students looking for a project, or a problem that needs drones. Write to me.</p>
+    <p class="btn-row"><a class="btn btn-glow" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  </div>
+</section>
 
-
-
-
-
-
-  
-
-<script>
-  // Rotating "I build robots that ..." line. Static first phrase for no-JS or reduced motion.
-  (function () {
-    var el = document.getElementById('typed-text');
-    if (!el) return;
-    var phrases = ['swap batteries mid-air', 'lift payloads together', 'monitor the ocean', 'race on their own'];
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var i = 0, n = phrases[0].length, deleting = false;
-    function tick() {
-      var full = phrases[i];
-      el.textContent = full.slice(0, n);
-      var delay = deleting ? 35 : 70;
-      if (!deleting && n === full.length) { deleting = true; delay = 1800; }
-      else if (deleting && n === 0) { deleting = false; i = (i + 1) % phrases.length; delay = 350; }
-      n += deleting ? -1 : 1;
-      setTimeout(tick, delay);
-    }
-    setTimeout(tick, 1800);
-  })();
-</script>
+<script type="module" src="/assets/js/experience.js"></script>

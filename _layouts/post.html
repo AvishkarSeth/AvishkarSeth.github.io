@@ -1,0 +1,14 @@
+---
+layout: site
+---
+<article class="post">
+  <div class="wrap">
+    <header class="page-head">
+{% if page.back_url %}      <a class="back-link" href="{{ page.back_url }}">Back to {{ page.back_label | default: "Blogs" }}</a>
+{% endif %}      <h1 class="kinetic">{{ page.heading | default: page.title | escape }}</h1>
+    </header>
+    <div class="post-body">
+{{ content }}
+    </div>
+  </div>
+</article>

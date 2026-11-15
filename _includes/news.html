@@ -1,8 +1,0 @@
-{% if site.data.news and site.data.news.size > 0 %}
-    <aside class="home-news theme-dark" aria-label="News">
-      <div class="news-label"><span class="dot"></span>NEWS</div>
-      <ul>
-{% for item in site.data.news limit: 4 %}        <li><span class="news-date">{{ item.date | escape }}</span><span>{% if item.url %}<a href="{{ item.url }}">{{ item.text | escape }}</a>{% else %}{{ item.text | escape }}{% endif %}</span></li>
-{% endfor %}      </ul>
-    </aside>
-{% endif %}

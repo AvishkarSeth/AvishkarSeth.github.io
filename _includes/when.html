@@ -1,0 +1,1 @@
+{% assign parts = include.dates | replace: " - ", " – " | split: " – " %}<span class="meta">{{ parts[0] | escape }}{% if parts[1] and parts[1] != "Present" %} – {{ parts[1] | escape }}{% endif %}</span>{% if parts[1] == "Present" %}<span class="meta status-now">Current</span>{% endif %}

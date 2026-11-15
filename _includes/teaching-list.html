@@ -1,22 +1,16 @@
 {% for c in site.data.teaching %}
-{% if c.divider_before %}
-    <hr class="white-hr">
-
-{% endif %}
-    <div class="row"{% if c.row_style %} style="{{ c.row_style }}"{% endif %}>
-      <div class="col-lg-6">
-        <h3 class="resume-title">{{ c.role | escape }}</h3>
-        <div class="{{ c.item_class }}">
-          <h4><a href="{{ c.url }}"{% if c.new_tab %} target="_blank"{% endif %}>{{ c.title | escape }}</a></h4>
-          <h5>{{ c.dates | escape }}</h5>
-          <p><em>{{ c.description }}</em></p>
-{% if c.more_url %}          <a href="{{ c.more_url }}"><i class="icofont-link"></i>&nbsp;More Info</a>
-{% endif %}        </div>
-      </div>
-      <div class="col-lg-6" style="{{ c.gallery_style }}">
-{% for img in c.images %}{% if img.link %}        <a href="{{ img.link }}" target="_blank">
-  {% endif %}        <img src="{{ img.src }}" width="{{ img.width }}" style="{{ c.img_style }}" loading="lazy" decoding="async"{% if img.alt %} alt="{{ img.alt | escape }}"{% endif %}>
-{% if img.link %}        </a>
-{% endif %}{% endfor %}      </div>
-    </div>
+<article class="entry">
+  <div class="entry-when">
+    {% include when.html dates=c.dates %}
+  </div>
+  <div class="entry-body">
+    <h3><a href="{{ c.url }}"{% if c.url contains "://" %} target="_blank" rel="noopener"{% endif %}>{{ c.title | escape }}</a></h3>
+    <p class="role">{{ c.role | escape }}</p>
+    <p>{{ c.description }}</p>
+{% if c.more_url %}    <p><a href="{{ c.more_url }}">Meet the students</a></p>
+{% endif %}{% if c.images and c.images.size > 0 %}    <div class="entry-gallery">
+{% for img in c.images %}      <img src="/{{ img.src | replace: " ", "%20" }}" alt="{{ img.alt | escape }}" loading="lazy" decoding="async">
+{% endfor %}    </div>
+{% endif %}  </div>
+</article>
 {% endfor %}

@@ -1,0 +1,69 @@
+# Posts on the Blogs page, newest group first. Add a post by copying an entry.
+# `url` is a page on this site (starting with /) or an outside link; `image` starts from the site root.
+- year: '2026'
+  items:
+  - title: Highlights 2026
+    summary: 'Latest: Dronergy is an Avalon Innovation Awards finalist, and a delegation from Da Nang visits the lab.'
+    url: /new_pages/highlights_2026.html
+    image: assets/img/highlights_2026/CSIRO ON Accelerate 10 Bootcamp Cohort _ Sydney 2025.webp
+    alt: Highlights 2026
+- year: '2025'
+  items:
+  - title: Highlights 2025
+    summary: All the highlights of 2025!
+    url: /new_pages/highlights_2025.html
+    image: assets/img/highlights_2025/grad3.jpg
+    alt: Highlights 2025
+- year: '2024'
+  items:
+  - title: ICST International Conference on Sensing Technology 2024
+    summary: 'Blog Post: Our Journey to ICST 2024, Sydney, Australia'
+    url: /new_pages/icst_2024.html
+    image: assets/img/morepages/icst24/icst1.jpg
+    alt: ICST International Conference on Sensing Technology 2024
+  - title: MQ Drone Lab- ACM Mobicom 2024
+    summary: 'Blog Post: Our Journey to ACM Mobicom 2024'
+    url: /new_pages/mobicom_2024.html
+    image: assets/img/morepages/mobicom24/mobicom1.webp
+    alt: MQ Drone Lab- ACM Mobicom 2024
+  - title: QUT DRC- MURC 2024
+    summary: 'Blog Post: Our Journey to 3rd Place at the QUT Droid Racing Challenge!'
+    url: /new_pages/QUT_DRC_2024.html
+    image: assets/img/morepages/qut_murc/team2.jpg
+    alt: QUT DRC- MURC 2024
+  - title: MQ Open Day 2024
+    summary: 'Blog Post: Babies Day out to MQ Open Day 2024!'
+    url: /new_pages/open_day_2024.html
+    image: assets/img/morepages/open_day_2024/EWK_1261.webp
+    alt: MQ Open Day 2024
+  - title: MQ Drone Lab- ACM MobiSys DroNet 2024
+    summary: 'Blog Post: Our Journey to Tokyo MQ Drone Lab- ACM MobiSys DroNet 2024'
+    url: /new_pages/DroNet_2024_tokyo.html
+    image: assets/img/morepages/Dronet2024/dronet1.webp
+    alt: MQ Drone Lab- ACM MobiSys DroNet 2024
+  - title: MQ HDR Conference 2024
+    summary: 'Blog Post: Our Journey to MQ HDR Conference 2024'
+    url: /new_pages/HDR_MQ.html
+    image: assets/img/morepages/hdrmq24/hdr1.jpeg
+    alt: MQ HDR Conference 2024
+- year: '2023'
+  items:
+  - title: MQ Drone Lab Industry Workshop Nov 2023
+    summary: 'Blog Post: MQ Drone Lab First Industry Workshop!'
+    url: /new_pages/inds_ws_24.html
+    image: assets/img/morepages/Industry_ws_pics/IMG-20231122-WA0040.jpg
+    alt: MQ Drone Lab Industry Workshop Nov 2023
+- year: '2020'
+  items:
+  - title: Hackathon Challenge, Sydney- Awarded 2nd Place
+    summary: 'AI-enabled education hackathon, Big Data Society, Sydney. March 2020.'
+    url: https://data-science-group.github.io/BigDataSociety/Hackathon/2020-03/index.html
+    image: assets/img/news/big_data_hackathon.webp
+    alt: Hackathon Challenge, Sydney- Awarded 2nd Place
+- year: Earlier
+  items:
+  - title: Misc Highlights and History
+    summary: 'Blog Post: Some old memories'
+    url: /new_pages/highlights_misc.html
+    image: assets/img/Misc_Old/drone_lab_2023_v2.webp
+    alt: Misc Highlights and History
